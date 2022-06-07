@@ -1,0 +1,9 @@
+TimeUnit: ps, Cut:trigflag[10]>-1
+KaonMeantime	-1109.64
+KaonSigma	137.7
+PionMeantime	-1000
+PionSigma	200
+BackgroundSigma	1681.13
+KaonEntries	787010
+PionEntries	114011
+BackgroundEntries	133004

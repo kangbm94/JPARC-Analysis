@@ -1,0 +1,283 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AF2D	ToFManagerLegacy.hh	/^TString AF2D(int seg, int UD, TString ht,double p0,double p1,double p2){$/;"	f
+AF2D	Utils.hh	/^TString AF2D(int det1,  TString ht,double p0,double p1,double p2,int conf){$/;"	f
+AddSTOF	HodoscopeManager.hh	/^void HodoscopeManager::AddSTOF(){$/;"	f	class:HodoscopeManager
+BACCut	HodoscopeManager.hh	/^void HodoscopeManager::BACCut(bool cut){$/;"	f	class:HodoscopeManager
+BC3	ChamberManager.hh	/^enum dets{ BC3,BC4,Sdc1,Sdc2,Sdc3,Sdc4$/;"	e	enum:dets
+BC4	ChamberManager.hh	/^enum dets{ BC3,BC4,Sdc1,Sdc2,Sdc3,Sdc4$/;"	e	enum:dets
+BF2D	ToFManagerLegacy.hh	/^TString BF2D(int seg, int UD, TString ht){$/;"	f
+BF2D	Utils.hh	/^TString BF2D(int det1, TString ht, int conf){$/;"	f
+BH1_2_BH2	HodoscopeManager.hh	/^void HodoscopeManager::BH1_2_BH2(){$/;"	f	class:HodoscopeManager
+BH1_U2D	HodoscopeManager.hh	/^void HodoscopeManager::BH1_U2D(){$/;"	f	class:HodoscopeManager
+BH2_U2D	HodoscopeManager.hh	/^void HodoscopeManager::BH2_U2D(){$/;"	f	class:HodoscopeManager
+BcComments	ChamberManager.hh	/^TString BcComments[12] = {"### BC3-X1","### BC3-X2", "### BC3-U1", "### BC3-U2","### BC3-V1","### BC3-V2","### BC4-U1","### BC4-U2","### BC4-V1","###BC4-V2","### BC4-X1","###BC4-X2"};$/;"	v
+BcDL	ChamberManager.hh	/^static const double BcDL = 1.5;$/;"	v
+BcLayer	ChamberManager.hh	/^void ChamberManager::BcLayer(int layer){$/;"	f	class:ChamberManager
+BcNW	ChamberManager.hh	/^static const int BcNW = 64;$/;"	v
+Bcdt2	ChamberManager.hh	/^double Bcdt2 = 45;$/;"	v
+Bcid	ChamberManager.hh	/^int Bcid = 113;$/;"	v
+CKaonMass	Constants.hh	/^double CKaonMass(){$/;"	f
+CPionMass	Constants.hh	/^double CPionMass(){$/;"	f
+CXiMass	Constants.hh	/^double CXiMass(){$/;"	f
+ChamberManager	ChamberManager.hh	/^		ChamberManager(){}$/;"	f	class:ChamberManager
+ChamberManager	ChamberManager.hh	/^class ChamberManager{$/;"	c
+Comments	ChamberManager.hh	/^TString Comments[8] = {"### SDC3-X1","### SDC3-X2", "### SDC3-Y1", "### SDC3-Y2","### SDC4-Y1","### SDC4-Y2","### SDC4-X1","###SDC4-X2"};$/;"	v
+Constants_h	Constants.hh	/^#define Constants_h$/;"	d
+DE	Utils.hh	/^TString DE(int a,int conf){\/\/0,1$/;"	f
+DLDTGraph	ChamberManager.hh	/^TGraphErrors* ChamberManager::DLDTGraph(int layer,double MaxDL, double t1,double t2, bool track){$/;"	f	class:ChamberManager
+Detname	Utils.hh	/^TString Detname[10]={"","bh1","bh2","bac","htof","bvh","tof","","wc","wcsum"};$/;"	v
+DrawBFTTDC	EasirocManager.hh	/^void EasirocManager::DrawBFTTDC(TChain* chain, int UorD, int seg, TCut cut, TString ht){$/;"	f	class:EasirocManager
+DrawCanvas	HodoscopeManager.hh	/^bool DrawCanvas=false;$/;"	v
+DrawM2	StofManager.hh	/^double StofManager::DrawM2(int seg, double stof_offset, double m2_min, double m2_max){$/;"	f	class:StofManager
+DrawScatterPlot	StofManager.hh	/^double StofManager::DrawScatterPlot(int seg, double stof_offset, double m2_min, double m2_max){$/;"	f	class:StofManager
+EasirocManager	EasirocManager.hh	/^		EasirocManager(){};$/;"	f	class:EasirocManager
+EasirocManager	EasirocManager.hh	/^class EasirocManager{$/;"	c
+Filename	Utils.hh	/^TString Filename(int run){$/;"	f
+FillBH1ADHist	Utils.hh	/^void FillBH1ADHist(TString title, TTree* tree,int nch, TCut cut){$/;"	f
+FillBH1AUHist	Utils.hh	/^void FillBH1AUHist(TString title, TTree* tree,int nch, TCut cut){$/;"	f
+FillBH2ADHist	Utils.hh	/^void FillBH2ADHist(TString title, TTree* tree,int nch, TCut cut){$/;"	f
+FillBH2AUHist	Utils.hh	/^void FillBH2AUHist(TString title, TTree* tree,int nch, TCut cut){$/;"	f
+FillHTOFADHist	Utils.hh	/^void FillHTOFADHist(TString title, TTree* tree,int nch, TCut cut){$/;"	f
+FillHTOFAUHist	Utils.hh	/^void FillHTOFAUHist(TString title, TTree* tree,int nch, TCut cut){$/;"	f
+FillHist	Utils.hh	/^void FillHist(TString title, TTree* tree,TString branch,TCut cut){$/;"	f
+FillHistColz	Utils.hh	/^void FillHistColz(TString title, TTree* tree,TString branch,TCut cut){$/;"	f
+FitTimewalk	HodoscopeManager.hh	/^void HodoscopeManager::FitTimewalk(TChain* chain, int bac,int det, int seg,int conf){$/;"	f	class:HodoscopeManager
+FitTimewalk	ToFManager.hh	/^void ToFManager::FitTimewalk(int seg, int UD, int particle,bool mod){$/;"	f	class:ToFManager
+FitTimewalk	ToFManagerLegacy.hh	/^void ToFManager::FitTimewalk(int seg, int UD,double offset){$/;"	f	class:ToFManager
+Gaussian	Math.hh	/^double Gaussian(double x, double mean, double sigma, double amplitude){$/;"	f
+GenSphericalRandom	Math.hh	/^void GenSphericalRandom(double &theta, double &phi){$/;"	f
+GenUniformRandom	Math.hh	/^double GenUniformRandom(){$/;"	f
+GenUniformRandom	Math.hh	/^double GenUniformRandom(double range){$/;"	f
+GetADCHisto	ToFManager.hh	/^void ToFManager::GetADCHisto(TString ht,int seg, int UD){\/\/ 0 -> Up, 1 -> Down$/;"	f	class:ToFManager
+GetADCHisto	ToFManagerLegacy.hh	/^void ToFManager::GetADCHisto(TString ht,int seg, int UD){\/\/ 0 -> Up, 1 -> Down$/;"	f	class:ToFManager
+GetDTDLHisto	ChamberManager.hh	/^TH2* ChamberManager::GetDTDLHisto(int layer){$/;"	f	class:ChamberManager
+GetDTDLLRHisto	ChamberManager.hh	/^TH2* ChamberManager::GetDTDLLRHisto(int layer){$/;"	f	class:ChamberManager
+GetDTHisto	ChamberManager.hh	/^TH1* ChamberManager::GetDTHisto(int layer){$/;"	f	class:ChamberManager
+GetDTTrackHisto	ChamberManager.hh	/^TH1* ChamberManager::GetDTTrackHisto(int layer){$/;"	f	class:ChamberManager
+GetHisto	ChamberManager.hh	/^TH1* ChamberManager::GetHisto(int layer){$/;"	f	class:ChamberManager
+GetHisto	ChamberManager.hh	/^TH1* ChamberManager::GetHisto(int layer, int wire){$/;"	f	class:ChamberManager
+GetHisto	ToFManager.hh	/^TH1* ToFManager::GetHisto(int seg, int UD){\/\/ 0 -> Up, 1 -> Down$/;"	f	class:ToFManager
+GetHisto	ToFManagerLegacy.hh	/^TH1* ToFManager::GetHisto(int seg, int UD){\/\/ 0 -> Up, 1 -> Down$/;"	f	class:ToFManager
+GetPEDHisto	ToFManager.hh	/^void ToFManager::GetPEDHisto(TString ht,int seg, int UD){\/\/ 0 -> Up, 1 -> Down$/;"	f	class:ToFManager
+GetPEDHisto	ToFManagerLegacy.hh	/^void ToFManager::GetPEDHisto(TString ht,int seg, int UD){\/\/ 0 -> Up, 1 -> Down$/;"	f	class:ToFManager
+GetPHCHisto	ToFManager.hh	/^TH2D* ToFManager::GetPHCHisto(int seg, int UD,int particle){$/;"	f	class:ToFManager
+GetStofHisto	ToFManager.hh	/^TH1* ToFManager::GetStofHisto(int seg, int particle){$/;"	f	class:ToFManager
+GetStofHisto	ToFManagerLegacy.hh	/^TH1* ToFManager::GetStofHisto(int seg, int particle){$/;"	f	class:ToFManager
+HodoscopeManager	HodoscopeManager.hh	/^		HodoscopeManager(){$/;"	f	class:HodoscopeManager
+HodoscopeManager	HodoscopeManager.hh	/^class HodoscopeManager{$/;"	c
+Indicator	Utils.hh	/^void Indicator(int i, int ent){$/;"	f
+Indicator	Utils.hh	/^void Indicator(int i, int ent, TString Loopname){$/;"	f
+LambdaMass	Constants.hh	/^double LambdaMass(){$/;"	f
+Layer	ChamberManager.hh	/^void ChamberManager::Layer(int layer){$/;"	f	class:ChamberManager
+LightSpeed	Constants.hh	/^double LightSpeed(){$/;"	f
+LoadChain	ToFManager.hh	/^void ToFManager::LoadChain(TString filename){$/;"	f	class:ToFManager
+LoadChain	ToFManagerLegacy.hh	/^void ToFManager::LoadChain(TString filename){$/;"	f	class:ToFManager
+LoadDriftParameter	ChamberManager.hh	/^void ChamberManager::LoadDriftParameter(string filename, int layer, double* p){$/;"	f	class:ChamberManager
+LoadFile	ChamberManager.hh	/^void ChamberManager::LoadFile(TString filename){$/;"	f	class:ChamberManager
+LoadFile	ToFManager.hh	/^void ToFManager::LoadFile(TString filename){$/;"	f	class:ToFManager
+LoadFile	ToFManagerLegacy.hh	/^void ToFManager::LoadFile(TString filename){$/;"	f	class:ToFManager
+LoadKurama	StofManager.hh	/^		void LoadKurama(TString filename){$/;"	f	class:StofManager
+LoadPHCFile	HodoscopeManager.hh	/^		void LoadPHCFile(string title){$/;"	f	class:HodoscopeManager
+LoadSPHCFile	HodoscopeManager.hh	/^		void LoadSPHCFile(string title){$/;"	f	class:HodoscopeManager
+MTCut	ToFManagerLegacy.hh	/^TCut MTCut(int seg, double offset){$/;"	f
+MakeFile	StofManager.hh	/^void StofManager::MakeFile(TString filename){$/;"	f	class:StofManager
+MakeMonitorFile	HodoscopeManager.hh	/^void HodoscopeManager::MakeMonitorFile(TString name){$/;"	f	class:HodoscopeManager
+MakePHCFile	HodoscopeManager.hh	/^void HodoscopeManager::MakePHCFile(string title){$/;"	f	class:HodoscopeManager
+MakePHCFile	HodoscopeManager.hh	/^void HodoscopeManager::MakePHCFile(string title, int conf,int runnum){$/;"	f	class:HodoscopeManager
+MakeParameterFile	ChamberManager.hh	/^void ChamberManager::MakeParameterFile(string title){$/;"	f	class:ChamberManager
+MakeParameterFile	EasirocManager.hh	/^void EasirocManager::MakeParameterFile(string title){$/;"	f	class:EasirocManager
+MakeParameterFile	ToFManager.hh	/^void ToFManager::MakeParameterFile(string title){$/;"	f	class:ToFManager
+MakeParameterFile	ToFManagerLegacy.hh	/^void ToFManager::MakeParameterFile(string title){$/;"	f	class:ToFManager
+Math_h	Math.hh	/^#define Math_h$/;"	d
+Max	Math.hh	/^double Max(double a, double b){$/;"	f
+Min	Math.hh	/^double Min(double a, double b){$/;"	f
+MonitorBH2	HodoscopeManager.hh	/^void HodoscopeManager::MonitorBH2(int run, int bac,double* gain, double* sig, double* chi2,int* ndf,double* ped){$/;"	f	class:HodoscopeManager
+NKaonMass	Constants.hh	/^double NKaonMass(){$/;"	f
+NPionMass	Constants.hh	/^double NPionMass(){$/;"	f
+NXiMass	Constants.hh	/^double NXiMass(){$/;"	f
+NeutronMass	Constants.hh	/^double NeutronMass(){$/;"	f
+NextParameter	ToFManager.hh	/^void ToFManager::NextParameter(){$/;"	f	class:ToFManager
+NextParameter	ToFManagerLegacy.hh	/^void ToFManager::NextParameter(){$/;"	f	class:ToFManager
+OtherLine	HodoscopeManager.hh	/^void HodoscopeManager::OtherLine(){$/;"	f	class:HodoscopeManager
+PHCWritter	Utils.hh	/^void PHCWritter(fstream& f, int* ids,double p1,double p2, double p3){$/;"	f
+PM	Math.hh	/^int PM(int a){$/;"	f
+Pi	Constants.hh	/^double Pi(){$/;"	f
+PionMass	Utils.hh	/^double PionMass(){$/;"	f
+Polynomial	Math.hh	/^double Polynomial(double x, double* p,int n){$/;"	f
+Power	Math.hh	/^double Power(double x,int n){$/;"	f
+PressAnyKey	Utils.hh	/^void PressAnyKey(){	$/;"	f
+ProtonMass	Constants.hh	/^double ProtonMass(){$/;"	f
+Qr1	Math.hh	/^double Qr1(double a, double b, double c, double d, double e){$/;"	f
+QuadRoot	Math.hh	/^double QuadRoot(double a,double b,double c, int conf){$/;"	f
+ReadCSV	Utils.hh	/^void ReadCSV(fstream& file, double* data){\/\/$/;"	f
+ReadTSV	Utils.hh	/^void ReadTSV(fstream& file, double* data){\/\/$/;"	f
+RebinHist	Utils.hh	/^int RebinHist(TH1* hist){$/;"	f
+SaveHisto	ToFManager.hh	/^void ToFManager::SaveHisto(TString filename){$/;"	f	class:ToFManager
+SaveHisto	ToFManagerLegacy.hh	/^void ToFManager::SaveHisto(TString filename){$/;"	f	class:ToFManager
+ScanSegment	HodoscopeManager.hh	/^void HodoscopeManager::ScanSegment(TChain* chain, int bh2segment,int bacconf,int* segs){$/;"	f	class:HodoscopeManager
+ScanSegment	HodoscopeManager.hh	/^void HodoscopeManager::ScanSegment(TFile* file, int bh2segment,int bacconf,int* segs){$/;"	f	class:HodoscopeManager
+ScanSegments	HodoscopeManager.hh	/^void HodoscopeManager::ScanSegments(TChain* chain,int bacconf, int* bh1,int* htof){$/;"	f	class:HodoscopeManager
+ScanSegments	HodoscopeManager.hh	/^void HodoscopeManager::ScanSegments(TFile* file,int bacconf, int* bh1,int* htof){$/;"	f	class:HodoscopeManager
+Sdc1	ChamberManager.hh	/^enum dets{ BC3,BC4,Sdc1,Sdc2,Sdc3,Sdc4$/;"	e	enum:dets
+Sdc1Comments	ChamberManager.hh	/^TString Sdc1Comments[10] = {"### SDC1-V1","### SDC1-V2", "### SDC1-X1", "### SDC1-X2","### SDC1-U1","### SDC1-U2","### SDC2-X1","###SDC2-X2","### SDC2-Y1","###SDC2-Y2"};$/;"	v
+Sdc1DL	ChamberManager.hh	/^static const double Sdc1DL = 3;$/;"	v
+Sdc1Layer	ChamberManager.hh	/^void ChamberManager::Sdc1Layer(int layer){$/;"	f	class:ChamberManager
+Sdc1NW	ChamberManager.hh	/^static const int Sdc1NW = 64;$/;"	v
+Sdc1dt2	ChamberManager.hh	/^double Sdc1dt2 = 80;$/;"	v
+Sdc2	ChamberManager.hh	/^enum dets{ BC3,BC4,Sdc1,Sdc2,Sdc3,Sdc4$/;"	e	enum:dets
+Sdc2DL	ChamberManager.hh	/^static const double Sdc2DL = 5;$/;"	v
+Sdc2XNW	ChamberManager.hh	/^static const int Sdc2XNW = 70;$/;"	v
+Sdc2YNW	ChamberManager.hh	/^static const int Sdc2YNW = 40;$/;"	v
+Sdc2dt2	ChamberManager.hh	/^double Sdc2dt2 = 120;$/;"	v
+Sdc3	ChamberManager.hh	/^enum dets{ BC3,BC4,Sdc1,Sdc2,Sdc3,Sdc4$/;"	e	enum:dets
+Sdc3DL	ChamberManager.hh	/^static const double Sdc3DL = 4.5;$/;"	v
+Sdc3NW	ChamberManager.hh	/^static const int Sdc3NW = 128;$/;"	v
+Sdc3dt2	ChamberManager.hh	/^double Sdc3dt2 = 110;$/;"	v
+Sdc4	ChamberManager.hh	/^enum dets{ BC3,BC4,Sdc1,Sdc2,Sdc3,Sdc4$/;"	e	enum:dets
+Sdc4DL	ChamberManager.hh	/^static const double Sdc4DL = 10;$/;"	v
+Sdc4XNW	ChamberManager.hh	/^static const int Sdc4XNW = 96;$/;"	v
+Sdc4YNW	ChamberManager.hh	/^static const int Sdc4YNW = 64;$/;"	v
+Sdc4dt2	ChamberManager.hh	/^double Sdc4dt2 = 260;$/;"	v
+Segment	Utils.hh	/^int Segment[10]={0,0,0,0,0,0,0,0,0,0};$/;"	v
+SlewFunc	Utils.hh	/^double SlewFunc(double x, double p1,double p2,double p3){$/;"	f
+SlewFunc	Utils.hh	/^double SlewFunc(double* x, double* p){$/;"	f
+SlewInv	Utils.hh	/^double SlewInv(double x, double p1,double p2,double p3){$/;"	f
+SlewInv	Utils.hh	/^double SlewInv(double* x, double* p){$/;"	f
+SquareSum	Math.hh	/^double SquareSum(double a, double b){$/;"	f
+Step	Math.hh	/^double Step(double a){$/;"	f
+StofManager	StofManager.hh	/^		StofManager(){$/;"	f	class:StofManager
+StofManager	StofManager.hh	/^class StofManager{$/;"	c
+T1	Math.hh	/^double T1(double a,double b, double c, double d){$/;"	f
+Time	Timing.hh	/^double Time(){$/;"	f
+Time	Utils.hh	/^TString Time(int det,int conf){$/;"	f
+TimeCut	Utils.hh	/^TCut TimeCut(int det,double t1,double t2){$/;"	f
+ToF	Utils.hh	/^TString ToF(int a, int b){$/;"	f
+ToFManager	ToFManager.hh	/^		ToFManager(){};$/;"	f	class:ToFManager
+ToFManager	ToFManager.hh	/^class ToFManager{$/;"	c
+ToFManager	ToFManagerLegacy.hh	/^		ToFManager(){};$/;"	f	class:ToFManager
+ToFManager	ToFManagerLegacy.hh	/^class ToFManager{$/;"	c
+ToFPitch	ToFManagerLegacy.hh	/^static const double ToFPitch = 75;$/;"	v
+ToFPos0	ToFManagerLegacy.hh	/^static const double ToFPos0 = -900;$/;"	v
+ToFWidth	ToFManagerLegacy.hh	/^static const double ToFWidth = 80;$/;"	v
+UorD	Utils.hh	/^TString UorD(int conf){$/;"	f
+WriteComment	ChamberManager.hh	/^void ChamberManager::WriteComment(TString comment){$/;"	f	class:ChamberManager
+WriteDriftParameter	ChamberManager.hh	/^void ChamberManager::WriteDriftParameter(int Id, int WireId, int Type, int NParam, double* p){$/;"	f	class:ChamberManager
+WriteMonitorFile	HodoscopeManager.hh	/^void HodoscopeManager::WriteMonitorFile(){$/;"	f	class:HodoscopeManager
+WriteParameter	EasirocManager.hh	/^void EasirocManager::WriteParameter(int Cid, int Plid, int Segid, int AorT, int UorD, double p0, double p1){$/;"	f	class:EasirocManager
+WriteParameter	ToFManager.hh	/^void ToFManager::WriteParameter(int Cid, int Plid, int Segid, int AorT, int UorD, double p0, double p1){$/;"	f	class:ToFManager
+WriteParameter	ToFManager.hh	/^void ToFManager::WriteParameter(int Cid, int Plid, int Segid, int Type, int UorD ,int nParam, double p0, double p1,double p2){$/;"	f	class:ToFManager
+WriteParameter	ToFManagerLegacy.hh	/^void ToFManager::WriteParameter(int Cid, int Plid, int Segid, int AorT, int UorD, double p0, double p1){$/;"	f	class:ToFManager
+WriteParameter	ToFManagerLegacy.hh	/^void ToFManager::WriteParameter(int Cid, int Plid, int Segid, int Type, int UorD ,int nParam, double p0, double p1,double p2){$/;"	f	class:ToFManager
+WriteT0Parameter	ChamberManager.hh	/^void ChamberManager::WriteT0Parameter(int Id, int WireId, double p0, double p1){$/;"	f	class:ChamberManager
+WriteTParameter	ChamberManager.hh	/^void ChamberManager::WriteTParameter(double p0){$/;"	f	class:ChamberManager
+XCut	ToFManagerLegacy.hh	/^TCut XCut(int seg){$/;"	f
+YCut	ToFManagerLegacy.hh	/^TCut YCut(int seg,double ycut=100){$/;"	f
+YTCut	ToFManagerLegacy.hh	/^TCut YTCut(int seg,double slope, double offset){$/;"	f
+YTPositionFit	ToFManagerLegacy.hh	/^void ToFManager::YTPositionFit(int seg, int UD){$/;"	f	class:ToFManager
+baccut	HodoscopeManager.hh	/^		bool baccut=false;$/;"	m	class:HodoscopeManager
+bftnseg	EasirocManager.hh	/^		static const int bftnseg=160;$/;"	v
+bh1nseg	HodoscopeManager.hh	/^		static const int bh1nseg=11; $/;"	m	class:HodoscopeManager
+bh1seg	HodoscopeManager.hh	/^int bh2seg=1,bh1seg=1,htofseg=20,tofseg=1;$/;"	v
+bh2nseg	HodoscopeManager.hh	/^		static const int bh2nseg=8; $/;"	m	class:HodoscopeManager
+bh2seg	HodoscopeManager.hh	/^int bh2seg=1,bh1seg=1,htofseg=20,tofseg=1;$/;"	v
+c2cut	StofManager.hh	/^		double c2cut = 200;$/;"	m	class:StofManager
+canv	Utils.hh	/^static int canv=0;$/;"	v
+cbtof	HodoscopeManager.hh	/^		int rn;double gn[16];double gne[16];double sg[16];double sge[16];double ch2[16];int ndfs[16];double pd[16];int hit[16];double cbtof;$/;"	m	class:HodoscopeManager
+ch2	HodoscopeManager.hh	/^		int rn;double gn[16];double gne[16];double sg[16];double sge[16];double ch2[16];int ndfs[16];double pd[16];int hit[16];double cbtof;$/;"	m	class:HodoscopeManager
+chain	StofManager.hh	/^		TChain* chain;$/;"	m	class:StofManager
+chain	ToFManager.hh	/^		TChain* chain = new TChain("kurama");$/;"	m	class:ToFManager
+chain	ToFManagerLegacy.hh	/^		TChain* chain = new TChain("kurama");$/;"	m	class:ToFManager
+chebyshev	Math.hh	/^double chebyshev(double x, int n){$/;"	f
+chisqr	StofManager.hh	/^double chisqr;$/;"	v
+chisqrKurama	StofManager.hh	/^double pKurama[ntkurama];double qKurama[ntkurama];double m2[ntkurama];double tofsegKurama[ntkurama];double path[ntkurama];double stofs[ntkurama];double chisqrKurama[ntkurama];$/;"	v
+corrections	HodoscopeManager.hh	/^		static const int corrections=4;$/;"	m	class:HodoscopeManager
+cuth	ParLimits.hh	/^double cutl=-3,cuth=3;$/;"	v
+cutl	ParLimits.hh	/^double cutl=-3,cuth=3;$/;"	v
+dets	ChamberManager.hh	/^enum dets{ BC3,BC4,Sdc1,Sdc2,Sdc3,Sdc4$/;"	g
+dgaus	Timing.hh	/^double dgaus(double* x, double* p){$/;"	f
+dir	StofManager.hh	/^		TDirectory* dir[24];$/;"	m	class:StofManager
+dpm	ParLimits.hh	/^double dpm[8]={75,65,70,75,110,90,175,85};$/;"	v
+ecut	ParLimits.hh	/^double ecut=0;$/;"	v
+f	HodoscopeManager.hh	/^	fstream f;$/;"	m	class:HodoscopeManager
+f	StofManager.hh	/^		fstream f;$/;"	m	class:StofManager
+file	ChamberManager.hh	/^		TFile* file;$/;"	m	class:ChamberManager
+file	ToFManager.hh	/^		TFile* file;$/;"	m	class:ToFManager
+file	ToFManagerLegacy.hh	/^		TFile* file;$/;"	m	class:ToFManager
+fo	HodoscopeManager.hh	/^	fstream fo;$/;"	m	class:HodoscopeManager
+fs	HodoscopeManager.hh	/^	fstream fs;$/;"	m	class:HodoscopeManager
+gn	HodoscopeManager.hh	/^		int rn;double gn[16];double gne[16];double sg[16];double sge[16];double ch2[16];int ndfs[16];double pd[16];int hit[16];double cbtof;$/;"	m	class:HodoscopeManager
+gne	HodoscopeManager.hh	/^		int rn;double gn[16];double gne[16];double sg[16];double sge[16];double ch2[16];int ndfs[16];double pd[16];int hit[16];double cbtof;$/;"	m	class:HodoscopeManager
+h	StofManager.hh	/^		TH2D* h[1000];$/;"	m	class:StofManager
+h1	StofManager.hh	/^		TH1D* h1[100];$/;"	m	class:StofManager
+h1cnt	StofManager.hh	/^		int h1cnt=0;$/;"	m	class:StofManager
+h2	StofManager.hh	/^		TH2D* h2[1000];$/;"	m	class:StofManager
+h2cnt	StofManager.hh	/^		int h2cnt=0;$/;"	m	class:StofManager
+hcnt	StofManager.hh	/^		int hcnt=0;$/;"	m	class:StofManager
+hecut	ParLimits.hh	/^double hecut=0.2;$/;"	v
+hist_file	ToFManager.hh	/^		TFile* hist_file;$/;"	m	class:ToFManager
+hist_file	ToFManagerLegacy.hh	/^		TFile* hist_file;$/;"	m	class:ToFManager
+hit	HodoscopeManager.hh	/^		int rn;double gn[16];double gne[16];double sg[16];double sge[16];double ch2[16];int ndfs[16];double pd[16];int hit[16];double cbtof;$/;"	m	class:HodoscopeManager
+htofnseg	HodoscopeManager.hh	/^		static const int htofnseg=34;$/;"	m	class:HodoscopeManager
+htofseg	HodoscopeManager.hh	/^int bh2seg=1,bh1seg=1,htofseg=20,tofseg=1;$/;"	v
+line	HodoscopeManager.hh	/^		int line = 0;$/;"	m	class:HodoscopeManager
+lsb	HodoscopeManager.hh	/^		double lsb;$/;"	m	class:HodoscopeManager
+m2	StofManager.hh	/^double pKurama[ntkurama];double qKurama[ntkurama];double m2[ntkurama];double tofsegKurama[ntkurama];double path[ntkurama];double stofs[ntkurama];double chisqrKurama[ntkurama];$/;"	v
+m2_to_stof	StofManager.hh	/^double m2_to_stof(double m2, double p, double path){$/;"	f
+m2_to_tof	stof.hh	/^double m2_to_tof(double m2, double p, double path){$/;"	f
+m2file	StofManager.hh	/^		TFile* m2file;$/;"	m	class:StofManager
+m2res	StofManager.hh	/^double m2res = 8.82222e-02;$/;"	v
+m_k	StofManager.hh	/^double m_k = CKaonMass()\/1000;\/\/MeV to GeV$/;"	v
+m_k2	StofManager.hh	/^double m_k2= m_k*m_k;$/;"	v
+m_p	StofManager.hh	/^double m_p = ProtonMass()\/1000;\/\/MeV to GeV$/;"	v
+m_p2	StofManager.hh	/^double m_p2= m_p*m_p;$/;"	v
+m_pi	StofManager.hh	/^double m_pi = CPionMass()\/1000;\/\/MeV to GeV$/;"	v
+m_pi	stof.hh	/^double m_pi = PionMass()\/1000;\/\/MeV to GeV$/;"	v
+m_pi2	StofManager.hh	/^double m_pi2= m_pi*m_pi;$/;"	v
+m_pi2	stof.hh	/^double m_pi2= m_pi*m_pi;$/;"	v
+monfile	HodoscopeManager.hh	/^		TFile* monfile;$/;"	m	class:HodoscopeManager
+mtdepth	HodoscopeManager.hh	/^		static const int mtdepth= 16;$/;"	m	class:HodoscopeManager
+ndfs	HodoscopeManager.hh	/^		int rn;double gn[16];double gne[16];double sg[16];double sge[16];double ch2[16];int ndfs[16];double pd[16];int hit[16];double cbtof;$/;"	m	class:HodoscopeManager
+niter	Utils.hh	/^static int niter=0;$/;"	v
+ntKurama	StofManager.hh	/^int ntKurama;$/;"	v
+ntkurama	StofManager.hh	/^const int ntkurama=20;$/;"	v
+outfilename	StofManager.hh	/^		TString outfilename;$/;"	m	class:StofManager
+p0max	ParLimits.hh	/^double p0max=10;\/\/slewing slope, default: 5$/;"	v
+p0max2	ParLimits.hh	/^double p0max2=3;\/\/slewing slope, default: 5$/;"	v
+p0min	ParLimits.hh	/^double p0min=0.3;\/\/slewing slope, default: 0.5$/;"	v
+p0min2	ParLimits.hh	/^double p0min2=-0.5;\/\/slewing slope, default: 0.5$/;"	v
+p1lim	ParLimits.hh	/^double p1lim=3;\/\/slewing pole,default: 0.5$/;"	v
+p1min	ParLimits.hh	/^double p1min=p1lim;\/\/slewing pole,default: 0.5$/;"	v
+pKurama	StofManager.hh	/^double pKurama[ntkurama];double qKurama[ntkurama];double m2[ntkurama];double tofsegKurama[ntkurama];double path[ntkurama];double stofs[ntkurama];double chisqrKurama[ntkurama];$/;"	v
+path	StofManager.hh	/^double pKurama[ntkurama];double qKurama[ntkurama];double m2[ntkurama];double tofsegKurama[ntkurama];double path[ntkurama];double stofs[ntkurama];double chisqrKurama[ntkurama];$/;"	v
+pd	HodoscopeManager.hh	/^		int rn;double gn[16];double gne[16];double sg[16];double sge[16];double ch2[16];int ndfs[16];double pd[16];int hit[16];double cbtof;$/;"	m	class:HodoscopeManager
+pf	ChamberManager.hh	/^		fstream pf;$/;"	m	class:ChamberManager
+pf	EasirocManager.hh	/^		fstream pf;\/\/ParameterFile$/;"	m	class:EasirocManager
+pf	ToFManager.hh	/^		fstream pf;$/;"	m	class:ToFManager
+pf	ToFManagerLegacy.hh	/^		fstream pf;$/;"	m	class:ToFManager
+qKurama	StofManager.hh	/^double pKurama[ntkurama];double qKurama[ntkurama];double m2[ntkurama];double tofsegKurama[ntkurama];double path[ntkurama];double stofs[ntkurama];double chisqrKurama[ntkurama];$/;"	v
+range	HodoscopeManager.hh	/^		double range;$/;"	m	class:HodoscopeManager
+rn	HodoscopeManager.hh	/^		int rn;double gn[16];double gne[16];double sg[16];double sge[16];double ch2[16];int ndfs[16];double pd[16];int hit[16];double cbtof;$/;"	m	class:HodoscopeManager
+runtr	HodoscopeManager.hh	/^		TTree* runtr;$/;"	m	class:HodoscopeManager
+schnseg	EasirocManager.hh	/^		static const int schnseg=64;$/;"	v
+segn	StofManager.hh	/^int segn;$/;"	v
+sg	HodoscopeManager.hh	/^		int rn;double gn[16];double gne[16];double sg[16];double sge[16];double ch2[16];int ndfs[16];double pd[16];int hit[16];double cbtof;$/;"	m	class:HodoscopeManager
+sge	HodoscopeManager.hh	/^		int rn;double gn[16];double gne[16];double sg[16];double sge[16];double ch2[16];int ndfs[16];double pd[16];int hit[16];double cbtof;$/;"	m	class:HodoscopeManager
+slewfile	HodoscopeManager.hh	/^		TFile* slewfile;$/;"	m	class:HodoscopeManager
+square	Math.hh	/^double square(double a){ $/;"	f
+stof_before	stof.hh	/^double stof_before[24]={$/;"	v
+stof_dt	StofManager.hh	/^double stof_dt;$/;"	v
+stof_to_m2	StofManager.hh	/^double stof_to_m2(double stof, double p, double path){$/;"	f
+stofs	StofManager.hh	/^double pKurama[ntkurama];double qKurama[ntkurama];double m2[ntkurama];double tofsegKurama[ntkurama];double path[ntkurama];double stofs[ntkurama];double chisqrKurama[ntkurama];$/;"	v
+tof_to_m2	stof.hh	/^double tof_to_m2(double stof, double p, double path){$/;"	f
+tofnseg	ToFManager.hh	/^static const int tofnseg = 24;$/;"	v
+tofnseg	ToFManagerLegacy.hh	/^static const int tofnseg = 24;$/;"	v
+tofseg	HodoscopeManager.hh	/^int bh2seg=1,bh1seg=1,htofseg=20,tofseg=1;$/;"	v
+tofsegKurama	StofManager.hh	/^double pKurama[ntkurama];double qKurama[ntkurama];double m2[ntkurama];double tofsegKurama[ntkurama];double path[ntkurama];double stofs[ntkurama];double chisqrKurama[ntkurama];$/;"	v
+tree	StofManager.hh	/^		TTree* tree;$/;"	m	class:StofManager
+ucut	ToFManagerLegacy.hh	/^		double ucut[tofnseg] = {1,		1,	1,	1,	1,	1,  \/\/1 	2		3 	4 	5 	6 $/;"	m	class:ToFManager
+upm	ParLimits.hh	/^double upm[8]={100,100,115,75,120,105,100,95};$/;"	v

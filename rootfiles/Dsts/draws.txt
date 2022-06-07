@@ -1,0 +1,2 @@
+kk->Draw("MissMass>>(200,0,2)","qKurama<0&&sqrt(m2)>0.3&&sqrt(m2)<0.7&&abs(vtx)<25&&abs(vty)<20&&abs(vtz+67)<65&&nKK==1")
+kk->Draw("m2:pKurama*qKurama>>(200,0,2,200,-1,2)","qKurama<0&&abs(vtx)<25&&abs(vty)<20&&abs(vtz+67)<65&&nKK==1")

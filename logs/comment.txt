@@ -1,0 +1,1131 @@
+2021 05/10 22:09:20 [RUN 05001] START : daq test
+2021 05/10 22:09:52 [RUN 05001] G_ON  : daq test
+2021 05/10 22:10:18 [RUN 05001] G_OFF : daq test
+2021 05/10 22:10:20 [RUN 05001] G_OFF*: daq test
+2021 05/10 22:10:21 [RUN 05001] STOP  : daq test
+2021 05/10 22:17:35 [RUN 05001] START : daq test
+2021 05/10 22:17:48 [RUN 05001] G_OFF*: daq test
+2021 05/10 22:17:49 [RUN 05001] STOP  : daq test
+2021 05/10 22:19:15 [RUN 05001] START : daq test
+2021 05/10 22:19:25 [RUN 05001] G_ON  : daq test
+2021 05/10 22:19:36 [RUN 05001] G_OFF : daq test
+2021 05/10 22:19:38 [RUN 05001] G_OFF*: daq test
+2021 05/10 22:19:39 [RUN 05001] STOP  : daq test
+2021 05/10 22:23:20 [RUN 05001] START : daq test
+2021 05/10 22:23:28 [RUN 05001] G_ON  : daq test
+2021 05/10 22:23:38 [RUN 05001] G_OFF : daq test
+2021 05/10 22:23:39 [RUN 05001] G_OFF*: daq test
+2021 05/10 22:23:40 [RUN 05001] STOP  : daq test
+2021 05/10 22:27:43 [RUN 05002] START : daq test
+2021 05/10 22:27:53 [RUN 05002] G_ON  : daq test
+2021 05/10 22:29:18 [RUN 05002] G_OFF*: daq test
+2021 05/10 22:29:19 [RUN 05002] STOP  : daq test
+2021 05/10 22:31:20 [RUN 05003] START : daq test
+2021 05/10 22:31:44 [RUN 05003] G_ON  : daq test
+2021 05/10 22:31:55 [RUN 05003] G_OFF : daq test
+2021 05/10 22:32:00 [RUN 05003] G_OFF*: daq test
+2021 05/10 22:32:01 [RUN 05003] STOP  : daq test
+2021 05/10 22:37:37 [RUN 05004] START : BH2 trig w/o beam
+2021 05/10 22:37:46 [RUN 05004] G_ON  : BH2 trig w/o beam
+2021 05/10 23:35:33 [RUN 05004] G_OFF*: BH2 trig w/o beam
+2021 05/10 23:35:34 [RUN 05004] STOP  : BH2 trig w/o beam
+2021 05/10 23:35:55 [RUN 05005] START : TOFxWC trig w/o beam
+2021 05/10 23:36:05 [RUN 05005] G_ON  : TOFxWC trig w/o beam
+2021 05/11 00:29:23 [RUN 05005] G_OFF*: TOFxWC trig w/o beam
+2021 05/11 00:29:24 [RUN 05005] STOP  : TOFxWC trig w/o beam
+2021 05/11 00:30:12 [RUN 05006] START : SCH trig w/o beam
+2021 05/11 00:30:26 [RUN 05006] G_OFF*: SCH trig w/o beam
+2021 05/11 00:30:27 [RUN 05006] STOP  : SCH trig w/o beam
+2021 05/11 00:30:55 [RUN 05007] START : BH1 trig w/o beam
+2021 05/11 00:31:04 [RUN 05007] G_ON  : BH1 trig w/o beam
+2021 05/11 01:30:12 [RUN 05007] G_OFF*: BH1 trig w/o beam
+2021 05/11 01:30:13 [RUN 05007] STOP  : BH1 trig w/o beam
+2021 05/11 01:30:58 [RUN 05008] START : BH1 trig w/o beam
+2021 05/11 01:31:07 [RUN 05008] G_ON  : BH1 trig w/o beam
+2021 05/11 01:58:17 [RUN 05008] G_OFF*: BH1 trig w/o beam
+2021 05/11 01:58:18 [RUN 05008] STOP  : BH1 trig w/o beam
+2021 05/11 02:06:04 [RUN 05009] START : BH1 trig
+2021 05/11 02:06:25 [RUN 05009] G_ON  : BH1 trig
+2021 05/11 02:19:35 [RUN 05009] G_OFF*: BH1 trig
+2021 05/11 02:19:36 [RUN 05009] STOP  : BH1 trig
+2021 05/11 02:19:45 [RUN 05010] START : Beam trig
+2021 05/11 02:19:55 [RUN 05010] G_ON  : Beam trig
+2021 05/11 02:42:51 [RUN 05010] G_OFF*: Beam trig
+2021 05/11 02:42:52 [RUN 05010] STOP  : Beam trig
+2021 05/11 02:42:59 [RUN 05011] START : Beam trig
+2021 05/11 02:43:08 [RUN 05011] G_ON  : Beam trig
+2021 05/11 03:06:38 [RUN 05011] G_OFF : Beam trig
+2021 05/11 03:06:56 [RUN 05011] G_ON  : Beam trig
+2021 05/11 03:07:03 [RUN 05011] G_OFF*: Beam trig
+2021 05/11 03:07:04 [RUN 05011] STOP  : Beam trig
+2021 05/11 03:07:12 [RUN 05012] START : Beam trig
+2021 05/11 03:07:20 [RUN 05012] G_ON  : Beam trig
+2021 05/11 03:10:16 [RUN 05012] G_OFF : Beam trig
+2021 05/11 03:10:28 [RUN 05012] G_ON  : Beam trig
+2021 05/11 04:14:41 [RUN 05012] G_OFF*: Beam trig
+2021 05/11 04:14:42 [RUN 05012] STOP  : Beam trig
+2021 05/11 04:14:50 [RUN 05013] START : Beam trig
+2021 05/11 04:15:00 [RUN 05013] G_ON  : BH2 trig
+2021 05/11 04:15:03 [RUN 05013]       : BH2 trig
+2021 05/11 04:28:32 [RUN 05013] G_OFF*: BH2 trig
+2021 05/11 04:28:33 [RUN 05013] STOP  : BH2 trig
+2021 05/11 04:28:48 [RUN 05014] START : Beam trig after final timing fixed
+2021 05/11 04:28:57 [RUN 05014] G_ON  : Beam trig after final timing fixed
+2021 05/11 05:27:42 [RUN 05014] G_OFF*: Beam trig after final timing fixed
+2021 05/11 05:27:43 [RUN 05014] STOP  : Beam trig after final timing fixed
+2021 05/11 05:28:17 [RUN 05015] START : BH1xBH2xBACxTOF(5,6,7) for chamber check
+2021 05/11 05:28:26 [RUN 05015] G_ON  : BH1xBH2xBACxTOF(5,6,7) for chamber check
+2021 05/11 05:39:28 [RUN 05015] G_OFF*: BH1xBH2xBACxTOF(5,6,7) for chamber check
+2021 05/11 05:39:29 [RUN 05015] STOP  : BH1xBH2xBACxTOF(5,6,7) for chamber check
+2021 05/11 05:39:46 [RUN 05016] START : Beam trig.
+2021 05/11 05:39:54 [RUN 05016] G_ON  : Beam trig.
+2021 05/11 05:46:53 [RUN 05016] G_OFF*: Beam trig.
+2021 05/11 05:46:54 [RUN 05016] STOP  : Beam trig.
+2021 05/11 05:49:20 [RUN 05017] START : BAC study #1 Vth=160mV
+2021 05/11 05:49:28 [RUN 05017] G_ON  : BAC study #1 Vth=160mV
+2021 05/11 05:53:21 [RUN 05017] G_OFF*: BAC study #1 Vth=160mV
+2021 05/11 05:53:22 [RUN 05017] STOP  : BAC study #1 Vth=160mV
+2021 05/11 05:53:40 [RUN 05018] START : BAC study #2 Vth=180mV
+2021 05/11 05:53:50 [RUN 05018] G_ON  : BAC study #2 Vth=180mV
+2021 05/11 05:57:37 [RUN 05018] G_OFF*: BAC study #2 Vth=180mV
+2021 05/11 05:57:38 [RUN 05018] STOP  : BAC study #2 Vth=180mV
+2021 05/11 05:57:59 [RUN 05019] START : BAC study #3 Vth=200mV
+2021 05/11 05:58:08 [RUN 05019] G_ON  : BAC study #3 Vth=200mV
+2021 05/11 06:03:09 [RUN 05019] G_OFF*: BAC study #3 Vth=200mV
+2021 05/11 06:03:10 [RUN 05019] STOP  : BAC study #3 Vth=200mV
+2021 05/11 06:03:27 [RUN 05020] START : BAC study #4 Vth=140mV
+2021 05/11 06:03:35 [RUN 05020] G_ON  : BAC study #4 Vth=140mV
+2021 05/11 06:07:24 [RUN 05020] G_OFF*: BAC study #4 Vth=140mV
+2021 05/11 06:07:25 [RUN 05020] STOP  : BAC study #4 Vth=140mV
+2021 05/11 06:07:53 [RUN 05021] START : BAC study #5 Vth=120mV
+2021 05/11 06:08:01 [RUN 05021] G_ON  : BAC study #5 Vth=120mV
+2021 05/11 06:11:47 [RUN 05021] G_OFF : BAC study #5 Vth=120mV
+2021 05/11 06:11:49 [RUN 05021] G_ON  : BAC study #5 Vth=120mV
+2021 05/11 06:11:50 [RUN 05021] G_OFF : BAC study #5 Vth=120mV
+2021 05/11 06:11:51 [RUN 05021] G_OFF*: BAC study #5 Vth=120mV
+2021 05/11 06:11:52 [RUN 05021] STOP  : BAC study #5 Vth=120mV
+2021 05/11 06:12:06 [RUN 05022] START : BAC study #6 Vth=100mV
+2021 05/11 06:12:13 [RUN 05022] G_ON  : BAC study #6 Vth=100mV
+2021 05/11 06:16:04 [RUN 05022] G_OFF*: BAC study #6 Vth=100mV
+2021 05/11 06:16:05 [RUN 05022] STOP  : BAC study #6 Vth=100mV
+2021 05/11 06:17:35 [RUN 05023] START : BeamxMtx3D
+2021 05/11 06:17:43 [RUN 05023] G_ON  : BeamxMtx3D
+2021 05/11 06:21:21 [RUN 05023] G_OFF*: BeamxMtx3D
+2021 05/11 06:21:22 [RUN 05023] STOP  : BeamxMtx3D
+2021 05/11 06:22:03 [RUN 05024] START : BeamxMtx3D wide coinsidence
+2021 05/11 06:22:12 [RUN 05024] G_ON  : BeamxMtx3D wide coinsidence
+2021 05/11 06:24:26 [RUN 05024] G_OFF*: BeamxMtx3D wide coinsidence
+2021 05/11 06:24:27 [RUN 05024] STOP  : BeamxMtx3D wide coinsidence
+2021 05/11 06:27:01 [RUN 05025] START : (K,K) trig.
+2021 05/11 06:27:10 [RUN 05025] G_ON  : (K,K) trig.
+2021 05/11 06:34:33 [RUN 05025] G_OFF*: (K,K) trig.
+2021 05/11 06:34:34 [RUN 05025] STOP  : (K,K) trig.
+2021 05/11 06:35:15 [RUN 05026] START : (K,K)x3Dveto trig.
+2021 05/11 06:35:24 [RUN 05026] G_ON  : (K,K)x3Dveto trig.
+2021 05/11 06:38:43 [RUN 05026] G_OFF*: (K,K)x3Dveto trig.
+2021 05/11 06:38:44 [RUN 05026] STOP  : (K,K)x3Dveto trig.
+2021 05/11 06:39:40 [RUN 05027] START : (K,K) trig. with WC-1234 off
+2021 05/11 06:39:48 [RUN 05027] G_ON  : (K,K) trig. with WC-1234 off
+2021 05/11 06:52:11 [RUN 05027] G_OFF*: (K,K) trig. with WC-1234 off
+2021 05/11 06:52:12 [RUN 05027] STOP  : (K,K) trig. with WC-1234 off
+2021 05/11 06:54:05 [RUN 05028] START : (K,K)xMtx2D trig.
+2021 05/11 06:54:13 [RUN 05028] G_ON  : (K,K)xMtx2D trig.
+2021 05/11 06:58:52 [RUN 05028] G_OFF*: (K,K)xMtx2D trig.
+2021 05/11 06:58:53 [RUN 05028] STOP  : (K,K)xMtx2D trig.
+2021 05/11 06:59:07 [RUN 05029] START : (K,K)xMtx3Dveto trig.
+2021 05/11 06:59:17 [RUN 05029] G_ON  : (K,K)xMtx3Dveto trig.
+2021 05/11 07:03:07 [RUN 05029] G_OFF*: (K,K)xMtx3Dveto trig.
+2021 05/11 07:03:08 [RUN 05029] STOP  : (K,K)xMtx3Dveto trig.
+2021 05/11 07:05:36 [RUN 05030] START : (K,K)xMtx3Dveto trig.
+2021 05/11 07:05:44 [RUN 05030] G_ON  : (K,K)xMtx3Dveto trig.
+2021 05/11 07:42:11 [RUN 05030] G_OFF*: (K,K)xMtx3Dveto trig.
+2021 05/11 07:42:12 [RUN 05030] STOP  : (K,K)xMtx3Dveto trig.
+2021 05/11 07:42:29 [RUN 05031] START : Beam check after trig timing re-adjustment
+2021 05/11 07:42:37 [RUN 05031] G_ON  : Beam check after trig timing re-adjustment
+2021 05/11 07:56:02 [RUN 05031] G_OFF*: Beam check after trig timing re-adjustment
+2021 05/11 07:56:03 [RUN 05031] STOP  : Beam check after trig timing re-adjustment
+2021 05/11 07:56:12 [RUN 05032] START : Beam check after gate timing re-adjustment
+2021 05/11 07:56:22 [RUN 05032] G_ON  : Beam check after gate timing re-adjustment
+2021 05/11 08:12:23 [RUN 05032] G_OFF*: Beam check after gate timing re-adjustment
+2021 05/11 08:12:24 [RUN 05032] STOP  : Beam check after gate timing re-adjustment
+2021 05/11 08:12:31 [RUN 05033] START : BH2 trig.
+2021 05/11 08:12:37 [RUN 05033]       : Beam trig.
+2021 05/11 08:12:39 [RUN 05033] G_ON  : Beam trig.
+2021 05/11 08:16:25 [RUN 05033] G_OFF*: Beam trig.
+2021 05/11 08:16:26 [RUN 05033] STOP  : Beam trig.
+2021 05/11 08:18:06 [RUN 05034] START : BH2 study Beam:160k
+2021 05/11 08:18:15 [RUN 05034] G_ON  : BH2 study Beam:160k
+2021 05/11 08:21:39 [RUN 05034]       : BH2 study Beam:160k 56.9V
+2021 05/11 08:21:43 [RUN 05034] G_OFF*: BH2 study Beam:160k 56.9V
+2021 05/11 08:21:44 [RUN 05034] STOP  : BH2 study Beam:160k 56.9V
+2021 05/11 08:22:31 [RUN 05035] START : BH2 study Beam:160k 55.9V
+2021 05/11 08:22:38 [RUN 05035] G_ON  : BH2 study Beam:160k 55.9V
+2021 05/11 08:24:56 [RUN 05035] G_OFF*: BH2 study Beam:160k 55.9V
+2021 05/11 08:24:57 [RUN 05035] STOP  : BH2 study Beam:160k 55.9V
+2021 05/11 08:27:03 [RUN 05036] START : BH2 study Beam:920k 55.9V
+2021 05/11 08:27:10 [RUN 05036] G_ON  : BH2 study Beam:920k 55.9V
+2021 05/11 08:30:27 [RUN 05036] G_OFF*: BH2 study Beam:920k 55.9V
+2021 05/11 08:30:28 [RUN 05036] STOP  : BH2 study Beam:920k 55.9V
+2021 05/11 08:30:42 [RUN 05037] START : BH2 study Beam:920k 54.9V
+2021 05/11 08:30:51 [RUN 05037] G_ON  : BH2 study Beam:920k 54.9V
+2021 05/11 08:35:14 [RUN 05037] G_OFF*: BH2 study Beam:920k 54.9V
+2021 05/11 08:35:16 [RUN 05037] STOP  : BH2 study Beam:920k 54.9V
+2021 05/11 08:35:40 [RUN 05038] START : BH2 study Beam:920k 53.9V
+2021 05/11 08:35:46 [RUN 05038] G_ON  : BH2 study Beam:920k 53.9V
+2021 05/11 08:38:47 [RUN 05038] G_OFF*: BH2 study Beam:920k 53.9V
+2021 05/11 08:38:48 [RUN 05038] STOP  : BH2 study Beam:920k 53.9V
+2021 05/11 08:39:27 [RUN 05039] START : trigger rate study (K,K)
+2021 05/11 08:39:35 [RUN 05039] G_ON  : trigger rate study (K,K)
+2021 05/11 08:40:50 [RUN 05039] G_OFF*: trigger rate study (K,K)
+2021 05/11 08:40:51 [RUN 05039] STOP  : trigger rate study (K,K)
+2021 05/11 08:41:04 [RUN 05040] START : trigger rate study (K,K)x3Dveto
+2021 05/11 08:41:11 [RUN 05040] G_ON  : trigger rate study (K,K)x3Dveto
+2021 05/11 08:42:40 [RUN 05040] G_OFF*: trigger rate study (K,K)x3Dveto
+2021 05/11 08:42:41 [RUN 05040] STOP  : trigger rate study (K,K)x3Dveto
+2021 05/11 08:42:49 [RUN 05041] START : trigger rate study (K,K)x2Dx3Dveto
+2021 05/11 08:42:58 [RUN 05041] G_ON  : trigger rate study (K,K)x2Dx3Dveto
+2021 05/11 08:44:38 [RUN 05041]       : trigger rate study (K,K)x2D(wide)x3Dveto
+2021 05/11 08:44:45 [RUN 05041] G_OFF*: trigger rate study (K,K)x2D(wide)x3Dveto
+2021 05/11 08:44:46 [RUN 05041] STOP  : trigger rate study (K,K)x2D(wide)x3Dveto
+2021 05/11 08:45:24 [RUN 05042] START : trigger rate study (K,K)x2D(normal)x3Dveto
+2021 05/11 08:45:33 [RUN 05042] G_ON  : trigger rate study (K,K)x2D(normal)x3Dveto
+2021 05/11 08:46:49 [RUN 05042] G_OFF*: trigger rate study (K,K)x2D(normal)x3Dveto
+2021 05/11 08:46:50 [RUN 05042] STOP  : trigger rate study (K,K)x2D(normal)x3Dveto
+2021 05/11 08:47:08 [RUN 05043] START : trigger rate study (K,K)x2D(normal)x3DvetoxHTOF-Mp2
+2021 05/11 08:47:15 [RUN 05043] G_ON  : trigger rate study (K,K)x2D(normal)x3DvetoxHTOF-Mp2
+2021 05/11 08:49:53 [RUN 05043] G_OFF*: trigger rate study (K,K)x2D(normal)x3DvetoxHTOF-Mp2
+2021 05/11 08:49:54 [RUN 05043] STOP  : trigger rate study (K,K)x2D(normal)x3DvetoxHTOF-Mp2
+2021 05/11 08:50:34 [RUN 05044] START : trigger rate study Kx3DvetoxHTOF-Mp4
+2021 05/11 08:50:43 [RUN 05044] G_ON  : trigger rate study Kx3DvetoxHTOF-Mp4
+2021 05/11 08:55:39 [RUN 05044] G_OFF*: trigger rate study Kx3DvetoxHTOF-Mp4
+2021 05/11 08:55:40 [RUN 05044] STOP  : trigger rate study Kx3DvetoxHTOF-Mp4
+2021 05/11 08:56:10 [RUN 05045] START : BeamxTOFx3Dveto
+2021 05/11 08:56:19 [RUN 05045] G_ON  : BeamxTOFx3Dveto
+2021 05/11 08:57:59 [RUN 05045] G_OFF*: BeamxTOFx3Dveto
+2021 05/11 08:58:00 [RUN 05045] STOP  : BeamxTOFx3Dveto
+2021 05/11 08:58:13 [RUN 05046] START : BeamxTOFx3Dveto
+2021 05/11 08:58:21 [RUN 05046] G_ON  : BeamxTOFx3Dveto
+2021 05/11 09:00:27 [RUN 05046] G_OFF*: BeamxTOFx3Dveto
+2021 05/11 09:00:28 [RUN 05046] STOP  : BeamxTOFx3Dveto
+2021 05/11 09:00:36 [RUN 05047] START : BeamxTOFx3Dveto
+2021 05/11 09:00:45 [RUN 05047] G_ON  : BeamxTOFx3Dveto
+2021 05/11 09:44:10 [RUN 05047] G_OFF : BeamxTOFx3Dveto
+2021 05/11 09:44:11 [RUN 05047] G_OFF*: BeamxTOFx3Dveto
+2021 05/11 09:44:12 [RUN 05047] STOP  : BeamxTOFx3Dveto
+2021 05/11 09:44:31 [RUN 05048] START : pedestal run
+2021 05/11 09:44:40 [RUN 05048] G_ON  : pedestal run
+2021 05/11 09:47:02 [RUN 05048] G_OFF*: pedestal run
+2021 05/11 09:47:03 [RUN 05048] STOP  : pedestal run
+2021 05/11 20:43:12 [RUN 05049] START : dummy
+2021 05/11 20:43:23 [RUN 05049] G_ON  : dummy
+2021 05/11 20:43:59 [RUN 05049] G_OFF : dummy
+2021 05/11 20:44:04 [RUN 05049] G_OFF*: dummy
+2021 05/11 20:44:05 [RUN 05049] STOP  : dummy
+2021 05/11 20:45:54 [RUN 05050] START : dummy
+2021 05/11 20:46:03 [RUN 05050] G_ON  : dummy
+2021 05/11 21:34:39 [RUN 05051] START : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:35:07 [RUN 05051] G_ON  : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:35:30 [RUN 05051] G_OFF : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:36:35 [RUN 05051] G_OFF*: TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:36:36 [RUN 05051] STOP  : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:37:13 [RUN 05052] START : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:37:23 [RUN 05052] G_ON  : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:37:43 [RUN 05052] G_OFF : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:39:04 [RUN 05052] G_OFF*: TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:39:05 [RUN 05052] STOP  : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:39:56 [RUN 05053] START : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:40:13 [RUN 05053] G_OFF*: TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:40:14 [RUN 05053] STOP  : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:44:08 [RUN 05054] START : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:44:20 [RUN 05054] G_OFF*: TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:44:22 [RUN 05054] STOP  : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:44:41 [RUN 05055] START : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:44:51 [RUN 05055] G_ON  : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:45:10 [RUN 05055] G_OFF : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:45:26 [RUN 05055] G_OFF*: TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 21:45:27 [RUN 05055] STOP  : TPC calibration (Vgem=305, Vgate=30)
+2021 05/11 22:24:07 [RUN 05056] START : TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:24:18 [RUN 05056] G_ON  : TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:25:03 [RUN 05056] G_OFF : TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:25:19 [RUN 05056] G_OFF*: TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:25:20 [RUN 05056] STOP  : TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:26:51 [RUN 05057] START : TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:27:06 [RUN 05057] G_ON  : TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:27:35 [RUN 05057] G_OFF : TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:27:49 [RUN 05057] G_OFF*: TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:27:50 [RUN 05057] STOP  : TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:29:16 [RUN 05058] START : TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:29:30 [RUN 05058] G_ON  : TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:29:56 [RUN 05058] G_OFF : TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:30:18 [RUN 05058] G_OFF*: TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:30:19 [RUN 05058] STOP  : TPC cosmic-ray (Vgem=305, Vgate=30, th=Run5055sig1.4)
+2021 05/11 22:43:32 [RUN 05059] START : beam check
+2021 05/11 22:43:43 [RUN 05059] G_ON  : beam check
+2021 05/11 23:10:05 [RUN 05059] G_OFF*: beam check
+2021 05/11 23:10:06 [RUN 05059] STOP  : beam check
+2021 05/11 23:10:56 [RUN 05060] START : Beam through -1.8GeV/c pi : 7k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:11:48 [RUN 05060] G_ON  : Beam through -1.8GeV/c pi : 7k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:14:19 [RUN 05060] G_OFF : Beam through -1.8GeV/c pi : 7k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:14:46 [RUN 05060] G_OFF*: Beam through -1.8GeV/c pi : 7k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:14:47 [RUN 05060] STOP  : Beam through -1.8GeV/c pi : 7k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:15:27 [RUN 05061] START : Beam through -1.8GeV/c pi : 7k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:15:38 [RUN 05061] G_ON  : Beam through -1.8GeV/c pi : 7k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:18:14 [RUN 05061] G_OFF : Beam through -1.8GeV/c pi : 7k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:18:43 [RUN 05061] G_OFF*: Beam through -1.8GeV/c pi : 7k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:18:44 [RUN 05061] STOP  : Beam through -1.8GeV/c pi : 7k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:18:58 [RUN 05062] START : Beam through -1.8GeV/c pi : 7k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:19:10 [RUN 05062] G_ON  : Beam through -1.8GeV/c pi : 7k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:23:50 [RUN 05062] G_OFF : Beam through -1.8GeV/c pi : 7k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:24:21 [RUN 05062] G_OFF*: Beam through -1.8GeV/c pi : 7k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:24:22 [RUN 05062] STOP  : Beam through -1.8GeV/c pi : 7k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:25:35 [RUN 05063] START : Beam through -1.8GeV/c pi : 7k  (Vgem=306, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:25:46 [RUN 05063] G_ON  : Beam through -1.8GeV/c pi : 7k  (Vgem=306, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:29:19 [RUN 05063] G_OFF : Beam through -1.8GeV/c pi : 7k  (Vgem=306, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:29:44 [RUN 05063] G_OFF*: Beam through -1.8GeV/c pi : 7k  (Vgem=306, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:29:45 [RUN 05063] STOP  : Beam through -1.8GeV/c pi : 7k  (Vgem=306, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:30:33 [RUN 05064] START : Beam through -1.8GeV/c pi : 7k  (Vgem=308, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:30:46 [RUN 05064] G_ON  : Beam through -1.8GeV/c pi : 7k  (Vgem=308, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:34:26 [RUN 05064] G_OFF : Beam through -1.8GeV/c pi : 7k  (Vgem=308, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:34:42 [RUN 05064] G_OFF*: Beam through -1.8GeV/c pi : 7k  (Vgem=308, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:34:43 [RUN 05064] STOP  : Beam through -1.8GeV/c pi : 7k  (Vgem=308, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:35:12 [RUN 05065] START : Beam through -1.8GeV/c pi : 7k  (Vgem=310, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:35:23 [RUN 05065] G_ON  : Beam through -1.8GeV/c pi : 7k  (Vgem=310, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:39:52 [RUN 05065] G_OFF : Beam through -1.8GeV/c pi : 7k  (Vgem=310, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:40:10 [RUN 05065] G_OFF*: Beam through -1.8GeV/c pi : 7k  (Vgem=310, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:40:11 [RUN 05065] STOP  : Beam through -1.8GeV/c pi : 7k  (Vgem=310, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:41:23 [RUN 05066] START : Beam through -1.8GeV/c pi : 7k  (Vgem=312, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:41:36 [RUN 05066] G_ON  : Beam through -1.8GeV/c pi : 7k  (Vgem=312, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:45:20 [RUN 05066] G_OFF : Beam through -1.8GeV/c pi : 7k  (Vgem=312, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:45:45 [RUN 05066] G_OFF*: Beam through -1.8GeV/c pi : 7k  (Vgem=312, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:45:46 [RUN 05066] STOP  : Beam through -1.8GeV/c pi : 7k  (Vgem=312, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:46:18 [RUN 05067] START : Beam through -1.8GeV/c pi : 7k  (Vgem=314, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:46:31 [RUN 05067] G_ON  : Beam through -1.8GeV/c pi : 7k  (Vgem=314, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:50:41 [RUN 05067] G_OFF : Beam through -1.8GeV/c pi : 7k  (Vgem=314, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:51:07 [RUN 05067] G_OFF*: Beam through -1.8GeV/c pi : 7k  (Vgem=314, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:51:08 [RUN 05067] STOP  : Beam through -1.8GeV/c pi : 7k  (Vgem=314, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/11 23:51:29 [RUN 05068] START : Beam through -1.8GeV/c pi : 7k  (Vgem=314, Vgate=30, th=Run5055sig1.4) w/gate off
+2021 05/11 23:52:00 [RUN 05068] G_ON  : Beam through -1.8GeV/c pi : 7k  (Vgem=314, Vgate=30, th=Run5055sig1.4) w/gate off
+2021 05/11 23:56:56 [RUN 05068] G_OFF : Beam through -1.8GeV/c pi : 7k  (Vgem=314, Vgate=30, th=Run5055sig1.4) w/gate off
+2021 05/11 23:57:30 [RUN 05068] G_OFF*: Beam through -1.8GeV/c pi : 7k  (Vgem=314, Vgate=30, th=Run5055sig1.4) w/gate off
+2021 05/11 23:57:31 [RUN 05068] STOP  : Beam through -1.8GeV/c pi : 7k  (Vgem=314, Vgate=30, th=Run5055sig1.4) w/gate off
+2021 05/12 00:02:53 [RUN 05069] START : Beam through -1.8GeV/c pi : 100k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:03:04 [RUN 05069] G_ON  : Beam through -1.8GeV/c pi : 100k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:07:47 [RUN 05069] G_OFF : Beam through -1.8GeV/c pi : 100k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:08:04 [RUN 05069] G_OFF*: Beam through -1.8GeV/c pi : 100k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:08:05 [RUN 05069] STOP  : Beam through -1.8GeV/c pi : 100k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:08:20 [RUN 05070] START : Beam through -1.8GeV/c pi : 100k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:08:53 [RUN 05070] G_ON  : Beam through -1.8GeV/c pi : 100k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:13:09 [RUN 05070] G_OFF : Beam through -1.8GeV/c pi : 100k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:13:20 [RUN 05070] G_OFF*: Beam through -1.8GeV/c pi : 100k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:13:21 [RUN 05070] STOP  : Beam through -1.8GeV/c pi : 100k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:13:59 [RUN 05071] START : Beam through -1.8GeV/c pi : 100k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:14:10 [RUN 05071] G_ON  : Beam through -1.8GeV/c pi : 100k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:18:10 [RUN 05071] G_OFF : Beam through -1.8GeV/c pi : 100k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:18:26 [RUN 05071] G_OFF*: Beam through -1.8GeV/c pi : 100k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:18:27 [RUN 05071] STOP  : Beam through -1.8GeV/c pi : 100k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:19:05 [RUN 05072] START : Beam through -1.8GeV/c pi : 100k  (Vgem=306, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:19:19 [RUN 05072] G_ON  : Beam through -1.8GeV/c pi : 100k  (Vgem=306, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:23:18 [RUN 05072] G_OFF : Beam through -1.8GeV/c pi : 100k  (Vgem=306, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:23:34 [RUN 05072] G_OFF*: Beam through -1.8GeV/c pi : 100k  (Vgem=306, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:23:35 [RUN 05072] STOP  : Beam through -1.8GeV/c pi : 100k  (Vgem=306, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:24:22 [RUN 05073] START : Beam through -1.8GeV/c pi : 100k  (Vgem=308, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:24:33 [RUN 05073] G_ON  : Beam through -1.8GeV/c pi : 100k  (Vgem=308, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:28:30 [RUN 05073] G_OFF : Beam through -1.8GeV/c pi : 100k  (Vgem=308, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:28:46 [RUN 05073] G_OFF*: Beam through -1.8GeV/c pi : 100k  (Vgem=308, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:28:47 [RUN 05073] STOP  : Beam through -1.8GeV/c pi : 100k  (Vgem=308, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:29:08 [RUN 05074] START : Beam through -1.8GeV/c pi : 100k  (Vgem=310, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:29:21 [RUN 05074] G_ON  : Beam through -1.8GeV/c pi : 100k  (Vgem=310, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:33:29 [RUN 05074] G_OFF : Beam through -1.8GeV/c pi : 100k  (Vgem=310, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:33:42 [RUN 05074] G_OFF*: Beam through -1.8GeV/c pi : 100k  (Vgem=310, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:33:43 [RUN 05074] STOP  : Beam through -1.8GeV/c pi : 100k  (Vgem=310, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:37:45 [RUN 05075] START : Beam through -1.8GeV/c pi : 500k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:37:56 [RUN 05075] G_ON  : Beam through -1.8GeV/c pi : 500k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:38:39 [RUN 05075] G_OFF : Beam through -1.8GeV/c pi : 500k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:38:52 [RUN 05075] G_OFF*: Beam through -1.8GeV/c pi : 500k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:38:53 [RUN 05075] STOP  : Beam through -1.8GeV/c pi : 500k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:39:02 [RUN 05076] START : Beam through -1.8GeV/c pi : 500k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:39:14 [RUN 05076] G_ON  : Beam through -1.8GeV/c pi : 500k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:40:17 [RUN 05076] G_OFF : Beam through -1.8GeV/c pi : 500k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:41:05 [RUN 05076] G_ON  : Beam through -1.8GeV/c pi : 500k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:45:23 [RUN 05076] G_OFF : Beam through -1.8GeV/c pi : 500k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:45:38 [RUN 05076] G_OFF*: Beam through -1.8GeV/c pi : 500k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:45:39 [RUN 05076] STOP  : Beam through -1.8GeV/c pi : 500k  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:45:51 [RUN 05077] START : Beam through -1.8GeV/c pi : 500k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:46:03 [RUN 05077] G_ON  : Beam through -1.8GeV/c pi : 500k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:50:35 [RUN 05077] G_OFF : Beam through -1.8GeV/c pi : 500k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:51:28 [RUN 05077] G_OFF*: Beam through -1.8GeV/c pi : 500k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:51:29 [RUN 05077] STOP  : Beam through -1.8GeV/c pi : 500k  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:52:33 [RUN 05078] START : Beam through -1.8GeV/c pi : 500k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:52:44 [RUN 05078] G_ON  : Beam through -1.8GeV/c pi : 500k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:57:10 [RUN 05078] G_OFF : Beam through -1.8GeV/c pi : 500k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:57:22 [RUN 05078] G_OFF*: Beam through -1.8GeV/c pi : 500k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 00:57:23 [RUN 05078] STOP  : Beam through -1.8GeV/c pi : 500k  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:00:38 [RUN 05079] START : Beam through -1.8GeV/c pi : 1M  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:01:40 [RUN 05079] G_ON  : Beam through -1.8GeV/c pi : 1M  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:01:47 [RUN 05079] G_OFF : Beam through -1.8GeV/c pi : 1M  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:01:56 [RUN 05079] G_ON  : Beam through -1.8GeV/c pi : 1M  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:06:06 [RUN 05079] G_OFF : Beam through -1.8GeV/c pi : 1M  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:06:22 [RUN 05079] G_OFF*: Beam through -1.8GeV/c pi : 1M  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:06:23 [RUN 05079] STOP  : Beam through -1.8GeV/c pi : 1M  (Vgem=300, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:06:35 [RUN 05080] START : Beam through -1.8GeV/c pi : 1M  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:06:48 [RUN 05080] G_ON  : Beam through -1.8GeV/c pi : 1M  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:11:06 [RUN 05080] G_OFF : Beam through -1.8GeV/c pi : 1M  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:11:22 [RUN 05080] G_OFF*: Beam through -1.8GeV/c pi : 1M  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:11:23 [RUN 05080] STOP  : Beam through -1.8GeV/c pi : 1M  (Vgem=302, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:11:46 [RUN 05081] START : Beam through -1.8GeV/c pi : 1M  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:12:00 [RUN 05081] G_ON  : Beam through -1.8GeV/c pi : 1M  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:16:52 [RUN 05081] G_OFF : Beam through -1.8GeV/c pi : 1M  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:17:22 [RUN 05081] G_OFF*: Beam through -1.8GeV/c pi : 1M  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:17:23 [RUN 05081] STOP  : Beam through -1.8GeV/c pi : 1M  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate on
+2021 05/12 01:17:40 [RUN 05082] START : Beam through -1.8GeV/c pi : 1M  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate off
+2021 05/12 01:17:53 [RUN 05082] G_ON  : Beam through -1.8GeV/c pi : 1M  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate off
+2021 05/12 01:23:06 [RUN 05082] G_OFF : Beam through -1.8GeV/c pi : 1M  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate off
+2021 05/12 01:23:20 [RUN 05082] G_OFF*: Beam through -1.8GeV/c pi : 1M  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate off
+2021 05/12 01:23:21 [RUN 05082] STOP  : Beam through -1.8GeV/c pi : 1M  (Vgem=304, Vgate=30, th=Run5055sig1.4) w/gate off
+2021 05/12 01:33:39 [RUN 05083] START : trigger check
+2021 05/12 01:34:16 [RUN 05083] G_ON  : trigger check
+2021 05/12 01:48:57 [RUN 05083] G_OFF*: trigger check
+2021 05/12 01:48:58 [RUN 05083] STOP  : trigger check
+2021 05/12 01:49:30 [RUN 05084] START : trigger check
+2021 05/12 01:49:41 [RUN 05084] G_ON  : trigger check
+2021 05/12 01:57:30 [RUN 05084] G_OFF : trigger check
+2021 05/12 01:57:43 [RUN 05084] G_OFF*: trigger check
+2021 05/12 01:57:44 [RUN 05084] STOP  : trigger check
+2021 05/12 01:58:32 [RUN 05085] START : TPC defocus study #1 D4=4770 (Vgem=314, Vgate=30)
+2021 05/12 01:58:49 [RUN 05085] G_ON  : TPC defocus study #1 D4=4770 (Vgem=314, Vgate=30)
+2021 05/12 02:00:06 [RUN 05085] G_OFF*: TPC defocus study #1 D4=4770 (Vgem=314, Vgate=30)
+2021 05/12 02:00:07 [RUN 05085] STOP  : TPC defocus study #1 D4=4770 (Vgem=314, Vgate=30)
+2021 05/12 02:02:02 [RUN 05086] START : TPC defocus study #1 D4=4770 (Vgem=314, Vgate=30)
+2021 05/12 02:02:13 [RUN 05086] G_OFF*: TPC defocus study #1 D4=4770 (Vgem=314, Vgate=30)
+2021 05/12 02:02:14 [RUN 05086] STOP  : TPC defocus study #1 D4=4770 (Vgem=314, Vgate=30)
+2021 05/12 02:03:42 [RUN 05087] START : TPC defocus study #1 D4=4770 (Vgem=314, Vgate=30)
+2021 05/12 02:03:54 [RUN 05087] G_ON  : TPC defocus study #1 D4=4770 (Vgem=314, Vgate=30)
+2021 05/12 02:09:06 [RUN 05087] G_OFF : TPC defocus study #1 D4=4770 (Vgem=314, Vgate=30)
+2021 05/12 02:09:23 [RUN 05087] G_OFF*: TPC defocus study #1 D4=4770 (Vgem=314, Vgate=30)
+2021 05/12 02:09:24 [RUN 05087] STOP  : TPC defocus study #1 D4=4770 (Vgem=314, Vgate=30)
+2021 05/12 02:09:41 [RUN 05088] START : TPC defocus study #2 D4=4770 (Vgem=312, Vgate=30)
+2021 05/12 02:09:52 [RUN 05088] G_ON  : TPC defocus study #2 D4=4770 (Vgem=312, Vgate=30)
+2021 05/12 02:21:22 [RUN 05088] G_OFF : TPC defocus study #2 D4=4770 (Vgem=312, Vgate=30)
+2021 05/12 02:21:38 [RUN 05088] G_OFF*: TPC defocus study #2 D4=4770 (Vgem=312, Vgate=30)
+2021 05/12 02:21:39 [RUN 05088] STOP  : TPC defocus study #2 D4=4770 (Vgem=312, Vgate=30)
+2021 05/12 02:22:33 [RUN 05089] START : TPC defocus study #3 D4=4720 (Vgem=312, Vgate=30)
+2021 05/12 02:22:43 [RUN 05089] G_ON  : TPC defocus study #3 D4=4720 (Vgem=312, Vgate=30)
+2021 05/12 02:34:17 [RUN 05089] G_OFF : TPC defocus study #3 D4=4720 (Vgem=312, Vgate=30)
+2021 05/12 02:34:33 [RUN 05089] G_OFF*: TPC defocus study #3 D4=4720 (Vgem=312, Vgate=30)
+2021 05/12 02:34:34 [RUN 05089] STOP  : TPC defocus study #3 D4=4720 (Vgem=312, Vgate=30)
+2021 05/12 02:37:25 [RUN 05090] START : TPC defocus study #4 D4=4670 (Vgem=312, Vgate=30)
+2021 05/12 02:37:34 [RUN 05090] G_ON  : TPC defocus study #4 D4=4670 (Vgem=312, Vgate=30)
+2021 05/12 02:48:40 [RUN 05090] G_OFF : TPC defocus study #4 D4=4670 (Vgem=312, Vgate=30)
+2021 05/12 02:48:53 [RUN 05090] G_OFF*: TPC defocus study #4 D4=4670 (Vgem=312, Vgate=30)
+2021 05/12 02:48:54 [RUN 05090] STOP  : TPC defocus study #4 D4=4670 (Vgem=312, Vgate=30)
+2021 05/12 02:49:24 [RUN 05091] START : TPC defocus study #5 D4=4620 (Vgem=312, Vgate=30)
+2021 05/12 02:49:35 [RUN 05091] G_ON  : TPC defocus study #5 D4=4620 (Vgem=312, Vgate=30)
+2021 05/12 03:00:57 [RUN 05091] G_OFF : TPC defocus study #5 D4=4620 (Vgem=312, Vgate=30)
+2021 05/12 03:01:13 [RUN 05091] G_OFF*: TPC defocus study #5 D4=4620 (Vgem=312, Vgate=30)
+2021 05/12 03:01:14 [RUN 05091] STOP  : TPC defocus study #5 D4=4620 (Vgem=312, Vgate=30)
+2021 05/12 03:01:54 [RUN 05092] START : TPC defocus study #6 D4=4570 (Vgem=312, Vgate=30)
+2021 05/12 03:02:04 [RUN 05092] G_ON  : TPC defocus study #6 D4=4570 (Vgem=312, Vgate=30)
+2021 05/12 03:13:15 [RUN 05092] G_OFF : TPC defocus study #6 D4=4570 (Vgem=312, Vgate=30)
+2021 05/12 03:13:31 [RUN 05092] G_OFF*: TPC defocus study #6 D4=4570 (Vgem=312, Vgate=30)
+2021 05/12 03:13:32 [RUN 05092] STOP  : TPC defocus study #6 D4=4570 (Vgem=312, Vgate=30)
+2021 05/12 03:14:15 [RUN 05093] START : TPC defocus study #7 D4=4820 (Vgem=312, Vgate=30)
+2021 05/12 03:14:27 [RUN 05093] G_ON  : TPC defocus study #7 D4=4820 (Vgem=312, Vgate=30)
+2021 05/12 03:25:38 [RUN 05093] G_OFF : TPC defocus study #7 D4=4820 (Vgem=312, Vgate=30)
+2021 05/12 03:25:57 [RUN 05093] G_OFF*: TPC defocus study #7 D4=4820 (Vgem=312, Vgate=30)
+2021 05/12 03:25:58 [RUN 05093] STOP  : TPC defocus study #7 D4=4820 (Vgem=312, Vgate=30)
+2021 05/12 03:26:23 [RUN 05094] START : TPC defocus study #8 D4=4870 (Vgem=312, Vgate=30)
+2021 05/12 03:26:35 [RUN 05094] G_ON  : TPC defocus study #8 D4=4870 (Vgem=312, Vgate=30)
+2021 05/12 03:37:51 [RUN 05094] G_OFF : TPC defocus study #8 D4=4870 (Vgem=312, Vgate=30)
+2021 05/12 03:38:04 [RUN 05094] G_OFF*: TPC defocus study #8 D4=4870 (Vgem=312, Vgate=30)
+2021 05/12 03:38:05 [RUN 05094] STOP  : TPC defocus study #8 D4=4870 (Vgem=312, Vgate=30)
+2021 05/12 03:38:21 [RUN 05095] START : TPC defocus study #9 D4=4920 (Vgem=312, Vgate=30)
+2021 05/12 03:38:37 [RUN 05095] G_ON  : TPC defocus study #9 D4=4920 (Vgem=312, Vgate=30)
+2021 05/12 03:49:51 [RUN 05095] G_OFF : TPC defocus study #9 D4=4920 (Vgem=312, Vgate=30)
+2021 05/12 03:50:04 [RUN 05095] G_OFF*: TPC defocus study #9 D4=4920 (Vgem=312, Vgate=30)
+2021 05/12 03:50:05 [RUN 05095] STOP  : TPC defocus study #9 D4=4920 (Vgem=312, Vgate=30)
+2021 05/12 03:50:21 [RUN 05096] START : TPC defocus study #10 D4=4970 (Vgem=312, Vgate=30)
+2021 05/12 03:50:34 [RUN 05096] G_ON  : TPC defocus study #10 D4=4970 (Vgem=312, Vgate=30)
+2021 05/12 04:01:47 [RUN 05096] G_OFF : TPC defocus study #10 D4=4970 (Vgem=312, Vgate=30)
+2021 05/12 04:02:00 [RUN 05096] G_OFF*: TPC defocus study #10 D4=4970 (Vgem=312, Vgate=30)
+2021 05/12 04:02:01 [RUN 05096] STOP  : TPC defocus study #10 D4=4970 (Vgem=312, Vgate=30)
+2021 05/12 04:02:32 [RUN 05097] START : TPC defocus study #11 D4=5020 (Vgem=312, Vgate=30)
+2021 05/12 04:02:44 [RUN 05097] G_ON  : TPC defocus study #11 D4=5020 (Vgem=312, Vgate=30)
+2021 05/12 04:14:00 [RUN 05097] G_OFF : TPC defocus study #11 D4=5020 (Vgem=312, Vgate=30)
+2021 05/12 04:14:24 [RUN 05097] G_OFF*: TPC defocus study #11 D4=5020 (Vgem=312, Vgate=30)
+2021 05/12 04:14:25 [RUN 05097] STOP  : TPC defocus study #11 D4=5020 (Vgem=312, Vgate=30)
+2021 05/12 04:14:48 [RUN 05098] START : TPC defocus study #12 D4=5070 (Vgem=312, Vgate=30)
+2021 05/12 04:15:02 [RUN 05098] G_ON  : TPC defocus study #12 D4=5070 (Vgem=312, Vgate=30)
+2021 05/12 04:26:14 [RUN 05098] G_OFF : TPC defocus study #12 D4=5070 (Vgem=312, Vgate=30)
+2021 05/12 04:26:28 [RUN 05098] G_OFF*: TPC defocus study #12 D4=5070 (Vgem=312, Vgate=30)
+2021 05/12 04:26:29 [RUN 05098] STOP  : TPC defocus study #12 D4=5070 (Vgem=312, Vgate=30)
+2021 05/12 04:26:55 [RUN 05099] START : TPC defocus study #13 D4=5120 (Vgem=312, Vgate=30)
+2021 05/12 04:27:05 [RUN 05099] G_ON  : TPC defocus study #13 D4=5120 (Vgem=312, Vgate=30)
+2021 05/12 04:38:16 [RUN 05099] G_OFF : TPC defocus study #13 D4=5120 (Vgem=312, Vgate=30)
+2021 05/12 04:38:29 [RUN 05099] G_OFF*: TPC defocus study #13 D4=5120 (Vgem=312, Vgate=30)
+2021 05/12 04:38:30 [RUN 05099] STOP  : TPC defocus study #13 D4=5120 (Vgem=312, Vgate=30)
+2021 05/12 04:40:23 [RUN 05100] START : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig1.4)
+2021 05/12 04:40:33 [RUN 05100] G_ON  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig1.4)
+2021 05/12 04:40:53 [RUN 05100] G_OFF : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig1.4)
+2021 05/12 04:41:05 [RUN 05100] G_OFF*: TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig1.4)
+2021 05/12 04:41:06 [RUN 05100] STOP  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig1.4)
+2021 05/12 04:42:19 [RUN 05101] START : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig1.4)
+2021 05/12 04:42:29 [RUN 05101] G_ON  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig1.4)
+2021 05/12 04:47:01 [RUN 05101] G_OFF : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig1.4)
+2021 05/12 04:47:17 [RUN 05101] G_OFF*: TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig1.4)
+2021 05/12 04:47:18 [RUN 05101] STOP  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig1.4)
+2021 05/12 04:48:41 [RUN 05102] START : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:48:51 [RUN 05102] G_ON  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:49:06 [RUN 05102] G_OFF : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:49:29 [RUN 05102] G_OFF*: TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:49:30 [RUN 05102] STOP  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:50:22 [RUN 05103] START : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:50:33 [RUN 05103] G_ON  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:50:55 [RUN 05103] G_OFF : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:51:08 [RUN 05103] G_OFF*: TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:51:09 [RUN 05103] STOP  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:52:30 [RUN 05104] START : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:52:40 [RUN 05104] G_ON  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:53:00 [RUN 05104] G_OFF : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:53:45 [RUN 05104] G_ON  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:54:44 [RUN 05104] G_OFF : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:55:06 [RUN 05104] G_OFF*: TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:55:07 [RUN 05104] STOP  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=Run5055sig2.0)
+2021 05/12 04:58:17 [RUN 05105] START : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=prev)
+2021 05/12 04:58:26 [RUN 05105] G_ON  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=prev)
+2021 05/12 05:00:43 [RUN 05105] G_OFF : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=prev)
+2021 05/12 05:01:03 [RUN 05105] G_OFF*: TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=prev)
+2021 05/12 05:01:04 [RUN 05105] STOP  : TPC defocus study #14 D4=5120 (Vgem=312, Vgate=30, th=prev)
+2021 05/12 05:02:55 [RUN 05106] START : TPC init check
+2021 05/12 05:03:05 [RUN 05106] G_ON  : TPC init check
+2021 05/12 05:07:00 [RUN 05106] G_OFF : TPC init check
+2021 05/12 05:07:57 [RUN 05106] G_ON  : TPC init check
+2021 05/12 05:10:27 [RUN 05106] G_OFF : TPC init check
+2021 05/12 05:10:54 [RUN 05106] G_OFF*: TPC init check
+2021 05/12 05:10:55 [RUN 05106] STOP  : TPC init check
+2021 05/12 05:12:32 [RUN 05107] START : beam check
+2021 05/12 05:12:47 [RUN 05107] G_OFF*: beam check
+2021 05/12 05:12:48 [RUN 05107] STOP  : beam check
+2021 05/12 05:13:15 [RUN 05108] START : beam check
+2021 05/12 05:13:24 [RUN 05108] G_ON  : beam check
+2021 05/12 05:15:02 [RUN 05108] G_OFF : beam check
+2021 05/12 05:15:16 [RUN 05108] G_OFF*: beam check
+2021 05/12 05:15:17 [RUN 05108] STOP  : beam check
+2021 05/12 05:16:47 [RUN 05109] START : beam check
+2021 05/12 05:17:15 [RUN 05109] G_OFF*: beam check
+2021 05/12 05:17:16 [RUN 05109] STOP  : beam check
+2021 05/12 05:17:25 [RUN 05110] START : beam check
+2021 05/12 05:17:35 [RUN 05110] G_ON  : beam check
+2021 05/12 06:28:25 [RUN 05110] G_OFF*: beam check
+2021 05/12 06:28:26 [RUN 05110] STOP  : beam check
+2021 05/12 06:33:15 [RUN 05111] START : Beam through pi+1.2GeV/c w/KURAMA on (Vgem=312, Vgate=30)
+2021 05/12 06:33:27 [RUN 05111] G_ON  : Beam through pi+1.2GeV/c w/KURAMA on (Vgem=312, Vgate=30)
+2021 05/12 06:41:20 [RUN 05111] G_OFF : Beam through pi+1.2GeV/c w/KURAMA on (Vgem=312, Vgate=30)
+2021 05/12 06:41:35 [RUN 05111] G_OFF*: Beam through pi+1.2GeV/c w/KURAMA on (Vgem=312, Vgate=30)
+2021 05/12 06:41:36 [RUN 05111] STOP  : Beam through pi+1.2GeV/c w/KURAMA on (Vgem=312, Vgate=30)
+2021 05/12 06:43:37 [RUN 05112] START : beam tune
+2021 05/12 06:43:46 [RUN 05112] G_ON  : beam tune
+2021 05/12 06:51:32 [RUN 05112] G_OFF*: beam tune
+2021 05/12 06:51:33 [RUN 05112] STOP  : beam tune
+2021 05/12 06:54:57 [RUN 05113] START : Beam through pi+1.2GeV/c w/KURAMA on (Vgem=312, Vgate=30) after retuning
+2021 05/12 06:55:32 [RUN 05113] G_ON  : Beam through pi+1.2GeV/c w/KURAMA on (Vgem=312, Vgate=30) after retuning
+2021 05/12 07:04:02 [RUN 05113] G_OFF : Beam through pi+1.2GeV/c w/KURAMA on (Vgem=312, Vgate=30) after retuning
+2021 05/12 07:04:17 [RUN 05113] G_OFF*: Beam through pi+1.2GeV/c w/KURAMA on (Vgem=312, Vgate=30) after retuning
+2021 05/12 07:04:18 [RUN 05113] STOP  : Beam through pi+1.2GeV/c w/KURAMA on (Vgem=312, Vgate=30) after retuning
+2021 05/12 07:24:35 [RUN 05114] START : beam tune
+2021 05/12 07:24:44 [RUN 05114] G_ON  : beam tune
+2021 05/12 08:15:54 [RUN 05114] G_OFF*: beam tune
+2021 05/12 08:15:55 [RUN 05114] STOP  : beam tune
+2021 05/12 08:16:18 [RUN 05115] START : Beam through pi-0.3GeV/c
+2021 05/12 08:16:27 [RUN 05115] G_ON  : Beam through pi-0.3GeV/c
+2021 05/12 08:20:07 [RUN 05115] G_OFF*: Beam through pi-0.3GeV/c
+2021 05/12 08:20:08 [RUN 05115] STOP  : Beam through pi-0.3GeV/c
+2021 05/12 08:20:15 [RUN 05116] START : Beam through pi-0.3GeV/c
+2021 05/12 08:20:24 [RUN 05116] G_ON  : Beam through pi-0.3GeV/c
+2021 05/12 09:00:22 [RUN 05116] G_OFF*: Beam through pi-0.3GeV/c
+2021 05/12 09:00:23 [RUN 05116] STOP  : Beam through pi-0.3GeV/c
+2021 05/12 09:00:44 [RUN 05117] START : pedestal run
+2021 05/12 09:00:57 [RUN 05117] G_ON  : pedestal run
+2021 05/12 09:02:14 [RUN 05117] G_OFF : pedestal run
+2021 05/12 09:02:14 [RUN 05117] G_OFF*: pedestal run
+2021 05/12 09:02:15 [RUN 05117] STOP  : pedestal run
+2021 05/12 10:03:05 [RUN 05118] START : WC cosmic ray w/o B field
+2021 05/12 10:05:50 [RUN 05118] G_ON  : WC cosmic ray w/o B field
+2021 05/12 10:36:04 [RUN 05118] G_OFF*: WC cosmic ray w/o B field
+2021 05/12 10:36:05 [RUN 05118] STOP  : WC cosmic ray w/o B field
+2021 05/12 11:15:04 [RUN 05119] START : WC cosmic ray w/o B field
+2021 05/12 11:15:35 [RUN 05119] G_OFF*: WC cosmic ray w/o B field
+2021 05/12 11:15:36 [RUN 05119] STOP  : WC cosmic ray w/o B field
+2021 05/12 11:16:02 [RUN 05119] G_OFF*: WC cosmic ray w/o B field
+2021 05/12 11:16:03 [RUN 05119] STOP  : WC cosmic ray w/o B field
+2021 05/12 11:17:13 [RUN 05120] START : WC cosmic ray w/o B field
+2021 05/12 11:17:29 [RUN 05120] G_OFF*: WC cosmic ray w/o B field
+2021 05/12 11:17:30 [RUN 05120] STOP  : WC cosmic ray w/o B field
+2021 05/12 11:18:46 [RUN 05121] START : WC cosmic ray w/o B field
+2021 05/12 11:19:00 [RUN 05121] G_ON  : WC cosmic ray w/o B field
+2021 05/12 11:44:32 [RUN 05121] G_OFF*: WC cosmic ray w/o B field
+2021 05/12 11:44:33 [RUN 05121] STOP  : WC cosmic ray w/o B field
+2021 05/12 21:36:59 [RUN 05122] START : BVH check
+2021 05/12 21:37:09 [RUN 05122] G_ON  : BVH check
+2021 05/12 22:57:22 [RUN 05122] G_OFF*: BVH check
+2021 05/12 22:57:23 [RUN 05122] STOP  : BVH check
+2021 05/13 07:21:13 [RUN 05123] START : WC cosmic ray seg12
+2021 05/13 07:21:22 [RUN 05123] G_ON  : WC cosmic ray seg12
+2021 05/13 07:24:10 [RUN 05123] G_OFF*: WC cosmic ray seg12
+2021 05/13 07:24:11 [RUN 05123] STOP  : WC cosmic ray seg12
+2021 05/13 07:43:54 [RUN 05124] START : WC cosmic ray seg12
+2021 05/13 07:44:02 [RUN 05124] G_ON  : WC cosmic ray seg12
+2021 05/13 07:45:46 [RUN 05124] G_OFF*: WC cosmic ray seg12
+2021 05/13 07:45:47 [RUN 05124] STOP  : WC cosmic ray seg12
+2021 05/13 08:21:49 [RUN 05125] START : WC cosmic ray seg12
+2021 05/13 08:21:57 [RUN 05125] G_ON  : WC cosmic ray seg12
+2021 05/13 08:23:13 [RUN 05125] G_OFF*: WC cosmic ray seg12
+2021 05/13 08:23:14 [RUN 05125] STOP  : WC cosmic ray seg12
+2021 05/13 08:40:07 [RUN 05126] START : WC cosmic ray 
+2021 05/13 08:42:25 [RUN 05126] G_ON  : WC cosmic ray 
+2021 05/13 09:08:16 [RUN 05126] G_OFF*: WC cosmic ray 
+2021 05/13 09:08:17 [RUN 05126] STOP  : WC cosmic ray 
+2021 05/13 09:53:21 [RUN 05127] START : dummy
+2021 05/13 09:53:30 [RUN 05127] G_ON  : dummy
+2021 05/13 10:11:38 [RUN 05127] G_OFF*: dummy
+2021 05/13 10:11:39 [RUN 05127] STOP  : dummy
+2021 05/13 15:44:40 [RUN 05128] START : dummy
+2021 05/13 15:44:49 [RUN 05128] G_ON  : dummy
+2021 05/13 15:58:58 [RUN 05128] G_OFF*: dummy
+2021 05/13 15:58:59 [RUN 05128] STOP  : dummy
+2021 05/13 16:05:47 [RUN 05129] START : TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:05:58 [RUN 05129] G_ON  : TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:06:23 [RUN 05129] G_OFF : TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:06:46 [RUN 05129] G_OFF*: TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:06:47 [RUN 05129] STOP  : TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:13:53 [RUN 05130] START : TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:14:04 [RUN 05130] G_ON  : TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:14:05 [RUN 05130] G_OFF : TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:14:29 [RUN 05130] G_OFF*: TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:14:30 [RUN 05130] STOP  : TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:15:35 [RUN 05131] START : dummy 
+2021 05/13 16:18:04 [RUN 05131] G_ON  : dummy 
+2021 05/13 16:22:39 [RUN 05131] G_OFF : dummy 
+2021 05/13 16:22:40 [RUN 05131] G_OFF*: dummy 
+2021 05/13 16:22:41 [RUN 05131] STOP  : dummy 
+2021 05/13 16:24:55 [RUN 05135] START : TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:25:18 [RUN 05135] G_ON  : TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:25:41 [RUN 05135] G_OFF : TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:35:38 [RUN 05135] G_OFF*: TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 16:35:39 [RUN 05135] STOP  : TPC Calibration (Vgem=310, Vgate=30, w/o B field)
+2021 05/13 20:08:42 [RUN 05136] START : TPC Calibration (Vgem=310, Vgate=30, w/ B field)
+2021 05/13 20:08:53 [RUN 05136] G_ON  : TPC Calibration (Vgem=310, Vgate=30, w/ B field)
+2021 05/13 20:09:13 [RUN 05136] G_OFF : TPC Calibration (Vgem=310, Vgate=30, w/ B field)
+2021 05/13 20:09:30 [RUN 05136] G_OFF*: TPC Calibration (Vgem=310, Vgate=30, w/ B field)
+2021 05/13 20:09:31 [RUN 05136] STOP  : TPC Calibration (Vgem=310, Vgate=30, w/ B field)
+2021 05/13 20:17:51 [RUN 05137] START : TPC cosmic-ray (Vgem=310, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:18:03 [RUN 05137] G_ON  : TPC cosmic-ray (Vgem=310, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:19:30 [RUN 05137] G_OFF : TPC cosmic-ray (Vgem=310, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:19:48 [RUN 05137] G_OFF*: TPC cosmic-ray (Vgem=310, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:19:49 [RUN 05137] STOP  : TPC cosmic-ray (Vgem=310, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:20:48 [RUN 05138] START : TPC cosmic-ray (Vgem=310, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:21:28 [RUN 05138] G_ON  : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:47:46 [RUN 05138] G_OFF : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:48:04 [RUN 05138] G_OFF*: TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:48:05 [RUN 05138] STOP  : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:49:25 [RUN 05139] START : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:49:36 [RUN 05139] G_ON  : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:50:28 [RUN 05139] G_OFF : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:50:50 [RUN 05139] G_OFF*: TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:50:51 [RUN 05139] STOP  : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:52:03 [RUN 05140] START : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:52:16 [RUN 05140] G_ON  : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:53:40 [RUN 05140] G_OFF : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:53:52 [RUN 05140] G_OFF*: TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:53:53 [RUN 05140] STOP  : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:57:15 [RUN 05141] START : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:57:25 [RUN 05141] G_ON  : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:58:18 [RUN 05141] G_OFF : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:58:44 [RUN 05141] G_OFF*: TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 20:58:45 [RUN 05141] STOP  : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 21:00:49 [RUN 05142] START : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 21:01:13 [RUN 05142] G_ON  : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 21:31:38 [RUN 05142] G_OFF : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 21:32:04 [RUN 05142] G_OFF*: TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 21:32:05 [RUN 05142] STOP  : TPC cosmic-ray (Vgem=312, Vgate=30, w/ B field, th=Run5136sig1.5)
+2021 05/13 21:38:09 [RUN 05143] START : beam check
+2021 05/13 21:46:57 [RUN 05143] G_OFF*: beam check
+2021 05/13 21:46:58 [RUN 05143] STOP  : beam check
+2021 05/13 21:49:18 [RUN 05144] START : beam check
+2021 05/13 21:49:29 [RUN 05144] G_ON  : beam check
+2021 05/13 21:54:16 [RUN 05144] G_OFF : beam check
+2021 05/13 21:54:32 [RUN 05144] G_OFF*: beam check
+2021 05/13 21:54:33 [RUN 05144] STOP  : beam check
+2021 05/13 21:55:04 [RUN 05145] START : Beam through K-1.8GeV/c
+2021 05/13 21:55:13 [RUN 05145] G_ON  : Beam through K-1.8GeV/c
+2021 05/13 21:59:54 [RUN 05145] G_OFF : Beam through K-1.8GeV/c
+2021 05/13 22:00:10 [RUN 05145] G_OFF*: Beam through K-1.8GeV/c
+2021 05/13 22:00:11 [RUN 05145] STOP  : Beam through K-1.8GeV/c
+2021 05/13 22:00:16 [RUN 05146] START : Beam through K-1.8GeV/c
+2021 05/13 22:00:29 [RUN 05146] G_ON  : Beam through K-1.8GeV/c
+2021 05/13 22:21:12 [RUN 05146] G_OFF : Beam through K-1.8GeV/c
+2021 05/13 22:21:25 [RUN 05146] G_OFF*: Beam through K-1.8GeV/c
+2021 05/13 22:21:26 [RUN 05146] STOP  : Beam through K-1.8GeV/c
+2021 05/13 22:22:33 [RUN 05147] START : Clock
+2021 05/13 22:22:43 [RUN 05147] G_ON  : Clock
+2021 05/13 22:23:35 [RUN 05147] G_OFF : Clock
+2021 05/13 22:23:46 [RUN 05147] G_OFF*: Clock
+2021 05/13 22:23:47 [RUN 05147] STOP  : Clock
+2021 05/13 22:24:57 [RUN 05148] START : Clock
+2021 05/13 22:25:07 [RUN 05148] G_ON  : Clock
+2021 05/13 22:26:01 [RUN 05148] G_OFF : Clock
+2021 05/13 22:26:17 [RUN 05148] G_OFF*: Clock
+2021 05/13 22:26:18 [RUN 05148] STOP  : Clock
+2021 05/13 22:29:57 [RUN 05149] START : Clock
+2021 05/13 22:30:48 [RUN 05149]       : Beam check
+2021 05/13 22:30:57 [RUN 05149] G_OFF*: Beam check
+2021 05/13 22:30:58 [RUN 05149] STOP  : Beam check
+2021 05/13 22:31:43 [RUN 05150] START : Beam check
+2021 05/13 22:31:54 [RUN 05150] G_ON  : Beam check
+2021 05/13 22:36:04 [RUN 05150] G_OFF : Beam check
+2021 05/13 22:36:21 [RUN 05150] G_OFF*: Beam check
+2021 05/13 22:36:22 [RUN 05150] STOP  : Beam check
+2021 05/13 22:37:00 [RUN 05151] START : Beam through pi+1.4GeV/c (Vgem=312, Vgate=30)
+2021 05/13 22:38:25 [RUN 05151] G_OFF*: Beam through pi+1.4GeV/c (Vgem=312, Vgate=30)
+2021 05/13 22:38:26 [RUN 05151] STOP  : Beam through pi+1.4GeV/c (Vgem=312, Vgate=30)
+2021 05/13 22:38:55 [RUN 05152] START : Beam through pi+1.4GeV/c (Vgem=312, Vgate=30, gate off)
+2021 05/13 22:39:06 [RUN 05152] G_ON  : Beam through pi+1.4GeV/c (Vgem=312, Vgate=30, gate off)
+2021 05/13 22:39:37 [RUN 05152] G_OFF : Beam through pi+1.4GeV/c (Vgem=312, Vgate=30, gate off)
+2021 05/13 22:40:16 [RUN 05152] G_OFF*: Beam through pi+1.4GeV/c (Vgem=312, Vgate=30, gate off)
+2021 05/13 22:40:17 [RUN 05152] STOP  : Beam through pi+1.4GeV/c (Vgem=312, Vgate=30, gate off)
+2021 05/13 22:47:12 [RUN 05153] START : check
+2021 05/13 22:47:39 [RUN 05153] G_ON  : check
+2021 05/13 22:48:50 [RUN 05153] G_OFF : check
+2021 05/13 22:49:05 [RUN 05153] G_OFF*: check
+2021 05/13 22:49:06 [RUN 05153] STOP  : check
+2021 05/13 22:49:14 [RUN 05154] START : check
+2021 05/13 22:49:33 [RUN 05154] G_ON  : check
+2021 05/13 22:49:42 [RUN 05154] G_OFF : check
+2021 05/13 22:50:11 [RUN 05154] G_OFF*: check
+2021 05/13 22:50:12 [RUN 05154] STOP  : check
+2021 05/13 22:52:33 [RUN 05155] START : check
+2021 05/13 22:52:43 [RUN 05155] G_ON  : check
+2021 05/13 22:53:18 [RUN 05155] G_OFF : check
+2021 05/13 22:53:24 [RUN 05155] G_OFF*: check
+2021 05/13 22:53:25 [RUN 05155] STOP  : check
+2021 05/13 23:02:36 [RUN 05156] START : check
+2021 05/13 23:02:45 [RUN 05156] G_ON  : check
+2021 05/13 23:04:32 [RUN 05156] G_OFF : check
+2021 05/13 23:06:31 [RUN 05156] G_ON  : check
+2021 05/13 23:09:27 [RUN 05156] G_OFF : check
+2021 05/13 23:09:37 [RUN 05156] G_OFF*: check
+2021 05/13 23:09:38 [RUN 05156] STOP  : check
+2021 05/13 23:10:21 [RUN 05157] START : check
+2021 05/13 23:10:31 [RUN 05157] G_ON  : check
+2021 05/13 23:11:11 [RUN 05157] G_OFF*: check
+2021 05/13 23:11:12 [RUN 05157] STOP  : check
+2021 05/13 23:11:21 [RUN 05158] START : check
+2021 05/13 23:11:33 [RUN 05158] G_ON  : check
+2021 05/13 23:15:21 [RUN 05158] G_OFF : check
+2021 05/13 23:15:23 [RUN 05158] G_OFF*: check
+2021 05/13 23:15:24 [RUN 05158] STOP  : check
+2021 05/13 23:15:35 [RUN 05159] START : check
+2021 05/13 23:15:50 [RUN 05159] G_ON  : check
+2021 05/13 23:16:46 [RUN 05159] G_OFF : check
+2021 05/13 23:16:58 [RUN 05159] G_OFF*: check
+2021 05/13 23:16:59 [RUN 05159] STOP  : check
+2021 05/13 23:20:42 [RUN 05160] START : Beam through pi+1.4GeV/c (Vgem=310, Vgate=30, gate off)
+
+2021 05/13 23:20:51 [RUN 05160] G_ON  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=30, gate off)
+
+2021 05/13 23:21:14 [RUN 05160] G_OFF : Beam through pi+1.4GeV/c (Vgem=310, Vgate=30, gate off)
+
+2021 05/13 23:21:26 [RUN 05160] G_OFF*: Beam through pi+1.4GeV/c (Vgem=310, Vgate=30, gate off)
+
+2021 05/13 23:21:27 [RUN 05160] STOP  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=30, gate off)
+
+2021 05/13 23:21:55 [RUN 05161] START : Beam through pi+1.4GeV/c (Vgem=310, Vgate=50, gate off)
+
+2021 05/13 23:22:05 [RUN 05161] G_ON  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=50, gate off)
+
+2021 05/13 23:22:48 [RUN 05161] G_OFF : Beam through pi+1.4GeV/c (Vgem=310, Vgate=50, gate off)
+
+2021 05/13 23:23:00 [RUN 05161] G_OFF*: Beam through pi+1.4GeV/c (Vgem=310, Vgate=50, gate off)
+
+2021 05/13 23:23:01 [RUN 05161] STOP  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=50, gate off)
+
+2021 05/13 23:23:50 [RUN 05162] START : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate off)
+
+2021 05/13 23:24:01 [RUN 05162] G_ON  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate off)
+
+2021 05/13 23:24:43 [RUN 05162] G_OFF : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate off)
+
+2021 05/13 23:24:58 [RUN 05162] G_OFF*: Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate off)
+
+2021 05/13 23:24:59 [RUN 05162] STOP  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate off)
+
+2021 05/13 23:25:24 [RUN 05163] START : Beam through pi+1.4GeV/c (Vgem=310, Vgate=60, gate off)
+
+2021 05/13 23:25:33 [RUN 05163] G_ON  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=60, gate off)
+
+2021 05/13 23:26:23 [RUN 05163] G_OFF : Beam through pi+1.4GeV/c (Vgem=310, Vgate=60, gate off)
+
+2021 05/13 23:26:36 [RUN 05163] G_OFF*: Beam through pi+1.4GeV/c (Vgem=310, Vgate=60, gate off)
+
+2021 05/13 23:26:37 [RUN 05163] STOP  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=60, gate off)
+
+2021 05/13 23:26:53 [RUN 05164] START : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on
+
+2021 05/13 23:27:04 [RUN 05164] G_ON  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on
+
+2021 05/13 23:28:48 [RUN 05164] G_OFF : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on
+
+2021 05/13 23:29:26 [RUN 05164] G_OFF*: Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on
+
+2021 05/13 23:29:27 [RUN 05164] STOP  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on
+
+2021 05/13 23:30:58 [RUN 05165] START : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on, th=3.0
+
+2021 05/13 23:31:11 [RUN 05165] G_ON  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on, th=3.0)
+2021 05/13 23:31:25 [RUN 05165] G_OFF : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on, th=3.0)
+2021 05/13 23:31:41 [RUN 05165] G_OFF*: Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on, th=3.0)
+2021 05/13 23:31:42 [RUN 05165] STOP  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on, th=3.0)
+2021 05/13 23:32:53 [RUN 05166] START : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on, th=5.0)
+2021 05/13 23:34:27 [RUN 05166] G_ON  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on, th=5.0)
+2021 05/13 23:34:53 [RUN 05166] G_OFF : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on, th=5.0)
+2021 05/13 23:35:14 [RUN 05166] G_OFF*: Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on, th=5.0)
+2021 05/13 23:35:15 [RUN 05166] STOP  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, gate on, th=5.0)
+2021 05/13 23:36:59 [RUN 05167] START : TPC Calibration (Vgem=310, Vgate=70, w/B field)
+2021 05/13 23:37:37 [RUN 05167] G_OFF*: TPC Calibration (Vgem=310, Vgate=70, w/B field)
+2021 05/13 23:37:38 [RUN 05167] STOP  : TPC Calibration (Vgem=310, Vgate=70, w/B field)
+2021 05/13 23:37:45 [RUN 05168] START : TPC Calibration (Vgem=310, Vgate=70, w/B field)
+2021 05/13 23:37:56 [RUN 05168] G_ON  : TPC Calibration (Vgem=310, Vgate=70, w/B field)
+2021 05/13 23:38:10 [RUN 05168] G_OFF : TPC Calibration (Vgem=310, Vgate=70, w/B field)
+2021 05/13 23:38:31 [RUN 05168] G_OFF*: TPC Calibration (Vgem=310, Vgate=70, w/B field)
+2021 05/13 23:38:32 [RUN 05168] STOP  : TPC Calibration (Vgem=310, Vgate=70, w/B field)
+2021 05/13 23:42:09 [RUN 05169] START : Clock (Vgem=310, Vgate=30, w/B field)
+2021 05/13 23:42:20 [RUN 05169] G_ON  : Clock (Vgem=310, Vgate=30, w/B field)
+2021 05/13 23:42:40 [RUN 05169] G_OFF : Clock (Vgem=310, Vgate=30, w/B field)
+2021 05/13 23:46:30 [RUN 05169] G_OFF*: Clock (Vgem=310, Vgate=30, w/B field)
+2021 05/13 23:46:31 [RUN 05169] STOP  : Clock (Vgem=310, Vgate=30, w/B field)
+2021 05/13 23:48:49 [RUN 05170] START : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=1.5)
+2021 05/13 23:49:01 [RUN 05170] G_ON  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=1.5)
+2021 05/13 23:49:20 [RUN 05170] G_OFF : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=1.5)
+2021 05/13 23:49:24 [RUN 05170] G_OFF*: Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=1.5)
+2021 05/13 23:49:25 [RUN 05170] STOP  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=1.5)
+2021 05/13 23:49:55 [RUN 05171] START : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=1.5)
+2021 05/13 23:50:06 [RUN 05171] G_ON  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=1.5)
+2021 05/13 23:50:48 [RUN 05171] G_OFF : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=1.5)
+2021 05/13 23:51:13 [RUN 05171] G_OFF*: Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=1.5)
+2021 05/13 23:51:14 [RUN 05171] STOP  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=1.5)
+2021 05/13 23:53:48 [RUN 05172] START : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=5.0)
+2021 05/13 23:53:58 [RUN 05172] G_ON  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=5.0)
+2021 05/13 23:57:25 [RUN 05172] G_OFF : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=5.0)
+2021 05/13 23:57:51 [RUN 05172] G_ON  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=5.0)
+2021 05/13 23:58:25 [RUN 05172] G_OFF : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=5.0)
+2021 05/13 23:58:43 [RUN 05172] G_OFF*: Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=5.0)
+2021 05/13 23:58:44 [RUN 05172] STOP  : Beam through pi+1.4GeV/c (Vgem=310, Vgate=70, newth=5.0)
+2021 05/13 23:59:09 [RUN 05173] START : Beam through pi+1.4GeV/c (Vgem=312, Vgate=70, newth=5.0)
+2021 05/13 23:59:21 [RUN 05173] G_ON  : Beam through pi+1.4GeV/c (Vgem=312, Vgate=70, newth=5.0)
+2021 05/14 00:02:38 [RUN 05173] G_OFF : Beam through pi+1.4GeV/c (Vgem=312, Vgate=70, newth=5.0)
+2021 05/14 00:03:00 [RUN 05173] G_OFF*: Beam through pi+1.4GeV/c (Vgem=312, Vgate=70, newth=5.0)
+2021 05/14 00:03:01 [RUN 05173] STOP  : Beam through pi+1.4GeV/c (Vgem=312, Vgate=70, newth=5.0)
+2021 05/14 00:04:05 [RUN 05174] START : Beam through pi+1.4GeV/c (Vgem=312, Vgate=70, newth=10.0)
+2021 05/14 00:04:15 [RUN 05174] G_ON  : Beam through pi+1.4GeV/c (Vgem=312, Vgate=70, newth=10.0)
+2021 05/14 00:05:34 [RUN 05174] G_OFF : Beam through pi+1.4GeV/c (Vgem=312, Vgate=70, newth=10.0)
+2021 05/14 00:05:51 [RUN 05174] G_OFF*: Beam through pi+1.4GeV/c (Vgem=312, Vgate=70, newth=10.0)
+2021 05/14 00:05:52 [RUN 05174] STOP  : Beam through pi+1.4GeV/c (Vgem=312, Vgate=70, newth=10.0)
+2021 05/14 00:07:01 [RUN 05175] START : Beam through pi+1.4GeV/c (Vgem=314, Vgate=70, newth=10.0)
+2021 05/14 00:07:12 [RUN 05175] G_ON  : Beam through pi+1.4GeV/c (Vgem=314, Vgate=70, newth=10.0)
+2021 05/14 00:08:20 [RUN 05175] G_OFF : Beam through pi+1.4GeV/c (Vgem=314, Vgate=70, newth=10.0)
+2021 05/14 00:08:34 [RUN 05175] G_OFF*: Beam through pi+1.4GeV/c (Vgem=314, Vgate=70, newth=10.0)
+2021 05/14 00:08:35 [RUN 05175] STOP  : Beam through pi+1.4GeV/c (Vgem=314, Vgate=70, newth=10.0)
+2021 05/14 00:10:39 [RUN 05176] START : Beam through pi+1.4GeV/c (Vgem=314, Vgate=70, newth=8.0)
+2021 05/14 00:10:50 [RUN 05176] G_ON  : Beam through pi+1.4GeV/c (Vgem=314, Vgate=70, newth=8.0)
+2021 05/14 00:14:39 [RUN 05176] G_OFF : Beam through pi+1.4GeV/c (Vgem=314, Vgate=70, newth=8.0)
+2021 05/14 00:14:59 [RUN 05176] G_OFF*: Beam through pi+1.4GeV/c (Vgem=314, Vgate=70, newth=8.0)
+2021 05/14 00:15:01 [RUN 05176] STOP  : Beam through pi+1.4GeV/c (Vgem=314, Vgate=70, newth=8.0)
+2021 05/14 00:15:38 [RUN 05177] START : Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0)
+2021 05/14 00:15:48 [RUN 05177] G_ON  : Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0)
+2021 05/14 00:22:50 [RUN 05177] G_OFF : Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0)
+2021 05/14 00:23:15 [RUN 05177] G_OFF*: Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0)
+2021 05/14 00:23:16 [RUN 05177] STOP  : Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0)
+2021 05/14 00:24:59 [RUN 05178] START : beam check
+2021 05/14 00:25:12 [RUN 05178] G_ON  : beam check
+2021 05/14 00:28:15 [RUN 05178] G_OFF : beam check
+2021 05/14 00:28:31 [RUN 05178] G_OFF*: beam check
+2021 05/14 00:28:32 [RUN 05178] STOP  : beam check
+2021 05/14 00:29:26 [RUN 05179] START : beam check
+2021 05/14 00:29:37 [RUN 05179] G_ON  : beam check
+2021 05/14 00:44:53 [RUN 05179] G_OFF : beam check
+2021 05/14 00:45:11 [RUN 05179] G_OFF*: beam check
+2021 05/14 00:45:12 [RUN 05179] STOP  : beam check
+2021 05/14 00:46:19 [RUN 05180] START : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 00:46:31 [RUN 05180] G_ON  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 00:54:36 [RUN 05180] G_OFF : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 00:55:32 [RUN 05180] G_OFF*: Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 00:55:33 [RUN 05180] STOP  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 00:56:40 [RUN 05181] START : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 00:56:51 [RUN 05181] G_ON  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:01:00 [RUN 05181] G_OFF : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:01:16 [RUN 05181] G_OFF*: Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:01:17 [RUN 05181] STOP  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:01:23 [RUN 05182] START : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:01:33 [RUN 05182] G_ON  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:06:23 [RUN 05182] G_OFF : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:07:04 [RUN 05182] G_OFF*: Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:07:05 [RUN 05182] STOP  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:07:15 [RUN 05183] START : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:07:24 [RUN 05183] G_ON  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:11:45 [RUN 05183] G_OFF : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:12:04 [RUN 05183] G_OFF*: Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:12:05 [RUN 05183] STOP  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:12:19 [RUN 05184] START : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:12:29 [RUN 05184] G_ON  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:14:23 [RUN 05184] G_OFF : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:14:44 [RUN 05185] G_ON  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 00:54:36 [RUN 05185] G_OFF*: Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:14:45 [RUN 05184] STOP  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:16:56 [RUN 05185] START : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4780
+2021 05/14 01:17:06 [RUN 05185] G_ON  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4780
+2021 05/14 01:18:10 [RUN 05185] G_OFF : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4780
+2021 05/14 01:18:25 [RUN 05185] G_OFF*: Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4780
+2021 05/14 01:18:26 [RUN 05185] STOP  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4780
+2021 05/14 01:18:34 [RUN 05186] START : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4780
+2021 05/14 01:18:45 [RUN 05186] G_ON  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4780
+2021 05/14 01:26:52 [RUN 05186] G_OFF : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4780
+2021 05/14 01:27:08 [RUN 05186] G_OFF*: Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4780
+2021 05/14 01:27:09 [RUN 05186] STOP  : Beam through p+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4780
+2021 05/14 01:35:36 [RUN 05187] START : Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0)
+2021 05/14 01:35:46 [RUN 05187] G_ON  : Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0)
+2021 05/14 01:44:52 [RUN 05187] G_OFF : Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0)
+2021 05/14 01:45:07 [RUN 05187] G_OFF*: Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0)
+2021 05/14 01:45:08 [RUN 05187] STOP  : Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0)
+2021 05/14 01:45:56 [RUN 05188] START : Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:46:05 [RUN 05188] G_ON  : Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:54:45 [RUN 05188] G_OFF : Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:55:02 [RUN 05188] G_OFF*: Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 01:55:03 [RUN 05188] STOP  : Beam through pi+1.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=4700
+2021 05/14 02:04:26 [RUN 05189] START : beam check
+2021 05/14 02:04:46 [RUN 05189] G_ON  : beam check
+2021 05/14 02:18:29 [RUN 05189] G_OFF : beam check
+2021 05/14 02:18:46 [RUN 05189] G_OFF*: beam check
+2021 05/14 02:18:47 [RUN 05189] STOP  : beam check
+2021 05/14 02:19:18 [RUN 05190] START : Beam through pi+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2717
+2021 05/14 02:19:28 [RUN 05190] G_ON  : Beam through pi+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2717
+2021 05/14 02:20:53 [RUN 05190] G_OFF*: Beam through pi+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2717
+2021 05/14 02:20:54 [RUN 05190] STOP  : Beam through pi+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2717
+2021 05/14 02:21:36 [RUN 05191] START : Beam through pi+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2717
+2021 05/14 02:21:47 [RUN 05191] G_ON  : Beam through pi+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2717
+2021 05/14 02:29:30 [RUN 05191] G_OFF : Beam through pi+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2717
+2021 05/14 02:29:45 [RUN 05191] G_OFF*: Beam through pi+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2717
+2021 05/14 02:29:46 [RUN 05191] STOP  : Beam through pi+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2717
+2021 05/14 02:32:47 [RUN 05192] START : beam check
+2021 05/14 02:33:11 [RUN 05192] G_ON  : beam check
+2021 05/14 02:33:16 [RUN 05192] G_OFF : beam check
+2021 05/14 02:33:23 [RUN 05192] G_ON  : beam check
+2021 05/14 02:34:38 [RUN 05192] G_OFF*: beam check
+2021 05/14 02:34:39 [RUN 05192] STOP  : beam check
+2021 05/14 02:36:00 [RUN 05193] START : beam check
+2021 05/14 02:36:32 [RUN 05193] G_OFF*: beam check
+2021 05/14 02:36:33 [RUN 05193] STOP  : beam check
+2021 05/14 02:37:03 [RUN 05194] START : beam check
+2021 05/14 02:37:12 [RUN 05194] G_OFF*: beam check
+2021 05/14 02:37:13 [RUN 05194] STOP  : beam check
+2021 05/14 02:45:49 [RUN 05195] START : check
+2021 05/14 02:46:57 [RUN 05195] G_ON  : check
+2021 05/14 02:47:05 [RUN 05195] G_OFF : check
+2021 05/14 02:47:23 [RUN 05195] G_OFF*: check
+2021 05/14 02:47:24 [RUN 05195] STOP  : check
+2021 05/14 02:52:05 [RUN 05196] START : check
+2021 05/14 02:53:39 [RUN 05196] G_ON  : check
+2021 05/14 02:55:12 [RUN 05196] G_OFF : check
+2021 05/14 02:55:24 [RUN 05196] G_OFF*: check
+2021 05/14 02:55:25 [RUN 05196] STOP  : check
+2021 05/14 02:56:05 [RUN 05197] START : Beam through p+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2707
+2021 05/14 02:56:16 [RUN 05197] G_ON  : Beam through p+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2707
+2021 05/14 03:05:54 [RUN 05197] G_OFF : Beam through p+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2707
+2021 05/14 03:06:08 [RUN 05197] G_OFF*: Beam through p+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2707
+2021 05/14 03:06:09 [RUN 05197] STOP  : Beam through p+0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2707
+2021 05/14 03:10:26 [RUN 05198] START : beam check
+2021 05/14 03:10:43 [RUN 05198] G_ON  : beam check
+2021 05/14 03:13:35 [RUN 05198] G_OFF*: beam check
+2021 05/14 03:13:36 [RUN 05198] STOP  : beam check
+2021 05/14 03:13:49 [RUN 05199] START : beam check
+2021 05/14 03:14:00 [RUN 05199] G_ON  : beam check
+2021 05/14 03:19:30 [RUN 05199] G_OFF : beam check
+2021 05/14 03:19:47 [RUN 05199] G_OFF*: beam check
+2021 05/14 03:19:48 [RUN 05199] STOP  : beam check
+2021 05/14 03:20:16 [RUN 05200] START : Beam through pi+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2037
+
+2021 05/14 03:20:26 [RUN 05200] G_ON  : Beam through pi+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2037
+
+2021 05/14 03:29:34 [RUN 05200] G_OFF : Beam through pi+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2037
+
+2021 05/14 03:29:47 [RUN 05200] G_OFF*: Beam through pi+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2037
+
+2021 05/14 03:29:48 [RUN 05200] STOP  : Beam through pi+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2037
+
+2021 05/14 03:30:56 [RUN 05201] START : beam check
+2021 05/14 03:31:13 [RUN 05201] G_ON  : beam check
+2021 05/14 03:48:38 [RUN 05201] G_OFF : beam check
+2021 05/14 03:48:53 [RUN 05201] G_OFF*: beam check
+2021 05/14 03:48:54 [RUN 05201] STOP  : beam check
+2021 05/14 04:23:54 [RUN 05202] START : beam check
+2021 05/14 04:24:08 [RUN 05202] G_ON  : beam check
+2021 05/14 04:32:08 [RUN 05202] G_OFF : beam check
+2021 05/14 04:32:28 [RUN 05202] G_OFF*: beam check
+2021 05/14 04:32:29 [RUN 05202] STOP  : beam check
+2021 05/14 04:33:09 [RUN 05203] START : Beam through p+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2012
+2021 05/14 04:33:18 [RUN 05203] G_ON  : Beam through p+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2012
+2021 05/14 04:36:34 [RUN 05203] G_OFF : Beam through p+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2012
+2021 05/14 04:36:53 [RUN 05203] G_OFF*: Beam through p+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2012
+2021 05/14 04:36:54 [RUN 05203] STOP  : Beam through p+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2012
+2021 05/14 05:46:13 [RUN 05204] START : beam check
+2021 05/14 05:46:26 [RUN 05204] G_ON  : beam check
+2021 05/14 05:55:42 [RUN 05204] G_OFF : beam check
+2021 05/14 05:55:55 [RUN 05204] G_OFF*: beam check
+2021 05/14 05:55:56 [RUN 05204] STOP  : beam check
+2021 05/14 05:56:07 [RUN 05205] START : Beam through p+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2012
+2021 05/14 05:56:16 [RUN 05205] G_ON  : Beam through p+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2012
+2021 05/14 06:04:31 [RUN 05205] G_OFF : Beam through p+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2012
+2021 05/14 06:04:47 [RUN 05205] G_OFF*: Beam through p+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2012
+2021 05/14 06:04:48 [RUN 05205] STOP  : Beam through p+0.6GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=2012
+2021 05/14 06:08:57 [RUN 05206] START : beam check
+2021 05/14 06:09:06 [RUN 05206] G_ON  : beam check
+2021 05/14 06:25:08 [RUN 05206] G_OFF : beam check
+2021 05/14 06:25:20 [RUN 05206] G_OFF*: beam check
+2021 05/14 06:25:21 [RUN 05206] STOP  : beam check
+2021 05/14 06:25:55 [RUN 05207] START : Beam through pi+0.5GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1734
+2021 05/14 06:26:05 [RUN 05207] G_ON  : Beam through pi+0.5GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1734
+2021 05/14 06:29:02 [RUN 05207] G_OFF : Beam through pi+0.5GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1734
+2021 05/14 06:30:37 [RUN 05207] G_ON  : Beam through pi+0.5GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1734
+2021 05/14 06:37:59 [RUN 05207] G_OFF : Beam through pi+0.5GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1734
+2021 05/14 06:38:11 [RUN 05207] G_OFF*: Beam through pi+0.5GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1734
+2021 05/14 06:38:12 [RUN 05207] STOP  : Beam through pi+0.5GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1734
+2021 05/14 06:41:21 [RUN 05208] START : beam check
+2021 05/14 06:41:30 [RUN 05208] G_ON  : beam check
+2021 05/14 07:00:33 [RUN 05208] G_OFF : beam check
+2021 05/14 07:00:46 [RUN 05208] G_OFF*: beam check
+2021 05/14 07:00:47 [RUN 05208] STOP  : beam check
+2021 05/14 07:00:54 [RUN 05209] START : beam check
+2021 05/14 07:01:04 [RUN 05209] G_ON  : beam check
+2021 05/14 07:02:21 [RUN 05209] G_OFF : beam check
+2021 05/14 07:02:34 [RUN 05209] G_OFF*: beam check
+2021 05/14 07:02:35 [RUN 05209] STOP  : beam check
+2021 05/14 07:02:57 [RUN 05210] START : Beam through p+0.5GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1679
+2021 05/14 07:03:06 [RUN 05210] G_ON  : Beam through p+0.5GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1679
+2021 05/14 07:11:41 [RUN 05210] G_OFF : Beam through p+0.5GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1679
+2021 05/14 07:11:54 [RUN 05210] G_OFF*: Beam through p+0.5GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1679
+2021 05/14 07:11:55 [RUN 05210] STOP  : Beam through p+0.5GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1679
+2021 05/14 07:14:55 [RUN 05211] START : beam check
+2021 05/14 07:15:04 [RUN 05211] G_ON  : beam check
+2021 05/14 07:26:27 [RUN 05211] G_OFF : beam check
+2021 05/14 07:26:38 [RUN 05211] G_OFF*: beam check
+2021 05/14 07:26:39 [RUN 05211] STOP  : beam check
+2021 05/14 07:26:58 [RUN 05212] START : Beam through pi+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1344
+2021 05/14 07:27:07 [RUN 05212] G_ON  : Beam through pi+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1344
+2021 05/14 07:36:39 [RUN 05212] G_OFF : Beam through pi+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1344
+2021 05/14 07:36:53 [RUN 05212] G_OFF*: Beam through pi+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1344
+2021 05/14 07:36:54 [RUN 05212] STOP  : Beam through pi+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1344
+2021 05/14 07:37:49 [RUN 05213] START : beam check
+2021 05/14 07:38:05 [RUN 05213] G_ON  : beam check
+2021 05/14 08:01:06 [RUN 05213] G_OFF : beam check
+2021 05/14 08:01:20 [RUN 05213] G_OFF*: beam check
+2021 05/14 08:01:21 [RUN 05213] STOP  : beam check
+2021 05/14 08:01:39 [RUN 05214] START : Beam through p+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1269
+2021 05/14 08:01:51 [RUN 05214] G_ON  : Beam through p+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1269
+2021 05/14 08:12:22 [RUN 05214] G_OFF : Beam through p+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1269
+2021 05/14 08:21:03 [RUN 05214] G_OFF*: Beam through p+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1269
+2021 05/14 08:21:04 [RUN 05214] STOP  : Beam through p+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1269
+2021 05/14 08:23:04 [RUN 05215] START : Beam through p+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1269
+2021 05/14 08:23:16 [RUN 05215] G_ON  : Beam through p+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1269
+2021 05/14 08:38:26 [RUN 05215] G_OFF : Beam through p+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1269
+2021 05/14 08:38:39 [RUN 05215] G_OFF*: Beam through p+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1269
+2021 05/14 08:38:40 [RUN 05215] STOP  : Beam through p+0.4GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=1269
+2021 05/14 08:44:24 [RUN 05216] START : beam check
+2021 05/14 08:45:00 [RUN 05216] G_ON  : beam check
+2021 05/14 09:01:03 [RUN 05216] G_OFF : beam check
+2021 05/14 09:02:15 [RUN 05216] G_OFF*: beam check
+2021 05/14 09:02:16 [RUN 05216] STOP  : beam check
+2021 05/14 09:02:45 [RUN 05217] START : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:02:54 [RUN 05217] G_ON  : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:05:43 [RUN 05217] G_OFF*: Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:05:44 [RUN 05217] STOP  : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:06:07 [RUN 05217] G_OFF*: Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:06:08 [RUN 05217] STOP  : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:07:12 [RUN 05218] START : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:07:35 [RUN 05218] G_OFF*: Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:07:36 [RUN 05218] STOP  : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:08:41 [RUN 05219] START : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:08:55 [RUN 05219] G_ON  : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:17:53 [RUN 05219] G_OFF*: Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:17:54 [RUN 05219] STOP  : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:18:02 [RUN 05220] START : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:18:14 [RUN 05220] G_ON  : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:29:57 [RUN 05220] G_OFF : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:30:10 [RUN 05220] G_OFF*: Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:30:11 [RUN 05220] STOP  : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:30:16 [RUN 05221] START : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:30:26 [RUN 05221] G_ON  : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:39:06 [RUN 05221] G_OFF : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:39:21 [RUN 05221] G_OFF*: Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:39:22 [RUN 05221] STOP  : Beam through pi-0.8GeV/c (Vgem=316, Vgate=70, newth=8.0) D4=-2815
+2021 05/14 09:39:39 [RUN 05222] START : pedestal run
+2021 05/14 09:39:48 [RUN 05222] G_ON  : pedestal run
+2021 05/14 09:41:35 [RUN 05222] G_OFF : pedestal run
+2021 05/14 09:41:52 [RUN 05222] G_OFF*: pedestal run
+2021 05/14 09:41:53 [RUN 05222] STOP  : pedestal run
+2021 05/14 09:44:42 [RUN 05223] START : TOFxWC cosmic
+2021 05/14 09:44:51 [RUN 05223] G_ON  : TOFxWC cosmic
+2021 05/14 09:45:43 [RUN 05223] G_OFF : TOFxWC cosmic
+2021 05/14 09:45:56 [RUN 05223] G_OFF*: TOFxWC cosmic
+2021 05/14 09:45:57 [RUN 05223] STOP  : TOFxWC cosmic
+2021 05/14 09:47:16 [RUN 05224] START : TOFxWC cosmic
+2021 05/14 09:47:24 [RUN 05224] G_ON  : TOFxWC cosmic
+2021 05/14 10:08:51 [RUN 05224] G_OFF : TOFxWC cosmic
+2021 05/14 10:08:55 [RUN 05224] G_ON  : TOFxWC cosmic
+2021 05/14 10:12:29 [RUN 05224] G_OFF*: TOFxWC cosmic
+2021 05/14 10:12:30 [RUN 05224] STOP  : TOFxWC cosmic
+2021 05/14 10:45:26 [RUN 05225] START : HTOF cosmic
+2021 05/14 10:45:35 [RUN 05225] G_ON  : HTOF cosmic
+2021 05/14 10:48:08 [RUN 05225] G_OFF : HTOF cosmic
+2021 05/14 10:48:44 [RUN 05225] G_OFF*: HTOF cosmic
+2021 05/14 10:48:45 [RUN 05225] STOP  : HTOF cosmic
+2021 05/14 10:57:08 [RUN 05226] START : HTOF cosmic
+2021 05/14 10:57:24 [RUN 05226] G_ON  : dummy
+2021 05/14 10:59:47 [RUN 05226] G_OFF : dummy
+2021 05/14 11:00:01 [RUN 05226] G_OFF*: dummy
+2021 05/14 11:00:02 [RUN 05226] STOP  : dummy
+2021 05/14 11:03:18 [RUN 05227] START : dummy
+2021 05/14 11:03:27 [RUN 05227] G_ON  : dummy
+2021 05/14 11:04:14 [RUN 05227] G_OFF : dummy
+2021 05/14 11:04:29 [RUN 05227] G_OFF*: dummy
+2021 05/14 11:04:30 [RUN 05227] STOP  : dummy
+2021 05/14 16:49:42 [RUN 05228] START : dummy
+2021 05/14 17:16:23 [RUN 05228] G_OFF*: dummy
+2021 05/14 17:16:24 [RUN 05228] STOP  : dummy
+2021 05/14 17:35:09 [RUN 05229] START : BVH check
+2021 05/14 17:36:00 [RUN 05229] G_ON  : BVH check
+2021 05/14 18:03:09 [RUN 05229] G_OFF : BVH check
+2021 05/14 18:06:35 [RUN 05229] G_OFF*: BVH check
+2021 05/14 18:06:36 [RUN 05229] STOP  : BVH check
+2021 05/14 18:13:22 [RUN 05230] START : BVH check
+2021 05/14 18:13:31 [RUN 05230] G_ON  : BVH check
+2021 05/14 18:49:56 [RUN 05230] G_OFF*: BVH check
+2021 05/14 18:49:57 [RUN 05230] STOP  : BVH check
+2021 05/14 19:20:14 [RUN 05231] START : BVH check
+2021 05/14 19:20:25 [RUN 05231] G_ON  : BVH check
+2021 05/14 19:20:36 [RUN 05231] G_OFF : BVH check
+2021 05/14 19:26:53 [RUN 05231] G_ON  : BVH check
+2021 05/14 19:30:36 [RUN 05231] G_OFF : BVH check
+2021 05/14 19:31:18 [RUN 05231] G_OFF*: BVH check
+2021 05/14 19:31:19 [RUN 05231] STOP  : BVH check
+2021 05/14 19:33:12 [RUN 05232] START : BVH check trig=BVG OR (Reserve2)
+2021 05/14 19:33:31 [RUN 05232] G_ON  : BVH check trig=BVG OR (Reserve2)
+2021 05/14 20:21:18 [RUN 05232] G_OFF : BVH check trig=BVG OR (Reserve2)
+2021 05/14 20:21:34 [RUN 05232] G_OFF*: BVH check trig=BVG OR (Reserve2)
+2021 05/14 20:21:35 [RUN 05232] STOP  : BVH check trig=BVG OR (Reserve2)
+2021 05/15 01:21:13 [RUN 05233] START : dummy
+2021 05/15 01:21:21 [RUN 05233] G_ON  : dummy
+2021 05/15 03:25:27 [RUN 05233] G_OFF : dummy
+2021 05/15 03:25:38 [RUN 05233] G_OFF*: dummy
+2021 05/15 03:25:39 [RUN 05233] STOP  : dummy
+2021 05/15 13:44:19 [RUN 05234] START : TOFxWC cosmic
+2021 05/15 13:44:29 [RUN 05234] G_ON  : TOFxWC cosmic
+2021 05/15 14:22:33 [RUN 05234] G_OFF*: TOFxWC cosmic
+2021 05/15 14:22:34 [RUN 05234] STOP  : TOFxWC cosmic
