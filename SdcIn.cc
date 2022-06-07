@@ -2,7 +2,6 @@
 ChamberManager c;
 double sig = 1;
 void SdcIn(){
-//	c.LoadFile("rootfiles/CH2/SdcInTracking05453.root");
 	c.LoadFile("rootfiles/Callibration/AllSdcInTracking.root");
 }
 void Sdc1Drift(){
