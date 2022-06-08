@@ -57,7 +57,12 @@ void BcDrift(){
 		vector<double> par;
 		cout<<"Getting Parameters"<<endl;
 		for(int j=0;j<6;j++){
-			par.push_back(f_pol5->GetParameter(j));
+			if(j==0){
+				par.push_back(-f_pol5->GetParameter(j));
+			}
+			else{
+				par.push_back(f_pol5->GetParameter(j));
+			}
 		}
 		c.WriteDriftParameter(112+i,0,6,6,par);
 		cout<<i<<" End!"<<endl;

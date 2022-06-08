@@ -1,4 +1,5 @@
 #include "FileManager.hh"
+#include "Utils.hh"
 static const int bftnseg=160;
 static const int schnseg=64;
 class EasirocManager: public FileManager{

@@ -4,4 +4,3 @@ double pKurama[25];double qKurama[25];double xkp[25];double ykp[25];double ukp[2
 
 double chisqrK18[25];
 double chisqrKurama[25];
-

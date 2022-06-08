@@ -1,8 +1,12 @@
+#ifndef KKManager_h 
+#define KKManager_h 1
 #include "ToFManager.hh"
-#include "KKBranch.hh"
 #include "KKTrack.hh"
 double Beampx,Beampy,Beampz,Kmpx,Kmpy,Kmpz,Kppx,Kppy,Kppz,Phipx,Phipy,Phipz,MissMassPhi,MissMassLambda;
-
+double Gaussianf(double* x,double* par){
+	double amp1 = par[0],mean1=par[1],width1=par[2];
+	return Gaussian(x[0],mean1,width1,amp1);
+}
 double GausWithBG(double* x, double* par){
 	double amp1 = par[0],mean1=par[1],width1=par[2];
 	double amp2 = par[3],mean2=par[4],width2=par[5];
@@ -10,7 +14,7 @@ double GausWithBG(double* x, double* par){
 	double bg = Gaussian(x[0],mean2,width2,amp2);
 	return signal + bg;
 }
-TF1* GausWithBGf = new TF1("GausWithBGf","GausWithBG",2000,0,6);
+TF1* GausWithBGf = new TF1("GausWithBGf","GausWithBG",1,1.5,6);
 
 
 double GausWithPol(double* x, double* par){
@@ -45,28 +49,43 @@ class KKManager: public ToFManager{
 	public: 
 		KKManager(){}
 		void LoadKK();
-		TH1D* XiMinusFit(double& m, double& sig);			
-		TH1D* XiStarFit(double& m, double& sig);			
+		TH1D* XiMinusFit(double* par);			
+		TH1D* XiStarFit(double* par);			
 };
 
-TH1D* KKManager::XiMinusFit(double& m, double& sig){
+TH1D* KKManager::XiMinusFit(double* par){
 	TH1D* h = (TH1D*)GetHistogram(6315);
 	int peak =(int) h->GetMaximum();
 	GausWithBGf->SetRange(XiMinusMass-0.1,XiMinusMass+0.1);
-	GausWithBGf->SetParLimits(0,peak/3,peak);
-	GausWithBGf->SetParLimits(1,XiMinusMass-0.005,XiMinusMass+0.005);
+	GausWithBGf->SetParLimits(0,peak/2,peak);
+	GausWithBGf->SetParLimits(1,XiMinusMass-0.01,XiMinusMass+0.01);
 	GausWithBGf->SetParLimits(2,1e-2,1e-1);
 	GausWithBGf->SetParLimits(3,peak/10,peak/2);
 	GausWithBGf->SetParLimits(4,XiMinusMass-0.1,XiMinusMass+0.1);
-	GausWithBGf->SetParLimits(5,0.1,1);
-	h->Fit("GausWithBGf","R");
+	GausWithBGf->SetParLimits(5,0.01,0.3);
+	h->Fit("GausWithBGf","R0");
+	for(int i=0;i<6;++i){
+		par[i]=GausWithBGf->GetParameter(i);
+	}
 	
 	return (TH1D*)h;	
 }
 
 
-TH1D* KKManager::XiStarFit(double& m, double& sig){
+TH1D* KKManager::XiStarFit(double* par){
 	TH1D* h = (TH1D*)GetHistogram(6315);
+	int peak =(int) h->GetMaximum();
+	GausWithBGf->SetRange(XiStarMass-0.1,XiStarMass+0.1);
+	GausWithBGf->SetParLimits(0,peak/3,peak);
+	GausWithBGf->SetParLimits(1,XiStarMass-0.01,XiStarMass+0.01);
+	GausWithBGf->SetParLimits(2,1e-3,2e-2);
+	GausWithBGf->SetParLimits(3,peak/10,peak/2);
+	GausWithBGf->SetParLimits(4,XiStarMass-0.1,XiStarMass+0.1);
+	GausWithBGf->SetParLimits(5,1e-2,0.3);
+	h->Fit("GausWithBGf","R0");
+	for(int i=0;i<6;++i){
+		par[i]=GausWithBGf->GetParameter(i);
+	}
 	return (TH1D*)h;	
 }
 
@@ -97,3 +116,5 @@ void KKManager::LoadKK(){
 	DataChain->SetBranchAddress("inside",inside);
 
 }
+KKManager KM;
+#endif

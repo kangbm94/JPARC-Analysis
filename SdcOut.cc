@@ -30,7 +30,7 @@ void Sdc3Drift(){
 		t1=t1_list[i-1];
 		t2=t2_list[i-1];
 		double t0 = t0_list[i-1];
-		f_pol5->SetRange(t1,t2);
+		f_pol5->SetRange(t1+10,t2-10);
 		f_pol5->SetParLimits(0,t0,0);
 //		f_pol5->SetParameter(0,t0/2);
 		f_pol5->SetParameter(1,0.00);
@@ -47,7 +47,12 @@ void Sdc3Drift(){
 		vector<double> par;
 		cout<<"Getting Parameters"<<endl;
 		for(int j=0;j<6;j++){
-			par.push_back(f_pol5->GetParameter(j));
+			if(j==0){
+				par.push_back(-f_pol5->GetParameter(j));
+			}
+			else{
+				par.push_back(f_pol5->GetParameter(j));
+			}
 		}
 		c.WriteDriftParameter(30+i,0,6,6,par);
 		cout<<6+i<<" End!"<<endl;
@@ -64,7 +69,7 @@ void Sdc4Drift(){
 	TCanvas* c1 = new TCanvas("c1","c1",1200,600);
 	c1->Divide(2,2);
 	TF1* f_pol5 = new TF1("f_pol5",DriftCurve,t1,t2,6);
-	f_pol5->SetParLimits(1,-2e-2,3e-2);
+	f_pol5->SetParLimits(1,-2e-2,4e-2);
 	f_pol5->SetParLimits(2,-3e-3,3e-3);
 	f_pol5->SetParLimits(3,-3e-4,3e-4);
 	f_pol5->SetParLimits(4,-3e-6,3e-6);
@@ -79,12 +84,12 @@ void Sdc4Drift(){
 		t1=t1_list[i-1];
 		t2=t2_list[i-1];
 		double t0 = t0_list[i-1];
-		f_pol5->SetRange(t1,t2);
+		f_pol5->SetRange(t1+15,t2-20);
 		f_pol5->SetParLimits(0,t0,0);
 //		f_pol5->SetParameter(0,t0/2);
-		f_pol5->SetParameter(1,0.00);
-		f_pol5->SetParameter(2,0.00);
-		f_pol5->SetParameter(3,1e-5);
+		f_pol5->SetParameter(1,0.0);
+		f_pol5->SetParameter(2,0.002);
+		f_pol5->SetParameter(3,0);
 		f_pol5->SetParameter(4,0.0);
 		f_pol5->SetParameter(5,0.0);
 		f_pol5->SetLineWidth(5);
@@ -96,7 +101,12 @@ void Sdc4Drift(){
 		vector<double> par;
 		cout<<"Getting Parameters"<<endl;
 		for(int j=0;j<6;j++){
-			par.push_back(f_pol5->GetParameter(j));
+			if(j==0){
+				par.push_back(-f_pol5->GetParameter(j));
+			}
+			else{
+				par.push_back(f_pol5->GetParameter(j));
+			}
 		}
 		c.WriteDriftParameter(34+i,0,6,6,par);
 		cout<<6+i<<" End!"<<endl;

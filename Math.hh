@@ -55,6 +55,9 @@ double Gaussian(double x, double mean, double sigma, double peak){
 	double val = peak*exp(-par*par/2);
 	return val;
 }
+double fGaussian(double* x,double* p){
+	return Gaussian(x[0],p[0],p[1],p[2]);
+}
 double Step(double a){
 	if(a>0){
 		return 1;

@@ -46,7 +46,12 @@ void Sdc1Drift(){
 		vector<double> par;
 		cout<<"Getting Parameters"<<endl;
 		for(int j=0;j<6;j++){
-			par.push_back(f_pol5->GetParameter(j));
+			if(j==0){
+				par.push_back(-f_pol5->GetParameter(j));
+			}
+			else{
+				par.push_back(f_pol5->GetParameter(j));
+			}
 		}
 		c.WriteDriftParameter(i,0,6,6,par);
 		cout<<i<<" End!"<<endl;
@@ -95,7 +100,12 @@ void Sdc2Drift(){
 		vector<double> par;
 		cout<<"Getting Parameters"<<endl;
 		for(int j=0;j<6;j++){
-			par.push_back(f_pol5->GetParameter(j));
+			if(j==0){
+				par.push_back(-f_pol5->GetParameter(j));
+			}
+			else{
+				par.push_back(f_pol5->GetParameter(j));
+			}
 		}
 		c.WriteDriftParameter(6+i,0,6,6,par);
 		cout<<6+i<<" End!"<<endl;

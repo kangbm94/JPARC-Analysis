@@ -1,7 +1,7 @@
 #include "EasirocManager.hh"
 EasirocManager EM;
 void Easiroc(){
-	EM.LoadFile("./rootfiles/CH2/BigEasiroc.root");
+	EM.LoadFile("./rootfiles/Callibration/AllEasiroc.root");
 }
 void BftT0(){
 	double T_min=650,T_max=700;
@@ -11,27 +11,33 @@ void BftT0(){
 	vector<int> ID = {110,0,0,1,0};//Cid, PlID, SegID, AorT, UorD. For BFT, Set PlID instead of UorD
 	vector<double> Param = {0,-1};
 
-	EM.MakeParameterFile("./Params/BFT_T0.txt");
+	EM.MakeParameterFile("./param/BFT_T0.txt");
 	EM.WriteComment("#########################################################");
 	EM.WriteComment("# BFT-U Tdc                                             #");
 	EM.WriteComment("#########################################################");
 	ID[1]=0;
 	TCanvas* Canv_Up = new TCanvas("UP","UP",1600,1200);
 	Canv_Up->Divide(16,10);
-
+	TF1* fgaus = new TF1("fgaus","fGaussian",0,10,3);
 	for(int i=0;i<bftnseg;i++){
 		ID[2]=i;
 		h[i]= (TH1*)EM.DrawBftTDC(0,i+1);
 		h[i]->SetAxisRange(	T_min,T_max);
 		double PeakPosition = h[i]->GetBinCenter(h[i]->GetMaximumBin());
 		double PeakHeight = h[i]->GetMaximum();
+		fgaus->SetRange(PeakPosition-3,PeakPosition+3);
+		fgaus->SetParLimits(0,PeakPosition-1,PeakPosition+1);
+		fgaus->SetParLimits(1,0.1,2);
+		fgaus->SetParLimits(2,PeakHeight*0.8,PeakHeight*1.2);
+		Canv_Up->cd(i+1);
+		h[i]->Fit(fgaus,"R");
+		PeakPosition = fgaus->GetParameter(0);
 		Line[i]= new TLine(PeakPosition,0,PeakPosition,PeakHeight);
 		Line[i]->SetLineWidth(2);
 		Line[i]->SetLineColor(kBlue);
-		Canv_Up->cd(i+1);
 		Param[0]=PeakPosition;
 		EM.WriteParameter(ID,Param);
-		h[i]->Draw();
+//		h[i]->Draw();
 		Line[i]->Draw("SAME");
 	}
 	EM.WriteComment("#########################################################");
@@ -43,18 +49,23 @@ void BftT0(){
 	Canv_Dn->Divide(16,10);
 	for(int i=0;i<bftnseg;i++){
 		ID[2]=i;
-		cout<<i<<endl;
+		cout<<i+1<<endl;
 		h[bftnseg+i]= (TH1*)EM.DrawBftTDC(1,i+1);
 		h[bftnseg+i]->SetAxisRange(	T_min,T_max);
 		double PeakPosition = h[bftnseg+i]->GetBinCenter(h[bftnseg+i]->GetMaximumBin());
 		double PeakHeight = h[bftnseg+i]->GetMaximum();
+		fgaus->SetRange(PeakPosition-3,PeakPosition+3);
+		fgaus->SetParLimits(0,PeakPosition-1,PeakPosition+1);
+		fgaus->SetParLimits(1,0.1,2);
+		fgaus->SetParLimits(2,PeakHeight*0.8,PeakHeight*1.2);
+		Canv_Dn->cd(i+1);
+		h[bftnseg+i]->Fit(fgaus,"R");
+		PeakPosition = fgaus->GetParameter(0);
 		Line[bftnseg+i]= new TLine(PeakPosition,0,PeakPosition,PeakHeight);
 		Line[bftnseg+i]->SetLineWidth(2);
 		Line[bftnseg+i]->SetLineColor(kBlue);
-		Canv_Dn->cd(i+1);
 		Param[0]=PeakPosition;
 		EM.WriteParameter(ID,Param);
-		h[bftnseg+i]->Draw();
 		Line[bftnseg+i]->Draw("SAME");
 		cout<<i<<endl;
 	}
@@ -68,7 +79,7 @@ void BftSlew(){
 	TF1* func_quad = new TF1("func_quad","[0]*x*x+[1]*x+[2]",Tmin,Tmax);
 	func_quad->SetParLimits(0,0,5);
 
-	EM.MakeParameterFile("./Params/BFT_Slew.txt");
+	EM.MakeParameterFile("./param/BFT_Slew.txt");
 	EM.WriteComment("#########################################################");
 	EM.WriteComment("# BFT U                                                 #");
 	EM.WriteComment("#########################################################");
@@ -158,13 +169,14 @@ void SchT0(){
 	vector<int> ID = {6,0,0,1,0};//Cid, PlID, SegID, AorT, UorD. For BFT, Set PlID instead of UorD
 	vector<double> Param = {0,-1};
 
-	EM.MakeParameterFile("./Params/SCH_T0.txt");
+	EM.MakeParameterFile("./param/SCH_T0.txt");
 	EM.WriteComment("#########################################################");
 	EM.WriteComment("# SCH Tdc                                               #");
 	EM.WriteComment("#########################################################");
 	ID[1]=0;
 	TCanvas* Canv_Up = new TCanvas("UP","UP",1600,1200);
 	Canv_Up->Divide(8,8);
+	TF1* fgaus = new TF1("fgaus","fGaussian",0,10,3);
 
 	for(int i=0;i<schnseg;i++){
 		ID[2]=i;
@@ -172,13 +184,18 @@ void SchT0(){
 		h[i]->SetAxisRange(	T_min,T_max);
 		double PeakPosition = h[i]->GetBinCenter(h[i]->GetMaximumBin());
 		double PeakHeight = h[i]->GetMaximum();
+		fgaus->SetRange(PeakPosition-3,PeakPosition+3);
+		fgaus->SetParLimits(0,PeakPosition-1,PeakPosition+1);
+		fgaus->SetParLimits(1,0.1,2);
+		fgaus->SetParLimits(2,PeakHeight*0.8,PeakHeight*1.2);
+		Canv_Up->cd(i+1);
+		h[i]->Fit(fgaus,"R");
+		PeakPosition = fgaus->GetParameter(0);
+		Param[0]=PeakPosition;
 		Line[i]= new TLine(PeakPosition,0,PeakPosition,PeakHeight);
 		Line[i]->SetLineWidth(2);
 		Line[i]->SetLineColor(kBlue);
-		Canv_Up->cd(i+1);
-		Param[0]=PeakPosition;
 		EM.WriteParameter(ID,Param);
-		h[i]->Draw();
 		Line[i]->Draw("SAME");
 	}
 }
@@ -191,7 +208,7 @@ void SchSlew(){
 	TF1* func_quad = new TF1("func_quad","[0]*x*x+[1]*x+[2]",Tmin,Tmax);
 	func_quad->SetParLimits(0,0,5);
 
-	EM.MakeParameterFile("./Params/SCH_Slew.txt");
+	EM.MakeParameterFile("./param/SCH_Slew.txt");
 	EM.WriteComment("#########################################################");
 	EM.WriteComment("# SCH                                                   #");
 	EM.WriteComment("#########################################################");

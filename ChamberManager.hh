@@ -69,7 +69,7 @@ class ChamberManager: public FileManager{
 			int hn = layer*100+12;
 			return (TH1*)GetHistogram(hn);}
 		TH1* GetDTHisto(int layer){
-			int hn = layer*100+30;
+			int hn = layer*100+03;
 			return (TH1*)GetHistogram(hn);}
 		TGraphErrors* DLDTGraph(int layer, double MaxDL,double t1, double t2, bool track);
 		void FillToFHitDistribution(TString ht, int seg);
