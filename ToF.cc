@@ -162,7 +162,7 @@ void CallibrateProton(int conf = 0){
 void DoPHC(){
 	gStyle->SetOptFit(1111);
 	t.MakeParameterFile("./param/ToF_PHC.txt");
-	int particle = 0;//0->Pion,1->Kaon, 2->Proton
+	int particle = 2;//0->Pion,1->Kaon, 2->Proton
 	int mod = 1;
 	TCanvas* Canv_Up = new TCanvas("Canv_Up","Canv_Up",1500,700);
 	Canv_Up->Divide(6,4);

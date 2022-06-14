@@ -5,6 +5,10 @@ double KLowerThreshold= 0.15;
 double KUpperThreshold= 0.4;
 double PLowerThreshold= 0.5;
 double PUpperThreshold= 1.8;
+
+static double K18Cut=20;
+static double KuramaCut=200;
+
 class KKBeam{
 	protected:
 		double U_,V_,P_,ChiSqr_,Norm_;
@@ -28,28 +32,42 @@ class KKBeam{
 		bool CutChiSqr(double chi2){
 			return ChiSqr_<chi2;
 		}
+		double GetU(){
+			return U_;
+		}
+		double GetV(){
+			return U_;
+		}
+		double GetMomentum(){
+			return P_;
+		}
 };
 class KKScat: public KKBeam{
 	protected:
 		double M2_;
 		double Q_;
-		int Inside_;
 		//		double Vtxx_,Vtxy_,Vtxz_;
 	public:
 		KKScat(){};
-		KKScat(double u,double v,double p,double chisqr,double m2,double q,int inside):KKBeam(u,v,p,chisqr){
-			M2_=m2;Q_=q;Inside_=inside;
+		KKScat(double u,double v,double p,double chisqr,double m2,double q):KKBeam(u,v,p,chisqr){
+			M2_=m2;Q_=q;
 		};
 		int ParticleID();
 		double En(){
 			return sqrt(P_*P_+M2_);
 		}
-		double GetKaonE(){
-			return sqrt(P_*P_+KaonMass/1000*KaonMass/1000);
-		}
 		TLorentzVector FourVector(){
 			return TLorentzVector(Px(),Py(),Pz(),En());
 		};
+		bool CutM2(double m2_min,double m2_max){
+			return m2_min<M2_&&M2_<m2_max;
+		}
+		bool CutMomentum(double P_cut){
+			return P_<P_cut;
+		}
+		bool CutCharge(double Q){
+			return Q+Q_;//qKurama always should be 1 or -1;
+		}
 };
 int KKScat::ParticleID(){
 	int ID=0;
@@ -70,14 +88,246 @@ class KKTrack{
 	private:
 		KKBeam KM_;
 		KKScat KP_;
+		bool Inside_;
+		double MissMass_;
+		double Theta_;
 	public:
-		KKTrack(KKBeam km,KKScat kp){
-			KM_=km;KP_=kp;
+		KKTrack(KKBeam km,KKScat kp,bool inside,double missmass,double theta){
+			KM_=km;KP_=kp;Inside_=inside;MissMass_=missmass;Theta_=theta;
 		}
 		bool CutChiSqr(double k18cut,double kuramacut){
-			return KM_.CutChiSqr(k18cut)&&KP_.CutChiSqr(kuramacut);
+			return KM_.CutChiSqr(k18cut)&&KP_.CutChiSqr(kuramacut); };
+		bool CutVertex(){
+			return Inside_;
 		};
+		bool CutMomentum(double P_cut){
+			return KP_.CutMomentum(P_cut);
+		};
+		bool CutCharge(double Q){
+			return KP_.CutCharge(Q);
+		};
+		bool CutM2(double m2_min,double m2_max){
+			return KP_.CutM2(m2_min,m2_max);
+		}
+		double GetMissMass(){
+			return MissMass_;
+		}
+		double GetTheta(){
+			return Theta_;
+		}
+		double GetBeamMomentum(){
+			return KM_.GetMomentum();
+		}
+		double GetMomentum(){
+			return KP_.GetMomentum();
+		}
+		double GetUKP(){
+			return KP_.GetU();
+		}
+		double GetVKP(){
+			return KP_.GetV();
+		}
 };
+
+
+
+
+
+
+
+
+
+
+
+
+class KKEvent{
+	private:	
+		TChain* kkChain;
+		int nKm_,nKp_,nKK_,ntKurama_,ntK18_;
+		int inside_[25];
+		double pKurama_[25];double qKurama_[25];double xkp_[25];double ykp_[25];double ukp_[25];double vkp_[25];double pOrg_[25];double m2_[25];double pK18_[25];double utgtK18_[25];double vtgtK18_[25];double ukm_[25];double vkm_[25];double vtz_[25];double vtx_[25];double vty_[25];double MissMass_[25];double theta_[25];
+		double chisqrK18_[25];
+		double chisqrKurama_[25];
+		int nkk=0;
+
+	private:
+		int evt_num;
+		vector<KKTrack> Tracks;
+	public:
+		KKEvent(TChain* chain);
+		void LoadEvent(int event);
+		void Clear(){
+			Tracks.clear();nkk=0;
+		};
+		void CutChiSqr(double k18cut=K18Cut,double kuramacut=KuramaCut);
+		void CutVertex();	
+		void CutMomentum(double P_cut=1.4);	
+		void CutCharge(double Q=1);	
+		void CutM2(double m2_min = 0.15,double m2_max=0.4);	
+		int Getnkk(){
+			return nkk;
+		}
+		double GetMissMass(int ikk){
+			return Tracks[ikk].GetMissMass();
+		}
+		
+		double GetTheta(int ikk){
+			return Tracks[ikk].GetTheta();
+		}
+		double GetUKP(int ikk){
+			return Tracks[ikk].GetUKP();
+		}
+		double GetVKP(int ikk){
+			return Tracks[ikk].GetVKP();
+		}
+		double GetMomentum(int ikk){
+			return Tracks[ikk].GetMomentum();
+		}
+};
+
+void KKEvent::CutChiSqr(double k18cut=K18Cut,double kuramacut=KuramaCut){
+	vector<KKTrack> TrackCut;
+	int nkk_cut=0;
+	for(int ikk=0;ikk<nkk;++ikk){
+		KKTrack Track = Tracks[ikk];
+		if(Track.CutChiSqr(k18cut,kuramacut)){
+				TrackCut.push_back(Track);
+				nkk_cut++;
+		}
+	}
+	Tracks.clear();
+	for(int i=0;i<nkk_cut;++i){
+		Tracks.push_back(TrackCut[i]);
+	}
+	nkk=nkk_cut;
+}
+		
+void KKEvent::CutVertex(){	vector<KKTrack> TrackCut;
+	int nkk_cut=0;
+	for(int ikk=0;ikk<nkk;++ikk){
+		KKTrack Track = Tracks[ikk];
+		if(Track.CutVertex()){
+				TrackCut.push_back(Track);
+				nkk_cut++;
+		}
+	}
+	Tracks.clear();
+	for(int i=0;i<nkk_cut;++i){
+		Tracks.push_back(TrackCut[i]);
+	}
+	nkk=nkk_cut;
+}
+
+void KKEvent::CutMomentum(double P_cut=1.4){
+	vector<KKTrack> TrackCut;
+	int nkk_cut=0;
+	for(int ikk=0;ikk<nkk;++ikk){
+		KKTrack Track = Tracks[ikk];
+		if(Track.CutMomentum(P_cut)){
+				TrackCut.push_back(Track);
+				nkk_cut++;
+		}
+	}
+	Tracks.clear();
+	for(int i=0;i<nkk_cut;++i){
+		Tracks.push_back(TrackCut[i]);
+	}
+	nkk=nkk_cut;
+}
+void KKEvent::CutCharge(double Q=1){
+	vector<KKTrack> TrackCut;
+	int nkk_cut=0;
+	for(int ikk=0;ikk<nkk;++ikk){
+		KKTrack Track = Tracks[ikk];
+		if(Track.CutCharge(Q)){
+				TrackCut.push_back(Track);
+				nkk_cut++;
+		}
+	}
+	Tracks.clear();
+	for(int i=0;i<nkk_cut;++i){
+		Tracks.push_back(TrackCut[i]);
+	}
+	nkk=nkk_cut;
+}
+
+void KKEvent::CutM2(double m2_min = 0.15,double m2_max=0.4){
+	vector<KKTrack> TrackCut;
+	int nkk_cut=0;
+	for(int ikk=0;ikk<nkk;++ikk){
+		KKTrack Track = Tracks[ikk];
+		if(Track.CutM2(m2_min,m2_max)){
+				TrackCut.push_back(Track);
+				nkk_cut++;
+		}
+	}
+	Tracks.clear();
+	for(int i=0;i<nkk_cut;++i){
+		Tracks.push_back(TrackCut[i]);
+	}
+	nkk=nkk_cut;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+KKEvent::KKEvent(TChain* chain){
+	kkChain = chain ;
+	cout<<"Loading Chain..."<<endl;
+	kkChain->SetBranchAddress("ntK18",&ntK18_);
+	kkChain->SetBranchAddress("pK18",pK18_);
+	kkChain->SetBranchAddress("chisqrK18",chisqrK18_);
+	kkChain->SetBranchAddress("ntKurama",&ntKurama_);
+	kkChain->SetBranchAddress("chisqrKurama",chisqrKurama_);
+	kkChain->SetBranchAddress("nKm",&nKm_);
+	kkChain->SetBranchAddress("nKp",&nKp_);
+	kkChain->SetBranchAddress("nKK",&nKK_);
+	kkChain->SetBranchAddress("m2",m2_);
+	kkChain->SetBranchAddress("pKurama",pKurama_);
+	kkChain->SetBranchAddress("qKurama",qKurama_);
+	kkChain->SetBranchAddress("pOrg",pOrg_);
+	kkChain->SetBranchAddress("ukp",ukp_);
+	kkChain->SetBranchAddress("vkp",vkp_);
+	kkChain->SetBranchAddress("ukm",ukm_);
+	kkChain->SetBranchAddress("vkm",vkm_);
+	kkChain->SetBranchAddress("MissMass",MissMass_);
+	kkChain->SetBranchAddress("theta",theta_);
+	kkChain->SetBranchAddress("inside",inside_);
+}
+
+
+void KKEvent::LoadEvent(int event){
+	kkChain->GetEntry(event);
+	for(int ikp=0;ikp<nKp_;++ikp){
+		for(int ikm=0;ikm<nKm_;++ikm){
+			KKBeam Beam(ukm_[nkk],vkm_[nkk],pK18_[nkk],chisqrK18_[nkk]);
+			KKScat Scat(ukp_[ikp],vkp_[ikp],pKurama_[ikp],chisqrKurama_[ikp],m2_[ikp],qKurama_[ikp]);
+			KKTrack Track(Beam,Scat,inside_[nkk],MissMass_[nkk],theta_[nkk]);
+			Tracks.push_back(Track);
+			nkk++;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
 
 
 class Track{
@@ -184,95 +434,3 @@ int Track::ParticleID(){
 	}
 	return Q*ID;
 }
-
-
-
-
-
-
-
-
-int nKaon;
-double BeamPx[25];
-double BeamPy[25];
-double BeamPz[25];
-double BeamP[25];
-
-double KPx[25];
-double KPy[25];
-double KPz[25];
-double KP[25];
-double KM2[25];
-int KQ[25];
-
-
-
-class KKEvent{
-	private:	
-		TChain* kkChain;
-		int nKm_,nKp_,nKK_,ntKurama_,ntK18_;
-		int inside_[25];
-		double pKurama_[25];double qKurama_[25];double xkp_[25];double ykp_[25];double ukp_[25];double vkp_[25];double pOrg_[25];double m2_[25];double pK18_[25];double utgtK18_[25];double vtgtK18_[25];double ukm_[25];double vkm_[25];double vtz_[25];double vtx_[25];double vty_[25];
-		double chisqrK18_[25];
-		double chisqrKurama_[25];
-		int nkk=0;
-
-	private:
-		double K18Cut=20;
-		double KuramaCut=200;
-		int evt_num;
-		vector<KKTrack> Tracks;
-	public:
-		KKEvent(TChain* chain,int evt_num);
-		
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-KKEvent::KKEvent(TChain* chain,int evt_num){
-	kkChain = chain ;
-	kkChain->GetEntry(evt_num);
-	kkChain->SetBranchAddress("ntK18",&ntK18_);
-	kkChain->SetBranchAddress("pK18",pK18_);
-	kkChain->SetBranchAddress("chisqrK18",chisqrK18_);
-	kkChain->SetBranchAddress("ntKurama",&ntKurama_);
-	kkChain->SetBranchAddress("chisqrKurama",chisqrKurama_);
-	kkChain->SetBranchAddress("nKm",&nKm_);
-	kkChain->SetBranchAddress("nKp",&nKp_);
-	kkChain->SetBranchAddress("nKK",&nKK_);
-	kkChain->SetBranchAddress("m2",m2_);
-	kkChain->SetBranchAddress("pKurama",pKurama_);
-	kkChain->SetBranchAddress("qKurama",qKurama_);
-	kkChain->SetBranchAddress("pOrg",pOrg_);
-	kkChain->SetBranchAddress("ukp",ukp_);
-	kkChain->SetBranchAddress("vkp",vkp_);
-	kkChain->SetBranchAddress("ukm",ukm_);
-	kkChain->SetBranchAddress("vkm",vkm_);
-	kkChain->SetBranchAddress("inside",inside_);
-	for(int ikp=0;ikp<nKp_;++ikp){
-		for(int ikm=0;ikm<nKm_;++ikm){
-			KKBeam Beam(ukm_[nkk],vkm_[nkk],pK18_[nkk],chisqrK18_[nkk]);
-			KKScat Scat(ukp_[ikp],vkp_[ikp],pKurama_[ikp],chisqrKurama_[ikp],m2_[ikp],qKurama_[ikp],inside_[ikp]);
-			KKTrack Track(Beam,Scat);
-			Tracks.push_back(Track);
-			nkk++;
-		}
-	}
-}
-
-
-
-

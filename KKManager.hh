@@ -49,12 +49,14 @@ class KKManager: public ToFManager{
 	public: 
 		KKManager(){}
 		void LoadKK();
-		TH1D* XiMinusFit(double* par);			
-		TH1D* XiStarFit(double* par);			
+		TH1D* XiMinusFit(double* par,TH1D* hist = NULL);			
+		TH1D* XiStarFit(double* par,TH1D* hist = NULL);			
 };
 
-TH1D* KKManager::XiMinusFit(double* par){
-	TH1D* h = (TH1D*)GetHistogram(6315);
+TH1D* KKManager::XiMinusFit(double* par,TH1D* hist = NULL){
+	TH1D* h;
+	if(!hist)h= (TH1D*)GetHistogram(6315);
+	else h=hist;
 	int peak =(int) h->GetMaximum();
 	GausWithBGf->SetRange(XiMinusMass-0.1,XiMinusMass+0.1);
 	GausWithBGf->SetParLimits(0,peak/2,peak);
@@ -72,8 +74,10 @@ TH1D* KKManager::XiMinusFit(double* par){
 }
 
 
-TH1D* KKManager::XiStarFit(double* par){
-	TH1D* h = (TH1D*)GetHistogram(6315);
+TH1D* KKManager::XiStarFit(double* par,TH1D* hist = NULL){
+	TH1D* h;
+	if(!hist)h= (TH1D*)GetHistogram(6315);
+	else h=hist;
 	int peak =(int) h->GetMaximum();
 	GausWithBGf->SetRange(XiStarMass-0.1,XiStarMass+0.1);
 	GausWithBGf->SetParLimits(0,peak/3,peak);

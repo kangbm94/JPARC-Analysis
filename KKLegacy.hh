@@ -111,3 +111,229 @@ void DrawMass(){
 */
 
 }
+int nKaon;
+double BeamPx[25];
+double BeamPy[25];
+double BeamPz[25];
+double BeamP[25];
+
+double KPx[25];
+double KPy[25];
+double KPz[25];
+double KP[25];
+double KM2[25];
+int KQ[25];
+
+void GetPhi(){
+	TChain* chain = KM.GetPublicChain();
+	int ent = chain->GetEntries();
+	cout<<ent<<endl;
+	//	double p_cut=1.4;
+	double KaonM2 = (KaonMass*KaonMass)/1000/1000;
+	TCanvas* c1 = new TCanvas("c1","c1",1200,600);
+	c1->Divide(2,2);
+	TCanvas* c2 = new TCanvas("c2","c2",1200,600);
+	c2->Divide(2,2);
+
+	TFile* file = new TFile("KaonSorted.root","recreate");
+	TTree* tree = new TTree("tree","tree");
+
+
+	tree->Branch("nKaon",&nKaon,"nKaon/I");
+	tree->Branch("BeamPx",BeamPx,"Beampx[nKaon]/D");
+	tree->Branch("BeamPy",BeamPy,"Beampy[nKaon]/D");
+	tree->Branch("BeamPz",BeamPz,"Beampz[nKaon]/D");
+	tree->Branch("BeamP",BeamP,"Beampz[nKaon]/D");
+	tree->Branch("KPx",KPx,"KPx[nKaon]/D");
+	tree->Branch("KPy",KPy,"KPy[nKaon]/D");
+	tree->Branch("KPz",KPz,"KPz[nKaon]/D");
+	tree->Branch("KP",KP,"KP[nKaon]/D");
+	tree->Branch("KM2",KM2,"KM2[nKaon]/D");
+	tree->Branch("KQ",KQ,"KQ[nKaon]/I");
+
+	ent=ent;
+	TH2D* AllKaonPlot=new TH2D("Scat_AllKaons","Scat_AllKaons",100,-1,1,100,0,3);
+	TH2D* TwoKaonPlot=new TH2D("Scat_TwoKaons","Scat_TwoKaons",100,-1,1,100,0,3);
+	TH2D* KpTaggedPlot=new TH2D("KmScat_KpTagged","KmScat_KpTagged",100,-1,1,100,0,3);
+	TH2D* KmTaggedPlot=new TH2D("KpScat_KmTagged","KpScat_KmTagged",100,-1,1,100,0,3);
+	TH1D* PhiKPlot = new TH1D("Phi with Mk Fixed","Phi with Mk Fixed",100,0.95,1.35);
+	TH1D* PhiPlot = new TH1D("Phi with Mk Not Fixed","Phi with Mk Not Fixed",100,0.95,1.35);
+	bool flag[10];
+	int nTotalTracks=0;
+	int nTotalTracksChi2Cut=0;
+	int nTotalTracksInside=0;
+	int nDoubleKaons=0;
+	int nTotalKaons=0;
+	int nTotalKmKp=0;
+	int nThreeOrMoreKaons=0;
+	int nGoodKmKp=0;
+	int TotalKp=0;
+	int TotalKm=0;
+	for(int i=0;i<ent;++i){
+		Indicator(i,ent);
+		chain->GetEntry(i);
+
+		if(ntK18*ntKurama==0){
+			continue;
+		}
+		nKaon=0;
+		for(int ikk=0;ikk<25;ikk++){
+			BeamPx[ikk]=-9999;	
+			BeamPy[ikk]=-9999;	
+			BeamPz[ikk]=-9999;	
+			BeamP[ikk]=-9999;	
+			
+			KPx[ikk]=-9999;	
+			KPy[ikk]=-9999;	
+			KPz[ikk]=-9999;	
+			KP[ikk]=-9999;
+			KM2[ikk]=-9999;
+			KQ[ikk]=-9999;
+		} //		cout<<"Will Sort: "<<i<<endl; vector<Track> Tracks; Tracks.clear();
+		vector<Track> Tracks;
+		Tracks.clear();
+		vector<Track> TracksChi2Cut;
+		TracksChi2Cut.clear();
+		vector<Track> TracksInside;
+		TracksInside.clear();
+		vector<Track> KaonTracks;
+		KaonTracks.clear();
+		int nkk=0;
+		int nkkChi2Cut=0;
+		int nkkInside=0;
+		int nKaons=0;
+
+		double K18Cut=20;
+		double KuramaCut=200;
+		for(int ikp=0;ikp<nKp;ikp++){
+			for(int ikm=0;ikm<nKm;ikm++){
+				int ikmkp=ikm+ikp*nKm;
+				Track KKTrack(m2[ikp],pKurama[ikp],qKurama[ikp],ukp[ikmkp],vkp[ikmkp],inside[ikmkp],chisqrK18[ikm],chisqrKurama[ikp]);
+				KKTrack.SetBeam(ukm[ikmkp],vkm[ikmkp],pK18[ikm]);
+				Tracks.push_back(KKTrack);
+			}
+		}
+		nkk=Tracks.size();
+		nTotalTracks+=Tracks.size();
+		bool inside_flag = false;
+		for(int ikk=0;ikk<nkk;++ikk){
+			if(Tracks[ikk].CutChiSqr(K18Cut,KuramaCut)){
+				TracksChi2Cut.push_back(Tracks[ikk]);
+				if(Tracks[ikk].IsInside()==1){
+					inside_flag = true;
+					if(Tracks[ikk].GetMomentum()<1.4) TracksInside.push_back(Tracks[ikk]);
+				}
+			}
+			if(Tracks[ikk].CutChiSqr(K18Cut,KuramaCut)){
+				if(Tracks[ikk].GetMomentum()<1.4&&inside_flag){
+//					TracksInside.push_back(Tracks[ikk]);
+				}
+			}
+		}
+		nkkChi2Cut = TracksChi2Cut.size();
+		nTotalTracksChi2Cut+=nkkChi2Cut;
+		nkkInside = TracksInside.size();
+		nTotalTracksInside+=nkkInside;
+
+		for(int ikk=0;ikk<nkkInside;ikk++){
+			if(abs(TracksInside[ikk].ParticleID())==KaonID){
+				KaonTracks.push_back(TracksInside[ikk]);
+			}
+		}
+		nKaons=KaonTracks.size();
+		nTotalKaons+=nKaons;
+		if(nKaons>2){
+			nThreeOrMoreKaons++;
+		}
+		if(nKaons==2){
+			nDoubleKaons++;
+		}
+		int ChargeSum = 0;
+		for(int ikk=0;ikk<nKaons;++ikk){
+			ChargeSum+=KaonTracks[ikk].GetCharge();
+		}
+		if(abs(ChargeSum)!=nKaons&&nKaons==2){
+			nTotalKmKp++;
+			double psum=KaonTracks[0].GetMomentum()+KaonTracks[1].GetMomentum();
+			double psumx=KaonTracks[0].GetPx()+KaonTracks[1].GetPx();	
+			double psumy=KaonTracks[0].GetPy()+KaonTracks[1].GetPy();	
+			double psumz=KaonTracks[0].GetPz()+KaonTracks[1].GetPz();	
+			double esumk = KaonTracks[0].GetKaonE()+KaonTracks[1].GetKaonE();	
+			double esum = KaonTracks[0].GetE()+KaonTracks[1].GetE();	
+			double psumMag = sqrt(psumx*psumx+psumy*psumy+psumz*psumz);
+			double mphik = sqrt(esumk*esumk-psumMag);
+			double mphi = sqrt(esum*esum-psumMag);
+				nGoodKmKp++;	
+				cout<<"PhiKMass : "<<mphik<<endl;
+				cout<<"PhiMass : "<<mphi<<endl;
+				PhiKPlot->Fill(mphik);
+				PhiPlot->Fill(mphi);
+		}
+
+		for(int i=0;i<nKaons;i++){
+			AllKaonPlot->Fill(KaonTracks[i].GetQM2(),KaonTracks[i].GetMomentum());
+			if(nKaons==2){
+				TwoKaonPlot->Fill(KaonTracks[i].GetQM2(),KaonTracks[i].GetMomentum());
+			}
+			if(KaonTracks[i].ParticleID()==KaonID&&KaonTracks[i].GetMomentum()<1.4){
+				TotalKp++;
+			}
+			if(KaonTracks[i].ParticleID()==-KaonID&&KaonTracks[i].GetMomentum()<1.4){
+				TotalKm++;
+			}
+		}
+		if(nKaons==2){
+			if(KaonTracks[0].ParticleID()>0){
+				KpTaggedPlot->Fill(KaonTracks[1].GetQM2(),KaonTracks[1].GetMomentum());
+			}
+			else{
+				KmTaggedPlot->Fill(KaonTracks[1].GetQM2(),KaonTracks[1].GetMomentum());
+			}
+			if(KaonTracks[1].ParticleID()>0){
+				KpTaggedPlot->Fill(KaonTracks[0].GetQM2(),KaonTracks[0].GetMomentum());
+			}
+			else{
+				KmTaggedPlot->Fill(KaonTracks[0].GetQM2(),KaonTracks[0].GetMomentum());
+			}
+
+		}
+		nKaon=nKaons;
+		for(int ikk=0;ikk<nKaon;ikk++){
+			Track Kaon = KaonTracks[ikk];
+			BeamPx[ikk]=Kaon.GetBeamPx();
+			BeamPy[ikk]=Kaon.GetBeamPy();
+			BeamPz[ikk]=Kaon.GetBeamPz();
+			BeamP[ikk]=Kaon.GetBeamMomentum();
+			
+			KPx[ikk]=Kaon.GetPx();
+			KPy[ikk]=Kaon.GetPy();
+			KPz[ikk]=Kaon.GetPz();
+			KP[ikk]=Kaon.GetMomentum();
+			KM2[ikk]=Kaon.GetM2();
+			KQ[ikk]=Kaon.GetCharge();
+		}
+		tree->Fill();
+	}
+	file->Write();
+	cout<<"Total Tracks: "<<nTotalTracks<<endl;
+	cout<<"Total Tracks From Vertex: "<<nTotalTracksInside<<endl;
+	cout<<"Total Kaons: "<<nTotalKaons<<endl;
+	cout<<"Total MultiKaons: "<<nThreeOrMoreKaons<<endl;
+	cout<<"Total DoubleKaons: "<<nDoubleKaons<<endl;
+	cout<<"Total KmKps "<<nTotalKmKp<<endl;
+	cout<<"Total K+s "<<TotalKp<<endl;
+	cout<<"Total K-s "<<TotalKm<<endl;
+	cout<<"Total Good KmKps "<<nGoodKmKp<<endl;
+	c1->cd(1);
+	AllKaonPlot->Draw("colz");
+	c1->cd(2);
+	TwoKaonPlot->Draw("colz");
+	c1->cd(3);
+	KpTaggedPlot->Draw("colz");
+	c1->cd(4);
+	KmTaggedPlot->Draw("colz");
+	c2->cd(1);
+	PhiKPlot->Draw("colz");
+	c2->cd(2);
+	PhiPlot->Draw("colz");
+}
