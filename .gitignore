@@ -1,5 +1,6 @@
 *.root
 *.swp
+*.root*
 Files/*
 Shift/*
 *.pdf
