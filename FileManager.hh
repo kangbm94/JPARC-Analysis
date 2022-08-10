@@ -2,8 +2,8 @@ double XiMinusMass = 1.32171, XiMinusWidth = 1,XiStarMass = 1.530,XiStarWidth = 
 
 class FileManager{
 	private:
-		TFile* DataFile;
 	protected:
+		TFile* DataFile;
 		fstream ParameterFile;
 		fstream OldParameterFile;
 		TChain* DataChain;
@@ -14,6 +14,7 @@ class FileManager{
 
 	public:
 		FileManager(){}
+		void WriteTag(TString title, TString comment);
 		void LoadFile(TString FileName){DataFile = new TFile(FileName,"READ");}
 		void LoadChain(TString ChainName){DataChain = (TChain*)DataFile->Get(ChainName);}
 		void LoadParameterFile(TString FileName){OldParameterFile.open(FileName,fstream::in);}
@@ -56,6 +57,10 @@ void FileManager::WriteParameter(vector<int> ID,vector<double> Param){
 	ParameterFile<<Param[Param.size()-1]<<endl;
 }
 
+void FileManager::WriteTag(TString title, TString comment){
+	auto tag = new TNamed(title.Data(),comment.Data());
+	tag->Write();
+};
 /*
 void FileManager::LoadParamMap(TString FileName){
 	ifstream ParamFile(FileName);

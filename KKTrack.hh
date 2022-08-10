@@ -62,8 +62,14 @@ class KKScat: public KKBeam{
 		bool CutM2(double m2_min,double m2_max){
 			return m2_min<M2_&&M2_<m2_max;
 		}
+		double GetM2(){
+			return M2_;
+		}
+		double GetCharge(){
+			return Q_;
+		}
 		bool CutMomentum(double P_cut){
-			return P_<P_cut;
+			return P_>P_cut;
 		}
 		bool CutCharge(double Q){
 			return Q+Q_;//qKurama always should be 1 or -1;
@@ -120,6 +126,12 @@ class KKTrack{
 		}
 		double GetMomentum(){
 			return KP_.GetMomentum();
+		}
+		double GetCharge(){
+			return KP_.GetCharge();
+		}
+		double GetM2(){
+			return KP_.GetM2();
 		}
 		double GetUKP(){
 			return KP_.GetU();
@@ -182,6 +194,12 @@ class KKEvent{
 		}
 		double GetMomentum(int ikk){
 			return Tracks[ikk].GetMomentum();
+		}
+		double GetM2(int ikk){
+			return Tracks[ikk].GetM2();
+		}
+		double GetCharge(int ikk){
+			return Tracks[ikk].GetCharge();
 		}
 };
 

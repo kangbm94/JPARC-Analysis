@@ -2,11 +2,11 @@
 #include "KKLegacy.hh"
 void KKAna(){
 //		KM.LoadFile("./rootfiles/CH2/AllKKAna.root");
-		KM.LoadFile("./rootfiles/Production/AllKKAna.root");
+//		KM.LoadFile("./rootfiles/Production/AllKKAna.root");
 //	KM.LoadFile("./rootfiles/CH2/DstKKAna05641.root");
 	//		KM.LoadFile("../Other/E07_data/DstKKAna_CH2_Phase2.root");
 	//	KM.LoadFile("~/WS_data/ch2target/run05666_KKAnaTest.root");
-	KM.LoadKK();
+//	KM.LoadKK();
 }
 
 
@@ -53,7 +53,11 @@ void CountKPlus(){
 
 void CountXi(double* par_,bool drawing){
 	double par[6];
-	TH1D* h = KM.XiMinusFit(par);
+	TFile* file = new TFile("AllKPTagged.root","read");
+	TTree* tree = (TTree*)file->Get("tree");
+	TH1D* h_xi = new TH1D("MissMass","MissMass",200,1,2);
+	tree->Draw("XiM2>>MissMass","");
+	TH1D* h = KM.XiMinusFit(par,h_xi);
 //	int nbin = h->GetXaxis()->GetNbinsX();
 	int nbin = h->GetNbinsX();
 	cout<<nbin<<endl;
@@ -89,7 +93,11 @@ void CountXi(){
 }
 void CountXiStar(double* par_,bool drawing){
 	double par[6];
-	TH1D* h = KM.XiStarFit(par);
+	TFile* file = new TFile("AllKPTagged.root","read");
+	TTree* tree = (TTree*)file->Get("tree");
+	TH1D* h_xi = new TH1D("MissMass","MissMass",200,1,2);
+	tree->Draw("XiM2>>MissMass","");
+	TH1D* h = KM.XiStarFit(par,h_xi);
 //	int nbin = h->GetXaxis()->GetNbinsX();
 	int nbin = h->GetNbinsX();
 	cout<<nbin<<endl;
@@ -124,19 +132,81 @@ void CountXiStar(){
 	CountXiStar(par,draw);
 }
 
+void DrawPred(int runnum){
+	TString datafile,predfile;
+	datafile = Form("./rootfiles/CH2/DstKKAna0%d.root",runnum);
+	predfile = Form("PredictedDataReal0%d.root",runnum);
+	TFile* prf = new TFile(predfile,"read");
+	TTree* tree = (TTree*)prf->Get("tree");
+	int pred,evnum;
+	tree->SetBranchAddress("evnum",&evnum);
+	tree->SetBranchAddress("pred",&pred);
+	KM.LoadFile(datafile);
+	KM.LoadKK();
+	TChain* chain = KM.GetPublicChain();
+	KKEvent Event(chain);
+	int ent = chain->GetEntries();
+	TH2D* HistMQ = new TH2D("HistMQ","HistMQ",300,-1,2,100,0,2);
+	TH1D* HistMM = new TH1D("HistMM","HistMM",400,0,2);
+	TCanvas* c1 = new TCanvas("c1","c1",1200,600);	
+	c1->Divide(2,1);
+	for(int i=0;i<ent;++i){	
+		Event.LoadEvent(i);
+		tree->GetEntry(i);	
+		if(i!=evnum){
+			Event.Clear();
+			continue;
+		}
+		if(pred==0){
+			Event.Clear();
+			continue;
+		}
+		Event.CutChiSqr();	
+		Event.CutVertex();	
+		Event.CutMomentum(1.1);	
+		Event.CutCharge(-1);	
+//		Event.CutM2();	
+//		Event.CutM2(0.0,0.5);	
+//		Event.CutM2(0,0.12);	
+		for(int ikk=0;ikk<Event.Getnkk();++ikk){
+			double p = Event.GetMomentum(ikk);	
+			double q = Event.GetCharge(ikk);	
+			double mm = Event.GetMissMass(ikk);	
+			double m2 = Event.GetM2(ikk);	
+			HistMQ->Fill(sqrt(m2)/q,p);	
+			HistMM->Fill(mm);	
+		}
+		Event.Clear();
+	}
+	c1->cd(1);
+	HistMQ->Draw("colz");
+	c1->cd(2);
+	HistMM->Draw();
+}
 
-void GetXiSpectra(){
+
+void GetXiSpectra(int runnum){
+	TString infile,outfile;
+	if(runnum==0){
+		infile= "./rootfiles/CH2/AllKKAna.root";
+		outfile= "./AllKPTagged.root";
+	}
+	else{
+		infile= "./rootfiles/CH2/DstKKAna0"+to_string(runnum)+".root";
+		outfile= "./KPTagged0"+to_string(runnum)+".root";
+	}
+	KM.LoadFile(infile);
+	KM.LoadKK();
 	TChain* chain = KM.GetPublicChain();
 	KKEvent Event(chain);
 	
 	int ent = chain->GetEntries();
-//	cout<<ent<<endl;
 	int cnt =0;	
 	TH1D* h = new TH1D("MissMass","MissMass",200,1,2);
 	int XiEv;
 	double XiM2,XiP,XiU,XiV,XiTheta;
-	
-	TFile* file = new TFile("Xi_CH2.root","RECREATE");
+
+	TFile* file = new TFile(outfile,"RECREATE");
 	TTree* tree = new TTree("tree","tree");
 	tree->Branch("XiEv",&XiEv,"XiEv/I");	
 	tree->Branch("XiM2",&XiM2,"XiM2/D");	
