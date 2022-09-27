@@ -1,6 +1,6 @@
 #include "Utils.hh"
-#include "ParLimits.hh"
 #include "FileManager.hh"
+#include "ChamberTrack.hh"
 static const int BcNW = 64;
 static const int Sdc1NW = 64;
 static const int Sdc2XNW = 70;
@@ -8,7 +8,7 @@ static const int Sdc2YNW = 40;
 static const int Sdc3NW = 128;
 static const int Sdc4XNW = 96;
 static const int Sdc4YNW = 64;
-
+static const int Maxnt = 10;
 static const double BcDL = 1.5;
 static const double Sdc1DL = 3;
 static const double Sdc2DL = 5;
@@ -40,12 +40,20 @@ TString BcComments[12] = {"### BC3-X1","### BC3-X2", "### BC3-U1", "### BC3-U2",
 
 
 class ChamberManager: public FileManager{
+	private:
+		int ntrack;
+		double x0[Maxnt],y0[Maxnt],u0[Maxnt],v0[Maxnt];
+		double chisqr[Maxnt];
 	public:
 		ChamberManager(){}
 	
-		void LoadBcOut(){LoadChain("bcout");}
+		void LoadBcOut();
 		void LoadSdcIn(){LoadChain("sdcin");}
 		void LoadSdcOut(){LoadChain("sdcout");}
+		int GetEntries(){
+			return DataChain->GetEntries();
+		}
+
 
 
 		void LoadDriftParameter(string filename,int layer, double* p);
@@ -74,6 +82,13 @@ class ChamberManager: public FileManager{
 		TGraphErrors* DLDTGraph(int layer, double MaxDL,double t1, double t2, bool track);
 		void FillToFHitDistribution(TString ht, int seg);
 		void WriteDriftParameter(int DetID, int WireID, int Type, int Npar, vector<double> par);
+
+
+		Track GetTrack(int it){
+			return Track(x0[it],y0[it],u0[it],v0[it]);
+		}
+
+
 };
 void ChamberManager:: WriteDriftParameter(int DetID, int WireID, int Type, int Npar, vector<double> par){
 	vector<int> ID = {DetID,WireID,Type,Npar};
@@ -122,6 +137,16 @@ TH1* ChamberManager::GetTDCHisto(int layer, int wire){
 	int peak = h->GetMaximum();
 	if(peak<200) h->Rebin(2);
 	return h;
+}
+		
+void ChamberManager::LoadBcOut(){
+	LoadChain("bcout");
+	DataChain->SetBranchAddress("ntrack",&ntrack);
+	DataChain->SetBranchAddress("chisqr",chisqr);
+	DataChain->SetBranchAddress("x0",x0);
+	DataChain->SetBranchAddress("y0",y0);
+	DataChain->SetBranchAddress("u0",u0);
+	DataChain->SetBranchAddress("v0",v0);
 }
 
 TGraphErrors* ChamberManager::DLDTGraph(int layer,double MaxDL, double t1,double t2, bool track){

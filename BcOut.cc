@@ -69,3 +69,43 @@ void BcDrift(){
 	}
 	fl->Save();
 }
+void Compare(){
+	TString base_dir = "./rootfiles/Defocus/old/";
+	int runnum = 5754;
+	ChamberManager my;
+	ChamberManager ws;
+	my.LoadFile(base_dir+Form("run0%d_BcOutTracking.root",runnum));
+	my.LoadBcOut();
+	ws.LoadFile(base_dir+Form("run0%d_BcOutTrackingWs.root",runnum));
+	ws.LoadBcOut();
+	int ent = my.GetEntries();
+	TH2D* histX = new TH2D("x_dif","x_dif",40,-250,250,100,-5,5);
+	TH2D* histY = new TH2D("y_dif","y_dif",40,-250,250,100,-5,5);
+	for(int i=0;i<ent;++i){
+		my.GetEvent(i);
+		ws.GetEvent(i);
+		auto myTrack = my.GetTrack(0);
+		auto wsTrack = ws.GetTrack(0);
+		if(i%10000==0){
+			cout<<i<<" th"<<endl;
+		}
+		for(int j=0;j<40;++j){
+			double z = -250+j*(500./40.);
+			TVector2 mypos = myTrack.GetPosition(z);
+			TVector2 wspos = wsTrack.GetPosition(z);
+			TVector2 dif = mypos-wspos;
+			double x = dif.X(),y=dif.Y();
+			histX->Fill(z,x);
+			histY->Fill(z,y);
+		}
+	}
+	TCanvas* c1 = new TCanvas("c1","c1",1200,600);
+	c1->Divide(2,1);
+	c1->cd(1);
+	histX->Draw("colz");
+	c1->cd(2);
+	histY->Draw("colz");
+
+
+
+}

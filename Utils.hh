@@ -1,4 +1,7 @@
 #include "Math.hh"
+#ifndef Utils_h
+#define Utils_h
+const double K18HS = 1318.9;
 void Indicator(int i, int ent){
 	if(i>ent){
 		double tmp = ent;
@@ -189,3 +192,4 @@ int RebinHist(TH1* hist){
 		return 1;
 	}
 }
+#endif

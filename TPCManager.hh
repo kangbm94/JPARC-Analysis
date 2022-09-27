@@ -51,6 +51,11 @@ class TPCManager:public FileManager{
 		int nhittpc; double htofua[34];
 		int gp = 0;
 		int gpb = 0;
+		int ntBcOut=0;
+		vector<double>x0BcOut;
+		vector<double>y0BcOut;
+		vector<double>u0BcOut;
+		vector<double>v0BcOut;
 	public:
 		TPCManager(){};
 		virtual void LoadFile(TString FileName){ DataFile = new TFile(FileName,"READ");

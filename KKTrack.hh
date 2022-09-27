@@ -1,5 +1,7 @@
 #include "PhysicalConstants.hh"
 #include "KKBranch.hh"
+#ifndef KKTrack_hh
+#define KKTrack_hh
 double PiUpperThreshold=0.12;
 double KLowerThreshold= 0.15;
 double KUpperThreshold= 0.4;
@@ -452,3 +454,4 @@ int Track::ParticleID(){
 	}
 	return Q*ID;
 }
+#endif

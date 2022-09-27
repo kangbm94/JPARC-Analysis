@@ -1,5 +1,4 @@
 double XiMinusMass = 1.32171, XiMinusWidth = 1,XiStarMass = 1.530,XiStarWidth = 0.0099;
-
 class FileManager{
 	private:
 	protected:
@@ -14,6 +13,7 @@ class FileManager{
 
 	public:
 		FileManager(){}
+		void GetEvent(int i){DataChain->GetEntry(i);}
 		void WriteTag(TString title, TString comment);
 		void LoadFile(TString FileName){DataFile = new TFile(FileName,"READ");}
 		void LoadChain(TString ChainName){DataChain = (TChain*)DataFile->Get(ChainName);}
