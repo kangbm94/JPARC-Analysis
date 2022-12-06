@@ -71,7 +71,7 @@ class KKScat: public KKBeam{
 			return Q_;
 		}
 		bool CutMomentum(double P_cut){
-			return P_>P_cut;
+			return P_<P_cut;// and 1.1<P_;
 		}
 		bool CutCharge(double Q){
 			return Q+Q_;//qKurama always should be 1 or -1;
@@ -99,13 +99,17 @@ class KKTrack{
 		bool Inside_;
 		double MissMass_;
 		double Theta_;
+		double ThetaCM_;
 	public:
-		KKTrack(KKBeam km,KKScat kp,bool inside,double missmass,double theta){
-			KM_=km;KP_=kp;Inside_=inside;MissMass_=missmass;Theta_=theta;
+		KKTrack(KKBeam km,KKScat kp,bool inside,double missmass,double theta,double thetaCM){
+			KM_=km;KP_=kp;Inside_=inside;MissMass_=missmass;Theta_=theta;ThetaCM_=thetaCM;
 		}
 		bool CutChiSqr(double k18cut,double kuramacut){
 			return KM_.CutChiSqr(k18cut)&&KP_.CutChiSqr(kuramacut); };
 		bool CutVertex(){
+			return Inside_;
+		};
+		bool CutVertex(TVector3 Pos,TVector3 Size){
 			return Inside_;
 		};
 		bool CutMomentum(double P_cut){
@@ -122,6 +126,9 @@ class KKTrack{
 		}
 		double GetTheta(){
 			return Theta_;
+		}
+		double GetThetaCM(){
+			return ThetaCM_;
 		}
 		double GetBeamMomentum(){
 			return KM_.GetMomentum();
@@ -157,9 +164,10 @@ class KKTrack{
 class KKEvent{
 	private:	
 		TChain* kkChain;
-		int nKm_,nKp_,nKK_,ntKurama_,ntK18_;
+		int nKm_,nKp_,nKK_,ntKurama_,ntK18_,runnum,evnum;
 		int inside_[25];
-		double pKurama_[25];double qKurama_[25];double xkp_[25];double ykp_[25];double ukp_[25];double vkp_[25];double pOrg_[25];double m2_[25];double pK18_[25];double utgtK18_[25];double vtgtK18_[25];double ukm_[25];double vkm_[25];double vtz_[25];double vtx_[25];double vty_[25];double MissMass_[25];double theta_[25];
+		int trigpat[32];
+		double pKurama_[25];double qKurama_[25];double xkp_[25];double ykp_[25];double ukp_[25];double vkp_[25];double pOrg_[25];double m2_[25];double pK18_[25];double utgtK18_[25];double vtgtK18_[25];double ukm_[25];double vkm_[25];double vtz_[25];double vtx_[25];double vty_[25];double MissMass_[25];double theta_[25];double thetaCM_[25];double closeDist_[25];
 		double chisqrK18_[25];
 		double chisqrKurama_[25];
 		int nkk=0;
@@ -174,10 +182,13 @@ class KKEvent{
 			Tracks.clear();nkk=0;
 		};
 		void CutChiSqr(double k18cut=K18Cut,double kuramacut=KuramaCut);
+		void CutTrig(int trig);	
 		void CutVertex();	
 		void CutMomentum(double P_cut=1.4);	
 		void CutCharge(double Q=1);	
 		void CutM2(double m2_min = 0.15,double m2_max=0.4);	
+		int GetRunNum(){return runnum;}
+		int GetEvNum(){return evnum;}
 		int Getnkk(){
 			return nkk;
 		}
@@ -187,6 +198,9 @@ class KKEvent{
 		
 		double GetTheta(int ikk){
 			return Tracks[ikk].GetTheta();
+		}
+		double GetThetaCM(int ikk){
+			return Tracks[ikk].GetThetaCM();
 		}
 		double GetUKP(int ikk){
 			return Tracks[ikk].GetUKP();
@@ -221,7 +235,24 @@ void KKEvent::CutChiSqr(double k18cut=K18Cut,double kuramacut=KuramaCut){
 	}
 	nkk=nkk_cut;
 }
-		
+	
+void KKEvent::CutTrig(int trig){
+	vector<KKTrack> TrackCut;
+	int nkk_cut=0;
+	for(int ikk=0;ikk<nkk;++ikk){
+		if(trigpat[trig]>0){	
+			KKTrack Track = Tracks[ikk];
+			TrackCut.push_back(Track);
+			nkk_cut++;
+		}
+	}
+	Tracks.clear();
+	for(int i=0;i<nkk_cut;++i){
+		Tracks.push_back(TrackCut[i]);
+	}
+	nkk=nkk_cut;
+}
+
 void KKEvent::CutVertex(){	vector<KKTrack> TrackCut;
 	int nkk_cut=0;
 	for(int ikk=0;ikk<nkk;++ikk){
@@ -304,6 +335,9 @@ void KKEvent::CutM2(double m2_min = 0.15,double m2_max=0.4){
 KKEvent::KKEvent(TChain* chain){
 	kkChain = chain ;
 	cout<<"Loading Chain..."<<endl;
+	kkChain->SetBranchAddress("evnum",&evnum);
+	kkChain->SetBranchAddress("runnum",&runnum);
+	kkChain->SetBranchAddress("trigpat",trigpat);
 	kkChain->SetBranchAddress("ntK18",&ntK18_);
 	kkChain->SetBranchAddress("pK18",pK18_);
 	kkChain->SetBranchAddress("chisqrK18",chisqrK18_);
@@ -315,13 +349,18 @@ KKEvent::KKEvent(TChain* chain){
 	kkChain->SetBranchAddress("m2",m2_);
 	kkChain->SetBranchAddress("pKurama",pKurama_);
 	kkChain->SetBranchAddress("qKurama",qKurama_);
+	kkChain->SetBranchAddress("vtx",vtx_);
+	kkChain->SetBranchAddress("vty",vty_);
+	kkChain->SetBranchAddress("vtz",vtz_);
+	kkChain->SetBranchAddress("closeDist",closeDist_);
 	kkChain->SetBranchAddress("pOrg",pOrg_);
 	kkChain->SetBranchAddress("ukp",ukp_);
 	kkChain->SetBranchAddress("vkp",vkp_);
 	kkChain->SetBranchAddress("ukm",ukm_);
 	kkChain->SetBranchAddress("vkm",vkm_);
-	kkChain->SetBranchAddress("MissMass",MissMass_);
+	kkChain->SetBranchAddress("MissMassCorr",MissMass_);
 	kkChain->SetBranchAddress("theta",theta_);
+	kkChain->SetBranchAddress("thetaCM",thetaCM_);
 	kkChain->SetBranchAddress("inside",inside_);
 }
 
@@ -332,7 +371,7 @@ void KKEvent::LoadEvent(int event){
 		for(int ikm=0;ikm<nKm_;++ikm){
 			KKBeam Beam(ukm_[nkk],vkm_[nkk],pK18_[nkk],chisqrK18_[nkk]);
 			KKScat Scat(ukp_[ikp],vkp_[ikp],pKurama_[ikp],chisqrKurama_[ikp],m2_[ikp],qKurama_[ikp]);
-			KKTrack Track(Beam,Scat,inside_[nkk],MissMass_[nkk],theta_[nkk]);
+			KKTrack Track(Beam,Scat,inside_[nkk],MissMass_[nkk],theta_[nkk],thetaCM_[nkk]);
 			Tracks.push_back(Track);
 			nkk++;
 		}

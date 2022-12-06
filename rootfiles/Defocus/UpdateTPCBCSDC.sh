@@ -1,5 +1,5 @@
 #sleep 3000
-rsync	-av -P kek:/home/had/kangbm/k18-analyzer/rootfiles/run05*_TPCWaveform*.root .
+rsync	-av -P kek:/home/had/kangbm/k18-analyzer/rootfiles/Defocus/run05*_DstTPCBcOutSdcIn*.root .
 #rsync	-av -P kek:/home/had/kangbm/k18-analyzer/rootfiles/Defocus/run05*_TPCHit*.root .
 #rsync	-av -P kek:/home/had/kangbm/k18-analyzer/rootfiles/Defocus/run0576*_Dst*.root .
 #rsync	-av -P kek:/home/had/kangbm/k18-analyzer_2/dstfiles/DstKurama*.root .
