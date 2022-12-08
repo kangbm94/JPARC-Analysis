@@ -1,5 +1,6 @@
 double PI = acos(-1);
-double mm1,mm2,MLd,tcm;
+double mm1,mm2,MLd,tcm,MXi;
+bool FlgLd,FlgXi;
 TFile* f1;TFile* f2;
 TTree* tr1;
 TTree* tr2;
@@ -12,6 +13,25 @@ void DrawXi(){
 	tr2 = (TTree*)f2->Get("tree");
 	tr2->SetBranchAddress("MM",&mm2);
 	tr2->SetBranchAddress("InvMLd",&MLd);
+	tr2->SetBranchAddress("InvMXi",&MXi);
+	tr2->SetBranchAddress("FlgLd",&FlgLd);
+	tr2->SetBranchAddress("FlgXi",&FlgXi);
+	TH1D* LdHist = new TH1D("Lambda","Lambda",40,1,1.2);
+	TH1D* XiHist = new TH1D("Xi","Xi",40,1.2,1.4);
+	int ent = tr2->GetEntries();
+	for(int i = 0;i<ent;++i){
+		tr2->GetEntry(i);
+		if(abs(mm2-1.315)>0.05) continue;
+		if(FlgXi)LdHist->Fill(MLd);
+		if(FlgXi)XiHist->Fill(MXi);
+	}
+	TCanvas* c1 = new TCanvas("c1","c1",1200,600);
+	c1->Divide(2,1);
+	c1->cd(1);
+	LdHist->Fit("gaus");
+	c1->cd(2);
+	XiHist->Fit("gaus");
+
 }
 
 double LpG(double* x,double*par){

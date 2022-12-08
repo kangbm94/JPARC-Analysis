@@ -1,4 +1,4 @@
-#include "Math.hh"
+#include "ReconTools.cc"
 int ntTpc,runnum,evnum;
 vector<int>* pid = new vector<int>;
 vector<int>* charge = new vector<int>;
@@ -85,7 +85,7 @@ void Test2(){
 	tree2->SetBranchAddress("XiM2",&Ximm);
 	int xient = tree2->GetEntries();
 	int nbin=200;
-	TH1D* hist2 = new TH1D("KuramaMM","KuramaMM( )",nbin,1,2);
+	TH1D* hist2 = new TH1D("KuramaMM","KuramaMM( )",nbin,-250,0);
 	//	TH1D* hist3 = new TH1D("VertexY","VertexY",100,-300,300);
 	//	TH1D* hist3 = new TH1D("pid1","pid1",30,-1,2);
 	TH1D* hist3 = new TH1D("LdIM","LdIM",nbin,1,2);
@@ -97,18 +97,38 @@ void Test2(){
 	TFile* Out = new TFile("TPCInv.root","recreate");
 	TTree* outtr = new TTree("tree","tree");
 	double inv = NAN;
-	double invXi = 0;
+	double xiinv = NAN;
 	double lp = 0;
-	double pmom,pimom,ldmom;
+	double pmom,pimom,ldmom,ldvtx,ldvty,ldvtz,ldpx,ldpy,ldpz,lddist,ldp;
+	double ximom,xivtx,xivty,xivtz,xipx,xipy,xipz,xip;
+	bool Inside,InsideXi,ldflg,xiflg;
 	outtr->Branch("runnum",&runnum);
 	outtr->Branch("evnum",&evnum);
 	outtr->Branch("MM",&Ximm);
 	outtr->Branch("InvMLd",&inv);
 	outtr->Branch("Pmom",&pmom);
 	outtr->Branch("Pimom",&pimom);
+	outtr->Branch("FlgLd",&ldflg);
 	outtr->Branch("Ldmom",&ldmom);
-	outtr->Branch("InvMXi",&invXi);
-	outtr->Branch("LambdaP",&lp);
+	outtr->Branch("VtxLd",&ldvtx);
+	outtr->Branch("VtyLd",&ldvty);
+	outtr->Branch("VtzLd",&ldvtz);
+	outtr->Branch("MomxLd",&ldpx);
+	outtr->Branch("MomyLd",&ldpy);
+	outtr->Branch("MomzLd",&ldpz);
+	outtr->Branch("MomLd",&ldp);
+	outtr->Branch("DistLd",&lddist);
+	outtr->Branch("InTargetLd",&Inside);
+	outtr->Branch("FlgXi",&xiflg);
+	outtr->Branch("InvMXi",&xiinv);
+	outtr->Branch("VtxXi",&xivtx);
+	outtr->Branch("VtyXi",&xivty);
+	outtr->Branch("VtzXi",&xivtz);
+	outtr->Branch("MomxXi",&xipx);
+	outtr->Branch("MomyXi",&xipy);
+	outtr->Branch("MomzXi",&xipz);
+	outtr->Branch("MomXi",&xip);
+	outtr->Branch("InTargetXi",&InsideXi);
 	cout<<"Processing..."<<endl;
 	for(int i=0;i<ent;++i){
 		Clear();
@@ -119,7 +139,7 @@ void Test2(){
 			if(Xirunnum==runnum and Xievnum == evnum) break;
 		}
 		vector<Vertex> verts;
-		vector<Particle> parts;
+		vector<Track> parts;
 		for(int nt1 = 0; nt1<ntTpc;++nt1){
 			if(chisqr->at(nt1)>chi_cut) continue; 
 			if(isBeam->at(nt1)) continue; 
@@ -132,26 +152,26 @@ void Test2(){
 			double par1[5] = {hcx,hcy,hz0,hr,hdz};
 			int id1 = pid->at(nt1);
 			double q1 = charge->at(nt1);
-			parts.push_back(Particle(id1,q1,par1,nt1));
+			parts.push_back(Track(id1,q1,par1,nt1));
 		}
 		int np = parts.size();
 		if(np<1) continue;
 		hist->Fill(np);
 		for(int nt1=0;nt1<np;++nt1){
-			Vertex f(parts[nt1],nt1);
+			Vertex f(parts[nt1]);
 			for(int nt2=nt1+1;nt2<np;++nt2){
-				f.AddParticle(parts[nt2],nt2);	
+				f.AddTrack(parts[nt2]);	
 			}
-			if(f.NParticle()>1) verts.push_back(f);
+			//if(f.NTrack()>1) verts.push_back(f);
+			verts.push_back(f);
 		}
 		int nvt = verts.size();
 		vector<Recon>LdCand;
 //		vector<double>XiCand;
 		for(auto vt: verts){
-			vt.SearchCombination();
+			vt.SearchLdCombination();
 			auto Ldc = vt.GetLd();
-//			if(Ldc.Exist()) LdCand.push_back(Ldc);
-			if(Ldc.Proper()) LdCand.push_back(Ldc);
+			LdCand.push_back(Ldc);
 		}
 		int nld= LdCand.size();
 		Recon Ld;
@@ -160,8 +180,40 @@ void Test2(){
 			if( abs(mL-m.Mass())<comp) {comp=abs(mL-m.Mass());Ld=m;}
 		}
 		comp = 9999;
+		VertexLH V(Ld);
+		
+		for(auto p : parts){
+			V.AddTrack(p);
+		}
+		ldflg=Ld.Exist();
+
+		if(ldflg)V.SearchXiCombination();	
+		auto Xi = V.GetXi();
+		xiflg=Xi.Exist();
+		lddist = 0;
+		if(ldflg and xiflg) lddist = (Ld.Vertex()-Xi.Vertex()).Mag();
 		inv=Ld.Mass();
-		hist3->Fill(inv);
+		ldvtx=Ld.Vertex().X();
+		ldvty=Ld.Vertex().Y();
+		ldvtz=Ld.Vertex().Z();
+		ldpx=Ld.Momentum().X();
+		ldpy=Ld.Momentum().Y();
+		ldpz=Ld.Momentum().Z();
+		ldp=Ld.Momentum().Mag();
+		Inside = InTarget(Ld.Vertex());
+		
+		xiinv=Xi.Mass();
+		xivtx=Xi.Vertex().X();
+		xivty=Xi.Vertex().Y();
+		xivtz=Xi.Vertex().Z();
+		xipx=Xi.Momentum().X();
+		xipy=Xi.Momentum().Y();
+		xipz=Xi.Momentum().Z();
+		xip=Xi.Momentum().Mag();
+		InsideXi = InTarget(Xi.Vertex());
+		hist2->Fill(ldvtz);
+		if(!Inside and ldflg)hist3->Fill(inv);
+		if(!InsideXi and xiflg)hist4->Fill(xiinv);
 		outtr->Fill();
 	}//evt
 	Out->Write();
