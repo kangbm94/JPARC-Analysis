@@ -1,37 +1,48 @@
 double PI = acos(-1);
-double mm1,mm2,MLd,tcm,MXi;
-bool FlgLd,FlgXi;
+double mm1,mm2,MLd,tcm,MXi,DistLd,MomLd;
+bool FlgLd,FlgXi,InTargetLd;
 TFile* f1;TFile* f2;
 TTree* tr1;
 TTree* tr2;
 void DrawXi(){
+	gStyle->SetOptFit(0001);
+	gStyle->SetOptStat(11);
 	f1 = new TFile("SelectedEvents.root");
-	f2 = new TFile("TPCInv.root");
+//	f2 = new TFile("TPCInvOld.root");
+	f2 = new TFile("TPCInv2.root");
 	tr1 = (TTree*)f1->Get("tree");
 	tr1->SetBranchAddress("XiM2",&mm1);
 	tr1->SetBranchAddress("XiThetaCM",&tcm);
 	tr2 = (TTree*)f2->Get("tree");
 	tr2->SetBranchAddress("MM",&mm2);
 	tr2->SetBranchAddress("InvMLd",&MLd);
-	tr2->SetBranchAddress("InvMXi",&MXi);
+	tr2->SetBranchAddress("InvMXiCor",&MXi);
+//	tr2->SetBranchAddress("InvMXi",&MXi);
 	tr2->SetBranchAddress("FlgLd",&FlgLd);
 	tr2->SetBranchAddress("FlgXi",&FlgXi);
+	tr2->SetBranchAddress("InTargetLd",&InTargetLd);
+	tr2->SetBranchAddress("DistLd",&DistLd);
+	tr2->SetBranchAddress("MomLd",&MomLd);
 	TH1D* LdHist = new TH1D("Lambda","Lambda",40,1,1.2);
 	TH1D* XiHist = new TH1D("Xi","Xi",40,1.2,1.4);
+	TH1D* LdDist = new TH1D("LdPropLength","LdPropLength/gbeta",20,10,250);
 	int ent = tr2->GetEntries();
 	for(int i = 0;i<ent;++i){
 		tr2->GetEntry(i);
-		if(abs(mm2-1.315)>0.05) continue;
+//		if(abs(mm2-1.315)>0.1) continue;
+		FlgXi=(FlgXi and !InTargetLd);
 		if(FlgXi)LdHist->Fill(MLd);
 		if(FlgXi)XiHist->Fill(MXi);
+		if(FlgXi)LdDist->Fill(DistLd/MomLd*1.115);
 	}
 	TCanvas* c1 = new TCanvas("c1","c1",1200,600);
-	c1->Divide(2,1);
+	c1->Divide(3,1);
 	c1->cd(1);
 	LdHist->Fit("gaus");
 	c1->cd(2);
 	XiHist->Fit("gaus");
-
+	c1->cd(3);
+	LdDist->Fit("expo");
 }
 
 double LpG(double* x,double*par){

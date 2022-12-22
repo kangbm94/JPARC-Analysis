@@ -11,7 +11,7 @@ void KKAna(){
 }
 
 	
-double dt = 0.025;
+double dt = 25;
 
 
 void CountKPlus(){
@@ -81,7 +81,7 @@ double CountXi(double* par_,bool drawing,int i){
 	int b1 = h_xi->FindBin(par[1]-3*par[2]); 
 	int b2 = h_xi->FindBin(par[1]+3*par[2]);
 	int Window = h_xi->Integral(b1,b2);
-//	cout<<Form("Number of Xis: %f/%d",XiCount*bin_density,Window)<<endl;
+	cout<<Form("Number of Xis: %f/%d",XiCount,Window)<<endl;
 	cout<<"Xi Mass: "<<1000*par[1]<<" MeV/c2"<<endl;
 	cout<<"Xi Width: "<<1000*par[2]<<" MeV/c2"<<endl;
 	for(int i=0;i<6;i++){
@@ -100,7 +100,7 @@ double CountXi(double* par_,bool drawing,int i){
 
 void CountXi(){
 	double par[6];bool draw = true;
-//	CountXi(par,draw);
+	CountXi(par,draw,0);
 }
 double CountXiStar(double* par_,bool drawing,int i){
 	double par[6];
@@ -219,7 +219,7 @@ void GetXiSpectra(int runnum){
 	int cnt =0;	
 	TH1D* h = new TH1D("MissMass","MissMass",200,1,2);
 	int XiEv,XiRun;
-	double XiM2,XiP,XiU,XiV,XiTheta,XiThetaCM;
+	double XiM2,XiP,XiU,XiV,XiTheta,XiThetaCM,KpMom;
 
 	TFile* file = new TFile(outfile,"RECREATE");
 	TTree* tree = new TTree("tree","tree");
@@ -230,6 +230,7 @@ void GetXiSpectra(int runnum){
 	tree->Branch("XiP",&XiP,"XiP/D");	
 	tree->Branch("XiU",&XiU,"XiU/D");	
 	tree->Branch("XiV",&XiV,"XiV/D");	
+	tree->Branch("KpMom",&KpMom,"KpMom/D");	
 	tree->Branch("XiTheta",&XiTheta,"XiTheta/D");	
 	tree->Branch("XiThetaCM",&XiThetaCM,"XiThetaCM/D");	
 
@@ -251,6 +252,7 @@ void GetXiSpectra(int runnum){
 			XiV=Event.GetVKP(ikk);
 			XiTheta=Event.GetTheta(ikk);
 			XiThetaCM=Event.GetThetaCM(ikk);
+			KpMom = Event.GetMomentum(ikk);
 			cnt++;
 			tree->Fill();
 			h->Fill(XiM2);

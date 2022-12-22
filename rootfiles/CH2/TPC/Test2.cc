@@ -1,4 +1,4 @@
-#include "ReconTools.cc"
+#include "../../../../TPC/src/ReconTools.cc"
 int ntTpc,runnum,evnum;
 vector<int>* pid = new vector<int>;
 vector<int>* charge = new vector<int>;
@@ -18,7 +18,8 @@ vector<double>* vtx = new vector<double>;
 vector<double>* vty = new vector<double>;
 vector<double>* vtz = new vector<double>;
 vector<int>* combi_id = new vector<int>;
-TFile* file = new TFile("SelectedHelix.root");
+TFile* file = new TFile("SelectedHelix2.root");
+//TFile* file = new TFile("SelectedHelixOld.root");
 TTree* tree = (TTree*)file->Get("tree");
 
 
@@ -90,18 +91,24 @@ void Test2(){
 	//	TH1D* hist3 = new TH1D("pid1","pid1",30,-1,2);
 	TH1D* hist3 = new TH1D("LdIM","LdIM",nbin,1,2);
 	TH1D* hist4 = new TH1D("XiIM","XiIM",nbin,1,2);
+	TH1D* hist5 = new TH1D("XiIMCor","XiIMCor",nbin,1,2);
+	hist5->SetLineColor(kRed);
 	TF1* fgaus = new TF1("fgaus","gaus",mL-0.05,mL+0.05);
 	double cd_cut = 8;
 	int cd_Count=0;
 	double chi_cut = 50;
-	TFile* Out = new TFile("TPCInv.root","recreate");
+	TFile* Out = new TFile("TPCInv2.root","recreate");
+//	TFile* Out = new TFile("TPCInvOld.root","recreate");
 	TTree* outtr = new TTree("tree","tree");
 	double inv = NAN;
 	double xiinv = NAN;
+	double xiCorinv = NAN;
 	double lp = 0;
 	double pmom,pimom,ldmom,ldvtx,ldvty,ldvtz,ldpx,ldpy,ldpz,lddist,ldp;
 	double ximom,xivtx,xivty,xivtz,xipx,xipy,xipz,xip;
-	bool Inside,InsideXi,ldflg,xiflg;
+	double xiCormom,xiCorvtx,xiCorvty,xiCorvtz,xiCorpx,xiCorpy,xiCorpz,xiCorp;
+	double cdLd,cdXi;
+	bool Inside,InsideXi,InsideXiCor,ldflg,xiflg;
 	outtr->Branch("runnum",&runnum);
 	outtr->Branch("evnum",&evnum);
 	outtr->Branch("MM",&Ximm);
@@ -109,10 +116,10 @@ void Test2(){
 	outtr->Branch("Pmom",&pmom);
 	outtr->Branch("Pimom",&pimom);
 	outtr->Branch("FlgLd",&ldflg);
-	outtr->Branch("Ldmom",&ldmom);
 	outtr->Branch("VtxLd",&ldvtx);
 	outtr->Branch("VtyLd",&ldvty);
 	outtr->Branch("VtzLd",&ldvtz);
+	outtr->Branch("CdLd",&cdLd);
 	outtr->Branch("MomxLd",&ldpx);
 	outtr->Branch("MomyLd",&ldpy);
 	outtr->Branch("MomzLd",&ldpz);
@@ -124,11 +131,21 @@ void Test2(){
 	outtr->Branch("VtxXi",&xivtx);
 	outtr->Branch("VtyXi",&xivty);
 	outtr->Branch("VtzXi",&xivtz);
+	outtr->Branch("CdXi",&cdXi);
 	outtr->Branch("MomxXi",&xipx);
 	outtr->Branch("MomyXi",&xipy);
 	outtr->Branch("MomzXi",&xipz);
 	outtr->Branch("MomXi",&xip);
 	outtr->Branch("InTargetXi",&InsideXi);
+	outtr->Branch("InvMXiCor",&xiCorinv);
+	outtr->Branch("VtxXiCor",&xiCorvtx);
+	outtr->Branch("VtyXiCor",&xiCorvty);
+	outtr->Branch("VtzXiCor",&xiCorvtz);
+	outtr->Branch("MomxXiCor",&xiCorpx);
+	outtr->Branch("MomyXiCor",&xiCorpy);
+	outtr->Branch("MomzXiCor",&xiCorpz);
+	outtr->Branch("MomXiCor",&xiCorp);
+	outtr->Branch("InTargetXiCor",&InsideXiCor);
 	cout<<"Processing..."<<endl;
 	for(int i=0;i<ent;++i){
 		Clear();
@@ -189,6 +206,7 @@ void Test2(){
 
 		if(ldflg)V.SearchXiCombination();	
 		auto Xi = V.GetXi();
+		auto XiCor = V.GetXiCor();
 		xiflg=Xi.Exist();
 		lddist = 0;
 		if(ldflg and xiflg) lddist = (Ld.Vertex()-Xi.Vertex()).Mag();
@@ -201,7 +219,8 @@ void Test2(){
 		ldpz=Ld.Momentum().Z();
 		ldp=Ld.Momentum().Mag();
 		Inside = InTarget(Ld.Vertex());
-		
+		cdLd = Ld.GetCD();
+
 		xiinv=Xi.Mass();
 		xivtx=Xi.Vertex().X();
 		xivty=Xi.Vertex().Y();
@@ -211,9 +230,19 @@ void Test2(){
 		xipz=Xi.Momentum().Z();
 		xip=Xi.Momentum().Mag();
 		InsideXi = InTarget(Xi.Vertex());
+		cdXi = Xi.GetCD();
+		xiCorinv=XiCor.Mass();
+		xiCorvtx=XiCor.Vertex().X();
+		xiCorvty=XiCor.Vertex().Y();
+		xiCorvtz=XiCor.Vertex().Z();
+		xiCorpx=XiCor.Momentum().X();
+		xiCorpy=XiCor.Momentum().Y();
+		xiCorpz=XiCor.Momentum().Z();
+		xiCorp=XiCor.Momentum().Mag();
+		InsideXiCor = InTarget(XiCor.Vertex());
 		hist2->Fill(ldvtz);
 		if(!Inside and ldflg)hist3->Fill(inv);
-		if(!InsideXi and xiflg)hist4->Fill(xiinv);
+		if(!InsideXi and xiflg){hist4->Fill(xiinv);hist5->Fill(xiCorinv);}
 		outtr->Fill();
 	}//evt
 	Out->Write();
@@ -228,6 +257,7 @@ void Test2(){
 	hist3->Fit("fgaus","R");
 	cv1->cd(4);
 	hist4->Draw();
+	hist5->Draw("same");
 	//	cout<<hist2->GetEffectiveEntries()<<endl;
 	cout<<cd_Count<<endl;
 	double p1 = fgaus->GetParameter(0);
