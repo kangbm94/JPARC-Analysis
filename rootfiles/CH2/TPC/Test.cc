@@ -1,4 +1,4 @@
-int ntTpc,runnum,evnum,process_time;
+int ntTpc,nclTpc,runnum,evnum,process_time;
 vector<int>* pid = new vector<int>;
 vector<int>* charge = new vector<int>;
 vector<int>* isBeam = new vector<int>;
@@ -16,10 +16,12 @@ vector<double>* chisqr = new vector<double>;
 vector<double>* vtx = new vector<double>;
 vector<double>* vty = new vector<double>;
 vector<double>* vtz = new vector<double>;
+vector<double>* cluster_de = new vector<double>;
 vector<double>* cluster_x = new vector<double>;
 vector<double>* cluster_y = new vector<double>;
 vector<double>* cluster_z = new vector<double>;
 vector<int>* cluster_size = new vector<int>;
+vector<int>* hough_flag = new vector<int>;
 vector<double>* tcluster_x = new vector<double>;
 vector<double>* tcluster_y = new vector<double>;
 vector<double>* tcluster_z = new vector<double>;
@@ -40,9 +42,10 @@ double mXi = 1321.71/1000;
 double mXiStar = 1535/1000;
 //	TFile* file = new TFile("run05000_DstTPCHelixTracking.root");
 //	TTree* tree = (TTree*)file->Get("tpc");
+/*
 TFile* file = new TFile("SelectedHelixOld.root");
 TTree* tree = (TTree*)file->Get("tree");
-
+*/
 void Clear(){
 	ntTpc=0;
 	isBeam->clear();
@@ -63,49 +66,49 @@ void Clear(){
 	helix_r->clear();
 	helix_dz->clear();
 }
-void SearchPeak(){
-	TSpectrum spec(20);
-	file = new TFile("SelectedHelix.root");
-	tree = (TTree*)file->Get("tree");
-	tree->SetBranchAddress("cluster_x",&cluster_x);
-	tree->SetBranchAddress("cluster_y",&cluster_y);
-	tree->SetBranchAddress("cluster_z",&cluster_z);
-	tree->SetBranchAddress("cluster_size",&cluster_size);
-	int ent = tree->GetEntries();
-	TCanvas* c1 = new TCanvas("c1","c1",	1200,600);
-	TH1D* hist =  new TH1D("h","h",140,-350,350);
-	for(int i=0;i<ent;++i){
-		tree->GetEntry(i);
-		hist->Reset("");
-		TSpectrum spec(20);
-		for(auto y: *cluster_y) hist->Fill(y);
-		double sigma=1,threshold=0.1;
-		int npeaks = spec.Search(hist,sigma,"",threshold); 
-	  hist->Draw();
-		c1->Modified();
-    c1->Update();
-    gSystem->ProcessEvents();
-    cin.ignore();
-	}
-}
+void SetHelixBranchAddress(TTree* tree);
 
-
+void SetSummaryBranch(TTree* trout);
 void Summary(){
 	//	delete file;
 	//	delete tree;
 //	file = new TFile("run05000_DstTPCHelixTrackingOld.root");
-	file = new TFile("run05000_DstTPCHelixTracking2.root");
-	tree = (TTree*)file->Get("tpc");
+	TFile* file = new TFile("run05000_DstTPCHelixTracking12.root");
+	TTree* tree= (TTree*)file->Get("tpc");
+	SetHelixBranchAddress(tree);
+
+	int ent = tree->GetEntries();
+	cout<<ent<<endl;
+//	TFile* out = new TFile("SelectedHelixOld.root","recreate");
+	TFile* out = new TFile("SelectedHelix12.root","recreate");
+	TTree* trout = new TTree("tree","tree");
+	SetSummaryBranch(trout);
+	helixid=0;
+	for(int i=0;i<ent;++i){
+		Clear();
+		tree->GetEntry(i);
+		if(i%10000==0) cout<<i<<endl;
+		if(ntTpc<1) continue;
+		trout->Fill();
+		helixid++;
+	}
+	out->Write();
+}
+void SetHelixBranchAddress(TTree* tree){
+	
 	tree->SetBranchAddress("runnum",&runnum);
 	tree->SetBranchAddress("evnum",&evnum);
 	tree->SetBranchAddress("process_time",&process_time);
 	tree->SetBranchAddress("ntTpc",&ntTpc);
 	tree->SetBranchAddress("isBeam",&isBeam);
 	tree->SetBranchAddress("chisqr",&chisqr);
+	tree->SetBranchAddress("nclTpc",&nclTpc);
+	tree->SetBranchAddress("cluster_de",&cluster_de);
 	tree->SetBranchAddress("cluster_x",&cluster_x);
 	tree->SetBranchAddress("cluster_y",&cluster_y);
 	tree->SetBranchAddress("cluster_z",&cluster_z);
 	tree->SetBranchAddress("cluster_size",&cluster_size);
+	tree->SetBranchAddress("hough_flag",&hough_flag);
 	tree->SetBranchAddress("helix_cx",&helix_cx);
 	tree->SetBranchAddress("helix_cy",&helix_cy);
 	tree->SetBranchAddress("helix_z0",&helix_z0);
@@ -124,21 +127,22 @@ void Summary(){
 	tree->SetBranchAddress("cluster_xf",&tcluster_x);
 	tree->SetBranchAddress("cluster_yf",&tcluster_y);
 	tree->SetBranchAddress("cluster_zf",&tcluster_z);
+	tree->SetBranchAddress("track_cluster_x_center",&track_cluster_x_center);
+	tree->SetBranchAddress("track_cluster_y_center",&track_cluster_y_center);
+	tree->SetBranchAddress("track_cluster_z_center",&track_cluster_z_center);
 
-
-
-	int ent = tree->GetEntries();
-	cout<<ent<<endl;
-//	TFile* out = new TFile("SelectedHelixOld.root","recreate");
-	TFile* out = new TFile("SelectedHelix2.root","recreate");
-	TTree* trout = new TTree("tree","tree");
+}
+void SetSummaryBranch(TTree* trout){
 	trout->Branch("runnum",&runnum);
 	trout->Branch("evnum",&evnum);
 	trout->Branch("process_time",&process_time);
+	trout->Branch("nclTpc",&nclTpc);
+	trout->Branch("cluster_de",&cluster_de);
 	trout->Branch("cluster_x",&cluster_x);
 	trout->Branch("cluster_y",&cluster_y);
 	trout->Branch("cluster_z",&cluster_z);
 	trout->Branch("cluster_size",&cluster_size);
+	trout->Branch("hough_flag",&hough_flag);
 	trout->Branch("ntTpc",&ntTpc);
 	trout->Branch("isBeam",&isBeam);
 	trout->Branch("helix_cx",&helix_cx);
@@ -162,14 +166,7 @@ void Summary(){
 	trout->Branch("cluster_yf",&tcluster_y);
 	trout->Branch("cluster_zf",&tcluster_z);
 	trout->Branch("cluster_sizef",&tcluster_size);
-	helixid=0;
-	for(int i=0;i<ent;++i){
-		Clear();
-		tree->GetEntry(i);
-		if(i%10000==0) cout<<i<<endl;
-		if(ntTpc<1) continue;
-		trout->Fill();
-		helixid++;
-	}
-	out->Write();
+	trout->Branch("track_cluster_x_center",&track_cluster_x_center);
+	trout->Branch("track_cluster_y_center",&track_cluster_y_center);
+	trout->Branch("track_cluster_z_center",&track_cluster_z_center);
 }

@@ -18,9 +18,12 @@ vector<double>* vtx = new vector<double>;
 vector<double>* vty = new vector<double>;
 vector<double>* vtz = new vector<double>;
 vector<int>* combi_id = new vector<int>;
-TFile* file = new TFile("SelectedHelix2.root");
+TFile* file = new TFile("SelectedHelix12.root");
+//TFile* file = new TFile("run05641_DstTPCHelixTracking.root");
+TString invname = "TPCInv12.root";
 //TFile* file = new TFile("SelectedHelixOld.root");
 TTree* tree = (TTree*)file->Get("tree");
+//TTree* tree = (TTree*)file->Get("tpc");
 
 
 void Clear(){
@@ -81,6 +84,7 @@ void Test2(){
 	double Ximm;
 	TFile* file2 = new TFile("SelectedEvents.root");
 	TTree* tree2 = (TTree*)file2->Get("tree");
+//	TTree* tree2 = (TTree*)file2->Get("tpc");
 	tree2->SetBranchAddress("runnum",&Xirunnum);
 	tree2->SetBranchAddress("evnum",&Xievnum);
 	tree2->SetBranchAddress("XiM2",&Ximm);
@@ -97,7 +101,7 @@ void Test2(){
 	double cd_cut = 8;
 	int cd_Count=0;
 	double chi_cut = 50;
-	TFile* Out = new TFile("TPCInv2.root","recreate");
+	TFile* Out = new TFile(invname,"recreate");
 //	TFile* Out = new TFile("TPCInvOld.root","recreate");
 	TTree* outtr = new TTree("tree","tree");
 	double inv = NAN;

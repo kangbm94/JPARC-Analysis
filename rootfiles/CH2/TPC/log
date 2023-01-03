@@ -1,0 +1,12 @@
+run05000_DstTPCHelixTracking.root : HoughYCut = 30; fine binning;beam removed;
+run05000_DstTPCHelixTracking2.root : HoughYCut = 15; fine binning;beam removed
+run05000_DstTPCHelixTracking3.root : HoughYCut = 15; fine binning;beam not removed;
+run05000_DstTPCHelixTracking4.root : HoughYCut = 30; large binning;beam not removed;
+run05000_DstTPCHelixTracking5.root : HoughYCut = 30; fine binning;beam removed_TPCTrackSearch;
+run05000_DstTPCHelixTracking6.root : HoughYCut = 30; fine binning;beam removed_BeamRemover;
+run05000_DstTPCHelixTracking7.root : HoughYCut = 30; after WS Update, BeamRemoved;
+run05000_DstTPCHelixTracking8.root : HoughYCut = 30; after WS Update, BeamRemover off;
+run05000_DstTPCHelixTracking9.root : HoughYCut = 30; after WS Update, BeamRemover off,res=sqrt(0.3);
+run05000_DstTPCHelixTracking10.root : HoughYCut = 30; after WS Update, BeamRemover on,MaxTrack=10;
+run05000_DstTPCHelixTracking11.root : HoughYCut = 30; after WS Update, BeamRemover on,MaxTrack=20;
+run05000_DstTPCHelixTracking12.root : HoughYCut = 30; after WS Update, TPCHit Redone,BeamRemover on,MaxTrack=20;
