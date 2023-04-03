@@ -71,7 +71,8 @@ class KKScat: public KKBeam{
 			return Q_;
 		}
 		bool CutMomentum(double P_cut){
-			return P_<P_cut;// and 1.1<P_;
+//			return P_<P_cut and 1.1<P_;
+			return P_<P_cut;
 		}
 		bool CutCharge(double Q){
 			return Q+Q_;//qKurama always should be 1 or -1;

@@ -72,16 +72,15 @@ void SetSummaryBranch(TTree* trout);
 void Summary(){
 	//	delete file;
 	//	delete tree;
-//	file = new TFile("run05000_DstTPCHelixTrackingOld.root");
-	TFile* file = new TFile("run05000_DstTPCHelixTracking12.root");
+	TFile* file = new TFile("run05641_DstTPCHelixTracking.root");
 	TTree* tree= (TTree*)file->Get("tpc");
 	SetHelixBranchAddress(tree);
 
 	int ent = tree->GetEntries();
 	cout<<ent<<endl;
 //	TFile* out = new TFile("SelectedHelixOld.root","recreate");
-	TFile* out = new TFile("SelectedHelix12.root","recreate");
-	TTree* trout = new TTree("tree","tree");
+	TFile* out = new TFile("SelectedRun05641.root","recreate");
+	TTree* trout = new TTree("tree","tpc");
 	SetSummaryBranch(trout);
 	helixid=0;
 	for(int i=0;i<ent;++i){
@@ -135,7 +134,6 @@ void SetHelixBranchAddress(TTree* tree){
 void SetSummaryBranch(TTree* trout){
 	trout->Branch("runnum",&runnum);
 	trout->Branch("evnum",&evnum);
-	trout->Branch("process_time",&process_time);
 	trout->Branch("nclTpc",&nclTpc);
 	trout->Branch("cluster_de",&cluster_de);
 	trout->Branch("cluster_x",&cluster_x);

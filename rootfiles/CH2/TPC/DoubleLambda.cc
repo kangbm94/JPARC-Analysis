@@ -12,24 +12,22 @@ vector<double>* helix_cy = new vector<double>;
 vector<double>* helix_z0 = new vector<double>;
 vector<double>* helix_r = new vector<double>;
 vector<double>* helix_dz = new vector<double>;
-vector<int>* helix_flag = new vector<int>;
 vector<double>* closeDist = new vector<double>;
 vector<double>* chisqr = new vector<double>;
 vector<double>* vtx = new vector<double>;
 vector<double>* vty = new vector<double>;
 vector<double>* vtz = new vector<double>;
 vector<int>* combi_id = new vector<int>;
-//TFile* file = new TFile("SelectedHelix12.root");
-TFile* file = new TFile("run05641_DstTPCHelixTracking.root");
-TString invname = "TPCInv12.root";
+TFile* file = new TFile("SelectedHelix12.root");
+//TFile* file = new TFile("run05641_DstTPCHelixTracking.root");
+TString invname = "DoubleLd.root";
 //TFile* file = new TFile("SelectedHelixOld.root");
-TTree* tree = (TTree*)file->Get("tpc");
+TTree* tree = (TTree*)file->Get("tree");
 //TTree* tree = (TTree*)file->Get("tpc");
-bool isAccidental(int flag){
-	if(flag > 399 and flag < 500) return true;
-	else return false;
-}
 
+vector<double> InvLd,VtxLd,VtyLd,VtzLd,CdLd,PxLd,PyLd,PzLd,PLd;
+vector<bool> InTargetLd;
+int nLd;
 void Clear(){
 	ntTpc=0;
 	isBeam->clear();
@@ -49,15 +47,24 @@ void Clear(){
 	helix_z0->clear();
 	helix_r->clear();
 	helix_dz->clear();
-	helix_flag->clear();
+	InvLd.clear();
+	VtxLd.clear();
+	VtyLd.clear();
+	VtzLd.clear();
+	CdLd.clear();
+	PxLd.clear();
+	PyLd.clear();
+	PzLd.clear();
+	PLd.clear();
+	InTargetLd.clear();
 }
 /*
-	 */
+*/
 TLorentzVector particle(double m,TVector3 mom){
 	double E = sqrt(m*m+mom.Mag2());
 	return TLorentzVector(mom,E);
 }
-void Test2(){
+void DoubleLambda(){
 
 	gStyle->SetOptStat(0);
 
@@ -71,7 +78,6 @@ void Test2(){
 	tree->SetBranchAddress("helix_z0",&helix_z0);
 	tree->SetBranchAddress("helix_r",&helix_r);
 	tree->SetBranchAddress("helix_dz",&helix_dz);
-	tree->SetBranchAddress("helix_flag",&helix_flag);
 	tree->SetBranchAddress("mom_vtx",&mom_vtx);
 	tree->SetBranchAddress("mom_vty",&mom_vty);
 	tree->SetBranchAddress("mom_vtz",&mom_vtz);
@@ -85,12 +91,12 @@ void Test2(){
 	int ent = tree->GetEntries();
 	TH1D* hist = new TH1D("nt","nt",20,0,20);
 
-	
+
 	int Xirunnum,Xievnum;
 	double Ximm;
 	TFile* file2 = new TFile("SelectedEvents.root");
 	TTree* tree2 = (TTree*)file2->Get("tree");
-//	TTree* tree2 = (TTree*)file2->Get("tpc");
+	//	TTree* tree2 = (TTree*)file2->Get("tpc");
 	tree2->SetBranchAddress("runnum",&Xirunnum);
 	tree2->SetBranchAddress("evnum",&Xievnum);
 	tree2->SetBranchAddress("XiM2",&Ximm);
@@ -100,7 +106,7 @@ void Test2(){
 	//	TH1D* hist3 = new TH1D("VertexY","VertexY",100,-300,300);
 	//	TH1D* hist3 = new TH1D("pid1","pid1",30,-1,2);
 	TH1D* hist3 = new TH1D("LdIM","LdIM",nbin,1,2);
-	TH1D* hist4 = new TH1D("XiIM","XiIM",nbin,1,2);
+	TH1D* hist4 = new TH1D("LdIM2","LdIM2",nbin,1,2);
 	TH1D* hist5 = new TH1D("XiIMCor","XiIMCor",nbin,1,2);
 	hist5->SetLineColor(kRed);
 	TF1* fgaus = new TF1("fgaus","gaus",mL-0.05,mL+0.05);
@@ -108,83 +114,44 @@ void Test2(){
 	int cd_Count=0;
 	double chi_cut = 50;
 	TFile* Out = new TFile(invname,"recreate");
-//	TFile* Out = new TFile("TPCInvOld.root","recreate");
+	//	TFile* Out = new TFile("TPCInvOld.root","recreate");
 	TTree* outtr = new TTree("tree","tree");
-	double inv = NAN;
+	double inv1 = NAN;
+	double inv2 = NAN;
 	double xiinv = NAN;
 	double xiCorinv = NAN;
 	double lp = 0;
-	double pmom,pimom,ldmom,ldvtx,ldvty,ldvtz,ldpx,ldpy,ldpz,lddist,ldp;
-	double ximom,xivtx,xivty,xivtz,xipx,xipy,xipz,xip;
-	double xiCormom,xiCorvtx,xiCorvty,xiCorvtz,xiCorpx,xiCorpy,xiCorpz,xiCorp;
-	double cdLd,cdXi;
-	bool Inside,InsideXi,InsideXiCor,ldflg,xiflg;
 	outtr->Branch("runnum",&runnum);
 	outtr->Branch("evnum",&evnum);
 	outtr->Branch("MM",&Ximm);
-	outtr->Branch("InvMLd",&inv);
-	outtr->Branch("Pmom",&pmom);
-	outtr->Branch("Pimom",&pimom);
-	outtr->Branch("FlgLd",&ldflg);
-	outtr->Branch("VtxLd",&ldvtx);
-	outtr->Branch("VtyLd",&ldvty);
-	outtr->Branch("VtzLd",&ldvtz);
-	outtr->Branch("CdLd",&cdLd);
-	outtr->Branch("MomxLd",&ldpx);
-	outtr->Branch("MomyLd",&ldpy);
-	outtr->Branch("MomzLd",&ldpz);
-	outtr->Branch("MomLd",&ldp);
-	outtr->Branch("DistLd",&lddist);
-	outtr->Branch("InTargetLd",&Inside);
-	outtr->Branch("FlgXi",&xiflg);
-	outtr->Branch("InvMXi",&xiinv);
-	outtr->Branch("VtxXi",&xivtx);
-	outtr->Branch("VtyXi",&xivty);
-	outtr->Branch("VtzXi",&xivtz);
-	outtr->Branch("CdXi",&cdXi);
-	outtr->Branch("MomxXi",&xipx);
-	outtr->Branch("MomyXi",&xipy);
-	outtr->Branch("MomzXi",&xipz);
-	outtr->Branch("MomXi",&xip);
-	outtr->Branch("InTargetXi",&InsideXi);
-	outtr->Branch("InvMXiCor",&xiCorinv);
-	outtr->Branch("VtxXiCor",&xiCorvtx);
-	outtr->Branch("VtyXiCor",&xiCorvty);
-	outtr->Branch("VtzXiCor",&xiCorvtz);
-	outtr->Branch("MomxXiCor",&xiCorpx);
-	outtr->Branch("MomyXiCor",&xiCorpy);
-	outtr->Branch("MomzXiCor",&xiCorpz);
-	outtr->Branch("MomXiCor",&xiCorp);
-	outtr->Branch("InTargetXiCor",&InsideXiCor);
+
+	outtr->Branch("InvMLd",&InvLd);
+	outtr->Branch("VtxLd",&VtxLd);
+	outtr->Branch("VtyLd",&VtyLd);
+	outtr->Branch("VtzLd",&VtzLd);
+	outtr->Branch("CdLd",&CdLd);
+	outtr->Branch("PxLd",&PxLd);
+	outtr->Branch("PyLd",&PyLd);
+	outtr->Branch("PzLd",&PzLd);
+	outtr->Branch("PLd",&PLd);
+	outtr->Branch("InTargetLd",&InTargetLd);
+	outtr->Branch("nLd",&nLd);
+
+
 	cout<<"Processing..."<<endl;
-	vector<int>XiRuns;
-	vector<int>XiEvs;
-	for(int j=0;j<xient;j++){
-		tree2->GetEntry(j);
-		XiRuns.push_back(Xirunnum);
-		XiEvs.push_back(Xievnum);
-	}
 	for(int i=0;i<ent;++i){
-		if(i%1000==0)cout<<i<<" th event"<<endl;
 		Clear();
 		tree->GetEntry(i);
-		bool go = false;
 		if(ntTpc<1) continue;
 		for(int j=0;j<xient;j++){
-			Xirunnum = XiRuns.at(j);
-			Xievnum = XiEvs.at(j);
-			if(Xirunnum==runnum and Xievnum == evnum){
-				go = true;
-				break;
-			}
+			tree2->GetEntry(j);
+			if(Xirunnum==runnum and Xievnum == evnum) break;
 		}
-		if(!go) continue;
 		vector<Vertex> verts;
 		vector<Track> parts;
 		for(int nt1 = 0; nt1<ntTpc;++nt1){
 			if(chisqr->at(nt1)>chi_cut) continue; 
-//			if(isBeam->at(nt1)) continue; 
-			if(isAccidental(helix_flag->at(nt1))) continue;
+			if(isBeam->at(nt1)) continue; 
 			int nh = helix_cx->size();
 			double hcx = helix_cx->at(nt1);
 			double hcy = helix_cy->at(nt1);
@@ -209,65 +176,99 @@ void Test2(){
 		}
 		int nvt = verts.size();
 		vector<Recon>LdCand;
-//		vector<double>XiCand;
 		for(auto vt: verts){
 			vt.SearchLdCombination();
 			auto Ldc = vt.GetLd();
 			LdCand.push_back(Ldc);
 		}
-		int nld= LdCand.size();
-		Recon Ld;
+		Recon Ld1;
+		Recon Ld2;
 		double comp = 9999;
+		int nld = LdCand.size();
+		vector<Recon>LdCand2;
+		vector<Recon>LdCand3;
 		for(auto m:LdCand){
-			if( abs(mL-m.Mass())<comp) {comp=abs(mL-m.Mass());Ld=m;}
+			if( abs(mL-m.Mass())<comp) {comp=abs(mL-m.Mass());Ld1=m;}
 		}
-		comp = 9999;
-		VertexLH V(Ld);
+		LdCand3.push_back(Ld1);
+		verts.clear();
+		parts.clear();
+		int trid1 = Ld1.GetID1();
+		int trid2 = Ld1.GetID2();
 		
-		for(auto p : parts){
-			V.AddTrack(p);
+		for(int nt1 = 0; nt1<ntTpc;++nt1){
+			if(chisqr->at(nt1)>chi_cut) continue; 
+			if(isBeam->at(nt1)) continue; 
+			if(nt1 == trid1 or nt1 == trid2) continue;
+			int nh = helix_cx->size();
+			double hcx = helix_cx->at(nt1);
+			double hcy = helix_cy->at(nt1);
+			double hz0 = helix_z0->at(nt1);
+			double hr = helix_r->at(nt1);
+			double hdz = helix_dz->at(nt1);
+			double par1[5] = {hcx,hcy,hz0,hr,hdz};
+			int id1 = pid->at(nt1);
+			double q1 = charge->at(nt1);
+			parts.push_back(Track(id1,q1,par1,nt1));
 		}
-		ldflg=Ld.Exist();
+		np = parts.size();
+		for(int nt1=0;nt1<np;++nt1){
+			Vertex f(parts[nt1]);
+			for(int nt2=nt1+1;nt2<np;++nt2){
+				f.AddTrack(parts[nt2]);	
+			}
+			//if(f.NTrack()>1) verts.push_back(f);
+			verts.push_back(f);
+		}
+		nvt = verts.size();	
+		for(auto vt: verts){
+			vt.SearchLdCombination();
+			auto Ldc = vt.GetLd();
+			LdCand2.push_back(Ldc);
+		}
+		for(auto m:LdCand2){
+			if( abs(mL-m.Mass())<comp) {comp=abs(mL-m.Mass());Ld2=m;}
+		}
+		int trid3 = Ld2.GetID1();
+		int trid4 = Ld2.GetID2();
+		if(trid1 == trid3 or trid1 == trid4){
+//			cout<<trid1<<" , "<<trid2<<" , "<<trid3<<" , "<<trid4<<endl;
+		}
+		LdCand3.push_back(Ld2);
 
-		if(ldflg)V.SearchXiCombination();	
-		auto Xi = V.GetXi();
-		auto XiCor = V.GetXiCor();
-		xiflg=Xi.Exist();
-		lddist = 0;
-		if(ldflg and xiflg) lddist = (Ld.Vertex()-Xi.Vertex()).Mag();
-		inv=Ld.Mass();
-		ldvtx=Ld.Vertex().X();
-		ldvty=Ld.Vertex().Y();
-		ldvtz=Ld.Vertex().Z();
-		ldpx=Ld.Momentum().X();
-		ldpy=Ld.Momentum().Y();
-		ldpz=Ld.Momentum().Z();
-		ldp=Ld.Momentum().Mag();
-		Inside = InTarget(Ld.Vertex());
-		cdLd = Ld.GetCD();
-
-		xiinv=Xi.Mass();
-		xivtx=Xi.Vertex().X();
-		xivty=Xi.Vertex().Y();
-		xivtz=Xi.Vertex().Z();
-		xipx=Xi.Momentum().X();
-		xipy=Xi.Momentum().Y();
-		xipz=Xi.Momentum().Z();
-		xip=Xi.Momentum().Mag();
-		InsideXi = InTarget(Xi.Vertex());
-		cdXi = Xi.GetCD();
-		xiCorinv=XiCor.Mass();
-		xiCorvtx=XiCor.Vertex().X();
-		xiCorvty=XiCor.Vertex().Y();
-		xiCorvtz=XiCor.Vertex().Z();
-		xiCorpx=XiCor.Momentum().X();
-		xiCorpy=XiCor.Momentum().Y();
-		xiCorpz=XiCor.Momentum().Z();
-		xiCorp=XiCor.Momentum().Mag();
-		InsideXiCor = InTarget(XiCor.Vertex());
-		hist2->Fill(ldvtz);
-		if(!Inside and ldflg)hist3->Fill(inv);
-		if(!InsideXi and xiflg){hist4->Fill(xiinv);hist5->Fill(xiCorinv);}
+		
+		nLd=0;
+		for(auto Ld:LdCand3){
+			double mld1=0,mld2=0;
+			if(Ld.Exist()){
+				InvLd.push_back(Ld.Mass());
+				VtxLd.push_back(Ld.Vertex().X());
+				VtyLd.push_back(Ld.Vertex().Y());
+				VtzLd.push_back(Ld.Vertex().Z());
+				CdLd.push_back(Ld.GetCD());
+				PxLd.push_back(Ld.Momentum().X());
+				PyLd.push_back(Ld.Momentum().Y());
+				PzLd.push_back(Ld.Momentum().Z());
+				PLd.push_back(Ld.Momentum().Mag());
+				InTargetLd.push_back(InTarget(Ld.Vertex()));
+				if(nLd==0){
+					mld1 = InvLd.at(0);
+					hist3->Fill(InvLd.at(0));
+				}
+				if(nLd==1){
+					mld2 = InvLd.at(1);
+					hist4->Fill(InvLd.at(1));
+				}
+				nLd++;
+			}
+			if(mld1 == mld2 and mld1 != 0){
+				int trid1 = Ld1.GetID1();
+				int trid2 = Ld1.GetID2();
+				int trid3 = Ld2.GetID1();
+				int trid4 = Ld2.GetID2();
+				cout<<trid1<<" , "<<trid2<<" , "<<trid3<<" , "<<trid4<<endl;
+			}
+		}
 		outtr->Fill();
 	}//evt
 	Out->Write();
