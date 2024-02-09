@@ -1,0 +1,98 @@
+#include "PolarizationAnal.hh"
+void RealPola(){
+	TF1* fLin = new TF1("fLin","[0]+[1]*x",-1,1);
+	//TFile* file = new TFile("TPCInvM_cd7_WS.root");
+//	TFile* file = new TFile("TPCInvMKinFit_cd7_WS.root");
+//	TFile* file = new TFile("TPCInvMKinFitProd_cd7_WS.root");
+	TFile* file = new TFile("TPCInvMProd_cd7_WS.root");
+	TTree* tree = (TTree*)file->Get("tree");
+	double kpPx,kpPy,kpPz;
+	double kmPx,kmPy,kmPz;
+	double MomxXi,MomyXi,MomzXi;
+	double MomxLd,MomyLd,MomzLd;
+	double MomxP,MomyP,MomzP;
+	bool FlgXi;
+	double MM,InvMXi,InvMLd;
+	int ent = tree->GetEntries();
+	tree->SetBranchAddress("KpPx",&kpPx);
+	tree->SetBranchAddress("KpPy",&kpPy);
+	tree->SetBranchAddress("KpPz",&kpPz);
+	tree->SetBranchAddress("KmPx",&kmPx);
+	tree->SetBranchAddress("KmPy",&kmPy);
+	tree->SetBranchAddress("KmPz",&kmPz);
+	tree->SetBranchAddress("MomxXi",&MomxXi);
+	tree->SetBranchAddress("MomyXi",&MomyXi);
+	tree->SetBranchAddress("MomzXi",&MomzXi);
+	tree->SetBranchAddress("MomxLd",&MomxLd);
+	tree->SetBranchAddress("MomyLd",&MomyLd);
+	tree->SetBranchAddress("MomzLd",&MomzLd);
+	tree->SetBranchAddress("MomxP",&MomxP);
+	tree->SetBranchAddress("MomyP",&MomyP);
+	tree->SetBranchAddress("MomzP",&MomzP);
+	tree->SetBranchAddress("FlgXi",&FlgXi);
+	tree->SetBranchAddress("MM",&MM);
+	tree->SetBranchAddress("InvMLd",&InvMLd);
+	tree->SetBranchAddress("InvMXi",&InvMXi);
+	TH1D* HTh = new TH1D("HistTh","HistTh",22,-1.1,1.1);
+	TH1D* HPh = new TH1D("HistPh","HistPh",22,-1.1,1.1);
+	TH1D* HPh1 = new TH1D("HistPh1","HistPh1",22,-1.1,1.1);
+	TH1D* HPh2 = new TH1D("HistPh2","HistPh2",22,-1.1,1.1);
+	TH1D* HPh3 = new TH1D("HistPh3","HistPh3",22,-1.1,1.1);
+	for(int i=0;i<ent;++i){
+		tree->GetEntry(i);
+		if(!FlgXi	)continue;
+		if(abs(MM-1.321)>0.05)continue;
+//		if(abs(InvMLd-1.115)>0.02) continue;
+//		if(abs(InvMXi-1.321)>0.04) continue;
+		TVector3 Km(kmPx,kmPy,kmPz);
+		TVector3 Kp(kpPx,kpPy,kpPz);
+		TVector3 Xi(MomxXi,MomyXi,MomzXi);
+		TVector3 Ld(MomxLd,MomyLd,MomzLd);
+		TVector3 P(MomxP,MomyP,MomzP);
+
+		PolaAnal Pol(Km,Kp,Xi,Ld,P);
+		
+		double Th = Pol.GetTheta();
+		double Ph = Pol.GetPhi();
+		double Ph1 = Pol.GetPhi1();
+		double Ph2 = Pol.GetPhi2();
+		double Ph3 = Pol.GetPhi3();
+		double cTh = cos(Th);
+		double cPh = cos(Ph);
+		double cPh1 = cos(Ph1);
+		double cPh2 = cos(Ph2);
+		double cPh3 = cos(Ph3);
+		HTh->Fill(cTh);
+		HPh->Fill(cPh);
+		HPh1->Fill(cPh1);
+		HPh2->Fill(cPh2);
+		HPh3->Fill(cPh3);
+
+	}
+	TCanvas* c1 = new TCanvas("c1","c1",1200,600);
+	c1->Divide(2,2);
+	c1->cd(1);
+	HTh->Draw();
+	HTh->Fit("fLin");
+	double p1 = fLin->GetParameter(1);
+	double nb = (HTh->GetEntries())*1./20;
+	cout<<p1/nb<<endl;
+	c1->cd(2);
+	HPh1->Draw();
+	HPh1->Fit("fLin");
+	p1 = fLin->GetParameter(1);
+	nb = (HPh1->GetEntries())/20;
+	cout<<p1/nb<<endl;
+	c1->cd(3);
+	HPh2->Draw();
+	HPh2->Fit("fLin");
+	p1 = fLin->GetParameter(1);
+	nb = (HPh2->GetEntries())/20;
+	cout<<p1/nb<<endl;
+	c1->cd(4);
+	HPh3->Draw();
+	HPh3->Fit("fLin");
+	p1 = fLin->GetParameter(1);
+	nb = (HPh3->GetEntries())/20;
+	cout<<p1/nb<<endl;
+}

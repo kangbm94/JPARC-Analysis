@@ -1,11 +1,11 @@
 #include "ChamberManager.hh"
 double Err_function(double* x, double* p){
-	double dx =(p[1] -x[0])/p[2];
+	double dx =(x[0]-p[1])/p[2];
 	return p[0]*((erf(dx)+1)/2)+p[3];
 }
 
 double DriftCurve(double* x, double* p){
-	double dt = x[0]-p[0];
+	double dt = x[0]+p[0];
 	double val=0;
 	for(int i=1;i<6;i++){
 		val+=pow(dt,i)*p[i];
@@ -13,6 +13,7 @@ double DriftCurve(double* x, double* p){
 	return val;
 }
 
+TF1* f_errf = new TF1("f_errf",Err_function,-10,10,4);
 
 /*
 void Sdc3T0(){

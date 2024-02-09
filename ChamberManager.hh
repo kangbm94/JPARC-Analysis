@@ -32,8 +32,7 @@ TString xTof(int i){
 TString yTof(int i){
 	return Form("y0[0]+v0[0]*%f",Ztof[i]);
 }
-enum dets{ BC3,BC4,Sdc1,Sdc2,Sdc3,Sdc4
-};
+enum dets{ BC3,BC4,Sdc1,Sdc2,Sdc3,Sdc4};
 TString Comments[8] = {"### SDC3-X1","### SDC3-X2", "### SDC3-Y1", "### SDC3-Y2","### SDC4-Y1","### SDC4-Y2","### SDC4-X1","###SDC4-X2"};
 TString Sdc1Comments[10] = {"### SDC1-V1","### SDC1-V2", "### SDC1-X1", "### SDC1-X2","### SDC1-U1","### SDC1-U2","### SDC2-X1","###SDC2-X2","### SDC2-Y1","###SDC2-Y2"};
 TString BcComments[12] = {"### BC3-X1","### BC3-X2", "### BC3-U1", "### BC3-U2","### BC3-V1","### BC3-V2","### BC4-U1","### BC4-U2","### BC4-V1","###BC4-V2","### BC4-X1","###BC4-X2"};

@@ -1,17 +1,20 @@
 #include "KKMethod.hh"
 #include "KKLegacy.hh"
 #include "DetectorID.hh"
+#include "/Users/MIN/ROOTSharedLibs/MyStyle.hh"
 void KKAna(){
+	SetStyle();
 //		KM.LoadFile("./rootfiles/CH2/AllKKAna.root");
 //		KM.LoadFile("./rootfiles/Production/AllKKAna.root");
-//	KM.LoadFile("./rootfiles/CH2/DstKKAna05641.root");
+	KM.LoadFile("./rootfiles/CH2/run05641_DstHSKKAna.root");
 	//		KM.LoadFile("../Other/E07_data/DstKKAna_CH2_Phase2.root");
 	//	KM.LoadFile("~/WS_data/ch2target/run05666_KKAnaTest.root");
 //	KM.LoadKK();
+	gStyle->SetOptStat(10);
 }
 
 	
-double dt = 25;
+double dt = 0.025;
 
 
 void CountKPlus(){
@@ -58,9 +61,15 @@ double CountXi(double* par_,bool drawing,int i){
 	double par[6]={0};
 	TFile* file = new TFile("SelectedEvents.root","read");
 //	TFile* file = new TFile("TPCInv.root","read");
-	TCut cut = Form("cos(XiThetaCM/180*3.141592)<%f &&cos(XiThetaCM/180*3.141592)>%f",1-dt*i,1-dt*(i+1));
+//	TCut cut = Form("cos(XiThetaCM/180*3.141592)<%f &&cos(XiThetaCM/180*3.141592)>%f",1-dt*i,1-dt*(i+1));
+	TCut cut = "1";
+	TCanvas* c1 = new TCanvas("c1","c1",600,600);	
 	TTree* tree = (TTree*)file->Get("tree");
 	TH1D* h_xi = new TH1D("MissMass","MissMass",200,1,2);
+	h_xi->GetXaxis()->SetTitle("MissMass [MeV/c^{2}]");
+	h_xi->GetYaxis()->SetTitle("Entries/10 MeV/c^{2}");
+	h_xi->GetYaxis()->SetTitleSize(0.04);
+	h_xi->GetYaxis()->SetNdivisions(5);
 	tree->Draw("XiM2>>MissMass",cut);
 //	tree->Draw("MM>>MissMass","");
 //	tree->Draw("MM>>MissMass","abs(InvMLd-1.12)<0.044");
@@ -94,22 +103,31 @@ double CountXi(double* par_,bool drawing,int i){
 		GausWithBGf->SetRange(1.2,1.4);
 		GausWithBGf->Draw("same");
 	}
+	c1->SaveAs("XiCount.png");
 	return XiCount;
 }
 
 
 void CountXi(){
 	double par[6];bool draw = true;
-	CountXi(par,draw,0);
+	for(int i=0;i<10;++i){
+		CountXi(par,draw,0);
+	}
 }
 double CountXiStar(double* par_,bool drawing,int i){
 	double par[6];
 	TFile* file = new TFile("SelectedEvents.root","read");
 //	TFile* file = new TFile("TPCInv.root","read");
-	TCut cut = Form("cos(XiThetaCM/180*3.141592)<%f &&cos(XiThetaCM/180*3.141592)>%f",1-dt*i,1-dt*(i+1));
+//	TCut cut = Form("cos(XiThetaCM/180*3.141592)<%f &&cos(XiThetaCM/180*3.141592)>%f",1-dt*i,1-dt*(i+1));
+//	TCut cut=""; //= Form("cos(XiThetaCM/180*3.141592)<%f &&cos(XiThetaCM/180*3.141592)>%f",1-dt*i,1-dt*(i+1));
+	TCut cut = "1";
 	TTree* tree = (TTree*)file->Get("tree");
 	TH1D* h_xi = new TH1D("MissMass","MissMass",200,1,2);
-	
+	h_xi->GetXaxis()->SetTitle("MissMass [MeV/c^{2}]");
+	h_xi->GetYaxis()->SetTitle("Entries /10 MeV/c^{2}");
+	h_xi->GetYaxis()->SetTitleSize(0.04);
+	h_xi->GetYaxis()->SetNdivisions(5);
+	TCanvas* c1 = new TCanvas("c1","c1",600,600);	
 	tree->Draw("XiM2>>MissMass",cut);
 //	tree->Draw("MM>>MissMass","abs(InvMLd-1.12)<0.044");
 	TH1D* h = KM.XiStarFit(par,h_xi);
@@ -127,7 +145,7 @@ double CountXiStar(double* par_,bool drawing,int i){
 	GausWithBGf2->SetParameters(par);
 	GausWithBGf2->SetLineColor(kRed);
 	double XiCount = par[0]*par[2]*sqrt(2*Pi())*bin_density;
-//	cout<<"Number of XiStars: "<<XiCount*bin_density<<endl;
+	cout<<"Number of XiStars: "<<XiCount<<endl;
 	cout<<"Xi StarMass: "<<1000*par[1]<<" MeV/c2"<<endl;
 	cout<<"Xi StarWidth: "<<1000*par[2]<<" MeV/c2"<<endl;
 	for(int i=0;i<6;i++){
@@ -140,11 +158,12 @@ double CountXiStar(double* par_,bool drawing,int i){
 		GausWithBGf2->SetRange(1.4,1.6);
 		GausWithBGf2->Draw("same");
 	}
+	c1->SaveAs("XiStarCount.png");
 	return XiCount;
 }
 void CountXiStar(){
 	double par[6];bool draw = true;
-//	CountXiStar(par,draw);
+	CountXiStar(par,draw,0);
 }
 
 void DrawPred(int runnum){
@@ -203,7 +222,9 @@ void DrawPred(int runnum){
 void GetXiSpectra(int runnum){
 	TString infile,outfile;
 	if(runnum==0){
-		infile= "./rootfiles/CH2/AllKKAna.root";
+//	infile= "./rootfiles/CH2/DstHSKKAnaXi.root";
+		infile= "./rootfiles/Production/AllHSKKAna.root";
+//		outfile= "./SelectedEventsUOffset.root";
 		outfile= "./SelectedEvents.root";
 	}
 	else{
@@ -219,7 +240,7 @@ void GetXiSpectra(int runnum){
 	int cnt =0;	
 	TH1D* h = new TH1D("MissMass","MissMass",200,1,2);
 	int XiEv,XiRun;
-	double XiM2,XiP,XiU,XiV,XiTheta,XiThetaCM,KpMom;
+	double XiM2,XiP,XiU,XiV,XiTheta,XiThetaCM,KpMom,XiM2Calc;
 
 	TFile* file = new TFile(outfile,"RECREATE");
 	TTree* tree = new TTree("tree","tree");
@@ -227,6 +248,7 @@ void GetXiSpectra(int runnum){
 	tree->Branch("evnum",&XiEv,"evnum/I");	
 	tree->Branch("XiM2",&XiM2,"XiM2/D");	
 	tree->Branch("XiMM",&XiM2,"XiMM/D");	
+	tree->Branch("XiMMCalc",&XiM2Calc,"XiMMCalc/D");	
 	tree->Branch("XiP",&XiP,"XiP/D");	
 	tree->Branch("XiU",&XiU,"XiU/D");	
 	tree->Branch("XiV",&XiV,"XiV/D");	
@@ -244,9 +266,11 @@ void GetXiSpectra(int runnum){
 		Event.CutCharge();	
 		Event.CutM2();
 		for(int ikk=0;ikk<Event.Getnkk();++ikk){
+			if(Event.Getnkk()!=1) continue;
 			XiRun=Event.GetRunNum();
 			XiEv=Event.GetEvNum();
 			XiM2=Event.GetMissMass(ikk);
+			XiM2Calc=Event.GetMissMassCalc(ikk);
 			XiP=Event.GetMomentum(ikk);
 			XiU=Event.GetUKP(ikk);
 			XiV=Event.GetVKP(ikk);

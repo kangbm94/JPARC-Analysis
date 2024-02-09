@@ -2,6 +2,37 @@
 #ifndef Utils_h
 #define Utils_h
 const double K18HS = 1318.9;
+int ReadConfLine(ifstream& file, double* buf, TString& buf_l){
+	if(!file.is_open()){
+		cout<<"file not open"<<endl;
+		return false;
+	}
+	TString line;
+	if(file.good()&&line.ReadLine(file)){
+		buf_l = line;
+		if(line.IsNull()){
+			return 0;
+		}
+		if(line[0]== '#'){
+			buf[0] = -999;
+			return -1;
+		}
+		line.ReplaceAll(",","");
+		line.ReplaceAll("\"","");
+		std::istringstream iss(line.Data());
+		std::istream_iterator<std::string> begin(iss);
+		std::istream_iterator<std::string> end;
+		std::vector<TString> v(begin, end);
+		int nl = v.size();
+		for(int i=0;i<nl;++i){
+			buf[i]=v[i].Atof();
+		}
+		return 1;
+	}
+	else{
+		return 0;
+	}
+}
 void Indicator(int i, int ent){
 	if(i>ent){
 		double tmp = ent;

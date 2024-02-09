@@ -1,14 +1,39 @@
 #include "../../../KKManager.hh"
+#include "/Users/MIN/ROOTSharedLibs/MyStyle.hh"
 double PI = acos(-1);
-double mm1,mm2,MLd,tcm,MXi,DistLd,MomLd;
-bool FlgLd,FlgXi,InTargetLd;
+int evnum, runnum;
+int evnumX, runnumX;
+double mm1,mm2,MLd,MLdCor,tcm,MXi,DistLd,MomLd,MXiCor,mmpi0,MissingM,CheckSumM,CheckSumMCor;
+double MissingKpLd,MissingpKpLd;
+bool KmCor,KpCor;
+bool FlgLd,FlgXi,InTargetLd,isGood;
 TFile* f1;TFile* f2;
 TTree* tr1;
 TTree* tr2;
+vector<double>ldlen;
 double range1=10,range2=250;
+double tsize = 0.05;
+void fcn (int& npar, double* grad, double& fval, double* par, int flag){
+	double nll = 0;
+	for(double len:ldlen){
+		double expv = 1./par[1]*exp(-len/par[1]); 
+		nll+=-log(expv);
+	}
+	fval = nll;
+};
 
 void DrawXi(){
+	SetStyle();
+//	gStyle->SetOptStat(111);
+	gStyle->SetStatX(0.9);
+	gStyle->SetStatY(0.9);
+	gStyle->SetStatW(0.4);
+	gStyle->SetStatH(0.5);
+	ldlen.clear();
 	TF1* prop = new TF1("prop","[0]*exp(-x/[1])",range1,range2); 
+	prop->SetParameter(0,70);
+	prop->SetParameter(1,77);
+	TH2D* MMScat = new TH2D("KuramaMM vs (Kurama-Xi)MM","KuramaMM vs (Kurama-Xi)MM",20,1.2,1.7,20,-0.5,0.5);
 	TF1* LambdaWBG = new TF1("LambdaWBG","GausWithBG",1.,1.2,6);
 	TF1* XiWBG = new TF1("XiWBG","GausWithBG",1.2,1.4,6);
 	prop->SetParNames("const","c_tau");
@@ -18,64 +43,148 @@ void DrawXi(){
 
 	gStyle->SetOptFit(000);
 	gStyle->SetOptStat(10);
+	gStyle->SetTitleFontSize(0.1);
 	gStyle->SetTitleFont(132,"x");//,“t”);
 	gStyle->SetTitleFont(132,"t");//,“t”);
 	gStyle->SetTitleFont(132,"y");//,“t”);
-	f1 = new TFile("SelectedEvents.root");
-//	f2 = new TFile("TPCInvOld.root");
-	f2 = new TFile("TPCInv12.root");
-	tr1 = (TTree*)f1->Get("tree");
-	tr1->SetBranchAddress("XiMM",&mm1);
-	tr1->SetBranchAddress("XiThetaCM",&tcm);
+	f2 = new TFile("TPCInvM_cd7_WS.root");	
+//	f2 = new TFile("TPCInvMKinFit_cd7_WS.root");	
+//	f2 = new TFile("TPCInvMLdKinFit_cd7_WS.root");	
+//	f2 = new TFile("TPCInvMKinFitProd_cd7_WS.root");	
+//	f2 = new TFile("TPCInvMProd_cd7_WS.root");	
 	tr2 = (TTree*)f2->Get("tree");
+	tr2->SetBranchAddress("runnum",&runnum);
+	tr2->SetBranchAddress("evnum",&evnum);
 	tr2->SetBranchAddress("MM",&mm2);
+	tr2->SetBranchAddress("mmpi0",&mmpi0);
+	tr2->SetBranchAddress("KmCor",&KmCor);
+	tr2->SetBranchAddress("KpCor",&KpCor);
 	tr2->SetBranchAddress("InvMLd",&MLd);
-	tr2->SetBranchAddress("InvMXiCor",&MXi);
-//	tr2->SetBranchAddress("InvMXi",&MXi);
+	tr2->SetBranchAddress("InvMXi",&MXi);
+	tr2->SetBranchAddress("InvMXi",&MXiCor);
+	//	tr2->SetBranchAddress("InvMXi",&MXi);
 	tr2->SetBranchAddress("FlgLd",&FlgLd);
 	tr2->SetBranchAddress("FlgXi",&FlgXi);
 	tr2->SetBranchAddress("InTargetLd",&InTargetLd);
 	tr2->SetBranchAddress("DistLd",&DistLd);
 	tr2->SetBranchAddress("MomLd",&MomLd);
-	TH1D* LdHist = new TH1D("Lambda","#Lambda Invariant Mass",50,1.07,1.17);
+	tr2->SetBranchAddress("InvMLdCor",&MLdCor);
+	tr2->SetBranchAddress("MissingM",&MissingM);
+	tr2->SetBranchAddress("MissingKpLd",&MissingKpLd);
+	tr2->SetBranchAddress("MissingpKpLd",&MissingpKpLd);
+	tr2->SetBranchAddress("CheckSumM",&CheckSumM);
+	tr2->SetBranchAddress("CheckSumMCor",&CheckSumMCor);
+	tr2->SetBranchAddress("isGood",&isGood);
+	TH1D* LdHist = new TH1D("Lambda","Invariant Mass(p #pi)",50,1.07,1.17);
+	TH1D* LdCorHist = new TH1D("Lambda","#Lambda Invariant MassCor",500,1.07,1.17);
 	TH1D* LdXiHist = new TH1D("LambdawXi","#Lambda w #Xi Invariant Mass",50,1.07,1.17);
+	TH1D* LdXiPropHist = new TH1D("LambdaPropwXi","#Lambda w #Xi Invariant Mass Prop",50,1.07,1.17);
 	TH1D* XiHist = new TH1D("Xi","#Xi Invariant Mass",100,1.24,1.44);
+	TH1D* XiCorHist = new TH1D("XiCor","Invariant Mass(#Lambda,#pi)",100,1.24,1.44);
+	TH1D* XiPropHist = new TH1D("XiProp","#Xi Invariant Mass Prop",100,1.24,1.44);
 	TH1D* LdDist = new TH1D("LdPropLength","#Lambda FlightLength/#gamma#beta",20,range1,range2);
+	TGraph* LdFlGr;
 	TH1D* LdMMHist = new TH1D("LdMissing Mass","#Lambda tagged Missing Mass",100,1,2);
 	TH1D* MMHist = new TH1D("Missing Mass","Missing Mass",100,1,2);
+	TH2D* MMPi0 = new TH2D("MMPi0","Sum_{TPC}-X:MM_{p(K^{-},K^{+})X.}",1000,-1.5,1,100,1.1,1.8);
+	TH2D* MMPi0Cor = new TH2D("MMPi0Cor","Sum_{TPC}-X:MM_{p(K^{-},K^{+})X.}",100,-1.5,1,100,1.1,1.8);
+	TH2D* MMPi0Vtx = new TH2D("MMPi0Vtx","Sum_{TPC}-X:MM_{p(K^{-},K^{+})X.}",100,-1.5,1,100,1.1,1.8);
+	TH1D* MPi0 = new TH1D("MPi0","Sum_{TPC}-X",500,0,0.3);
+	TH1D* MMTPC = new TH1D("MMTPC","Sum_{TPC}-X",2000,-2,2);
+	TH2D* MMKmKpLd2D = new TH2D("MissingMass(Km,KpLd):KuramaMM","MissingMass(Km,KpLd):KuramaMM",100,1.1,1.8,100,-1,2);
+	TH1D* MMKmKpLd = new TH1D("MissingMass(Km,KpLd)","MissingMass(Km,KpLd)",100,-1,2);
+	TH2D* MMKmpKpLd2D = new TH2D("MissingMass(Kmp,KpLd):KuramaMM","MissingMass(Kmp,KpLd):KuramaMM",100,1.1,1.8,100,-1,2);
+	TH1D* MMKmpKpLd = new TH1D("MissingMass(Kmp,KpLd)","MissingMass(Kmp,KpLd)",100,-1,2);
 	int ent = tr2->GetEntries();
 	int n_ximm=0;
-	
+	int ent2 = tr2->GetEntries();
+	TFile* file = new TFile("pkkXiX.root","recreate");
+	TTree* tree = new TTree("tree","tree");
+	tree->Branch("mmKurama",&mm2);
+	tree->Branch("mmTPC",&CheckSumM);
+
 	for(int i = 0;i<ent;++i){
 		tr2->GetEntry(i);
 		bool mmfl = true;
-		if(abs(mm2-1.315)>0.1){
-	//		continue;
+		double cm2 = CheckSumM;
+		if(isGood and abs(MLd-1.115)<0.03 ){
+			MMPi0->Fill(cm2,mm2);
+			if(1){
+				MMPi0Cor->Fill(cm2,mm2);
+			}
+			else{
+				MMPi0Vtx->Fill(CheckSumMCor,mm2);
+			}
+			if(abs(mm2-1.321)<0.1)MMTPC->Fill(cm2);
+			tree->Fill();
+		}
+		if(isGood and abs(CheckSumM-0.15)<0.15 and abs(mm2-1.55)<0.1){
+			MPi0->Fill(cm2);
+		}
+		//		if(abs(mm2-1.321)>0.1){
+		if(abs(mm2-1.321)>0.1){
+			//			continue;
+			
 			mmfl = false;
 		}
+		if(FlgXi){
+			if(abs(MLd-1.115)>0.03) FlgXi = false;
+			if(abs(MXiCor-1.321)>0.03) FlgXi = false;
+		}
+		//		if(runnum != 5641) continue;
 		n_ximm++;
-		FlgXi=(FlgXi and !InTargetLd and mmfl);
-//		FlgLd=(FlgLd and !InTargetLd );
-	//	FlgXi=(FlgXi );// !InTargetLd);
-	//	if(FlgXi)LdHist->Fill(MLd);
-		if(FlgLd)LdHist->Fill(MLd);
+		bool flFlag = false;
+		//		FlgXi=(FlgXi and !InTargetLd and mmfl);
+		FlgXi=(FlgXi and mmfl);
+		//		FlgXi=(FlgXi and mmfl);
+		//		FlgLd=(FlgLd and !InTargetLd );
+		//	FlgXi=(FlgXi );// !InTargetLd);
+		//	if(FlgXi)LdHist->Fill(MLd);
+		if(DistLd > 11.) flFlag = true;
+		if(FlgLd and  mmfl and FlgXi)LdHist->Fill(MLd);
+//		if(FlgLd )LdHist->Fill(MLd);
+		if(FlgLd &&( !FlgXi or 1)){
+			if(MissingpKpLd<0 or 1){
+			MMKmKpLd->Fill(MissingKpLd);
+			MMKmKpLd2D->Fill(mm2,MissingKpLd);
+		}
+			MMKmpKpLd->Fill(MissingpKpLd);
+			MMKmpKpLd2D->Fill(mm2,MissingpKpLd);
+		}
+		//		if(FlgLd and mmfl)LdHist->Fill(MLd);
 		if(FlgXi)XiHist->Fill(MXi);
-		if(FlgXi)LdXiHist->Fill(MLd);
-		if(FlgXi)LdDist->Fill(DistLd/MomLd*1.115);
+		if(FlgXi and mmfl)XiCorHist->Fill(MXiCor);
+		if(FlgXi and !InTargetLd and flFlag)XiPropHist->Fill(MXi);
+//		if(FlgXi and !InTargetLd)LdXiHist->Fill(MLd);
+		//		if(FlgLd)LdXiHist->Fill(MLd);
+		if(FlgXi)
+		{
+			LdCorHist->Fill(MLdCor);
+//			LdXiPropHist->Fill(MLd);
+		}
+		if(FlgXi and !InTargetLd and flFlag){
+			XiPropHist->Fill(MXiCor);
+		}
+		if(FlgXi and !InTargetLd and flFlag){
+			ldlen.push_back(DistLd/MomLd*1.115);
+			LdDist->Fill(DistLd/MomLd*1.115);
+		}
 	}
-	int ldpeak = LambdaWBG->GetMaximum();
+	int ldpeak = LdHist->GetMaximum();
 	LambdaWBG->SetParLimits(0,0.7*ldpeak,ldpeak);
+	LambdaWBG->SetRange(1.08,1.12);
 	LambdaWBG->SetParLimits(1,1.11,1.13);
 	LambdaWBG->SetParLimits(2,0.001,0.01);
-	LambdaWBG->SetParLimits(3,5,25);
+	LambdaWBG->SetParLimits(3,0,ldpeak* 0.2);
 	LambdaWBG->SetParLimits(4,1.10,1.15);
-	LambdaWBG->SetParLimits(5,0.01,0.1);
-	XiWBG->SetParLimits(0,10,50);
+	LambdaWBG->SetParLimits(5,0.005,0.03);
+	int xipeak = XiCorHist->GetMaximum();
+	XiWBG->SetParLimits(0,xipeak/2,xipeak*1.3);
 	XiWBG->SetParLimits(1,1.31,1.33);
 	XiWBG->SetParLimits(2,0.003,0.03);
-	XiWBG->SetParLimits(3,5,20);
-	XiWBG->SetParLimits(4,1.28,1.36);
-	XiWBG->SetParLimits(5,0.01,0.1);
+	XiWBG->SetParLimits(3,1,xipeak/2);
+	XiWBG->SetParLimits(4,1.30,1.34);
+	XiWBG->SetParLimits(5,0.02,0.07);
 	cout<<"Xi MM Window: "<<n_ximm<<endl;
 	TCanvas* c2 = new TCanvas("c2","c2",600,600);
 	TCanvas* c3 = new TCanvas("c3","c3",600,600);
@@ -83,20 +192,30 @@ void DrawXi(){
 	TCanvas* c5 = new TCanvas("c5","c5",600,600);
 	TCanvas* c1 = new TCanvas("c1","c1",1800,600);
 	c1->Divide(3,1);
-	TF1* fgau = new TF1("fgau","Gaussianf",1.1,1.4,3);
-	TF1* fgau2 = new TF1("fgau2","Gaussianf",1.1,1.4,3);
-	TF1* fgau3 = new TF1("fgau3","Gaussianf",1.1,1.4,3);
-	TF1* fgau4 = new TF1("fgau4","Gaussianf",1.1,1.4,3);
+	TF1* fgau = new TF1("fgau","Gaussianf",1.07,1.4,3);
+	TF1* fgau2 = new TF1("fgau2","Gaussianf",1.07,1.4,3);
+	TF1* fgau3 = new TF1("fgau3","Gaussianf",1.07,1.4,3);
+	TF1* fgau4 = new TF1("fgau4","Gaussianf",1.07,1.4,3);
 	bool drld=true,drxi=true,drprop=true;
 	c1->cd(1);
-//	LdHist->Draw();
-//	LdXiHist->SetLineColor(kRed);
-	LdXiHist->Draw("");
-	LdXiHist->Fit("LambdaWBG","");
-	LdXiHist->GetXaxis()->SetTitle("M_{p #pi^{-}} [GeV/c^{2}]");
-	LdXiHist->GetYaxis()->SetTitle("Entries / 2 MeV/c^{2}");
-	LdXiHist->GetXaxis()->SetNdivisions(5,false);
-	LdXiHist->GetYaxis()->SetNdivisions(10);
+	gPad->SetMargin(0.15,0.1,0.1,0.1);
+	LdHist->Draw();
+	//	LdXiHist->SetLineColor(kRed);
+	//	LdCorHist->Draw(""); //	LdCorHist->SetLineColor(kBlack); //	LdXiHist->Draw("");
+	LdXiPropHist->Draw("same");
+	LdXiPropHist->SetLineColor(kRed);
+	LdHist->Fit("LambdaWBG","R");
+	LdHist->GetXaxis()->SetTitle("M_{p #pi^{-}} [GeV/c^{2}]");
+	LdHist->GetYaxis()->SetTitle("Entries / 2 MeV/c^{2}");
+	LdHist->GetXaxis()->SetNdivisions(5,false);
+	LdHist->GetYaxis()->SetNdivisions(10);
+	LdHist->GetYaxis()->SetTitleSize(tsize);
+	LdHist->GetXaxis()->SetTitleSize(tsize);
+	LdHist->SetStats(0);
+	cout<<"Gaus"<<endl;
+//	LdHist->Fit("gaus");
+	TLatex* LdEnt = new TLatex(1.125,0.9*(LdHist->GetMaximum()),Form("Entries = %g",LdHist->GetEffectiveEntries()));
+	LdEnt->Draw();
 	for(int i=0;i<6;++i){
 		par[i]= LambdaWBG->GetParameter(i);
 	}
@@ -108,18 +227,26 @@ void DrawXi(){
 	fgau2->SetLineColor(kBlack);
 	fgau->Draw("same");
 	fgau2->Draw("same");
-		double LdMass =LambdaWBG->GetParameter(1);
-		double LdWidth =LambdaWBG->GetParameter(2);
-//		TText* LdLabel = new TText(1.12,40,Form(" %.0f \n+- %.0f MeV/c2",1000*LdMass,1000*LdWidth));
-//		LdLabel->Draw("same");
-//	c2->cd();
+	double LdMass =LambdaWBG->GetParameter(1);
+	double LdWidth =LambdaWBG->GetParameter(2);
+	//		TText* LdLabel = new TText(1.12,40,Form(" %.0f \n+- %.0f MeV/c2",1000*LdMass,1000*LdWidth));
+	//		LdLabel->Draw("same");
+	//	c2->cd();
 	c1->cd(2);
-	XiHist->Draw();
-	XiHist->Fit("XiWBG","");
-	XiHist->GetXaxis()->SetTitle("M_{#Lambda #pi^{-}} [GeV/c^{2}]");
-	XiHist->GetYaxis()->SetTitle("Entries / 2 MeV/c^{2}");
-	XiHist->GetXaxis()->SetNdivisions(5,false);
-	XiHist->GetYaxis()->SetNdivisions(10);
+	XiCorHist->Draw();
+	//	XiHist->Draw("same");
+//	XiPropHist->Draw("same");
+	//	XiPropHist->Draw("");
+//	XiPropHist->SetLineColor(kRed);
+	//	XiCorHist->SetLineColor(kBlack);
+	XiCorHist->Fit("XiWBG","");
+	XiCorHist->GetXaxis()->SetTitle("M_{#Lambda #pi^{-}} [GeV/c^{2}]");
+	XiCorHist->GetXaxis()->SetTitle("M_{#Lambda #pi^{-}} [GeV/c^{2}]");
+	XiCorHist->GetYaxis()->SetTitle("Entries / 2 MeV/c^{2}");
+	XiCorHist->GetXaxis()->SetNdivisions(5,false);
+	XiCorHist->GetXaxis()->SetTitleSize(tsize);;
+	XiCorHist->GetYaxis()->SetNdivisions(10);
+	XiCorHist->GetYaxis()->SetTitleSize(tsize);;
 	for(int i=0;i<6;++i){
 		par[i]= XiWBG->GetParameter(i);
 	}
@@ -134,29 +261,171 @@ void DrawXi(){
 	if(drxi){
 		double XiMass =XiWBG->GetParameter(1);
 		double XiWidth =XiWBG->GetParameter(2);
-//		TText* XiLabel = new TText(1.33,20,Form(" %.0f +- %.0f MeV/c2",1000*XiMass,1000*XiWidth));
-//		XiLabel->Draw("same");
+		//		TText* XiLabel = new TText(1.33,20,Form(" %.0f +- %.0f MeV/c2",1000*XiMass,1000*XiWidth));
+		//		XiLabel->Draw("same");
 	}
+	XiCorHist->SetStats(0);
+	TLatex* XiEnt = new TLatex(1.33,0.9*(XiCorHist->GetMaximum()),Form("Entries = %g",XiCorHist->GetEffectiveEntries()));
+	XiEnt->Draw();
 	c1->cd(3);
-	prop->SetParLimits(1,50,90);
-	LdDist->Draw();
-	LdDist->Fit("prop","");
+	//	prop->SetParLimits(1,50,90);
+	LdDist->Draw("E1");
+//	TLatex* LdDistEnt = new TLatex(125,40,Form("Entries = %g",LdDist->GetEffectiveEntries()));
+//	LdDistEnt->Draw();
+
+	int ierflg=0;
+	TMinuit* min = new TMinuit(2);	
+	min->SetFCN(fcn);	
+	min->mnparm(0,"const",70,0.01,0,0,ierflg);
+	min->mnparm(1,"ctau",77,0.001,0,0,ierflg);
+	double arglist[2]={1000,0.01};
+	min->mnexcm("MIGRAD",arglist,2,ierflg);
+	double p0,p0e,p1,p1e;
+	min->GetParameter(0,p0,p0e);
+	min->GetParameter(1,p1,p1e);
+	prop->SetParameter(0,p0);
+	prop->SetParameter(1,p1);
+	//	prop->Draw("same");
+	prop->SetRange(35,200);
+	LdDist->Fit("prop","R");
 	if(drprop){
 		double ctau = prop->GetParameter(1);
 		TText* PropLabel;// = new TText("prh");
-//		PropLabel = new TText(150,60,Form("c_tau = %.1f mm",ctau));
-//		PropLabel->Draw("same");
+										 //		PropLabel = new TText(150,60,Form("c_tau = %.1f mm",ctau));
+										 //		PropLabel->Draw("same");
 	}
 	LdDist->GetXaxis()->SetTitle("#Lambda flight length /#gamma#beta [mm]");
 	LdDist->GetYaxis()->SetTitle("Entries / 12 mm");
 	LdDist->GetXaxis()->SetNdivisions(10);
 	LdDist->GetYaxis()->SetNdivisions(10);
-	
+	LdDist->GetYaxis()->SetTitleSize(tsize);
+	LdDist->GetXaxis()->SetTitleSize(tsize);
+	LdDist->SetStats(0);
+	cout<<"LdEnt: "<<LdXiHist->GetEffectiveEntries()<<endl;
+	cout<<"XiEnt: "<<XiCorHist->GetEffectiveEntries()<<endl;
 	for(int i = 0;i<ent;++i){
 		tr2->GetEntry(i);
-	if(FlgLd and abs(MLd - LdMass)<3*LdWidth)LdMMHist ->Fill(mm2);
-	MMHist ->Fill(mm2);
+		if(FlgLd and abs(MLd - LdMass)<3*LdWidth)LdMMHist ->Fill(mm2);
+		MMHist ->Fill(mm2);
 	}
+	c1->SaveAs("XiReconHist.png");
+	TCanvas* c6 = new TCanvas("c6","c6",900,900);
+	gPad->SetMargin(0.15,0.1,0.1,0.1);
+	MMPi0Cor->Draw("colz");
+	MMPi0Cor->SetStats(0);
+	MMPi0Cor->GetXaxis()->SetTitle("MM[p(K^{-},K^{+}#Xi^{-})X][GeV/c^{2}]");
+	MMPi0Cor->GetYaxis()->SetTitle("MM{p(K^{-},K^{+})X}[GeV/c^{2}]");
+	MMPi0Cor->GetXaxis()->SetNdivisions(20);
+	MMPi0Cor->GetYaxis()->SetNdivisions(10);
+	MMPi0Cor->GetYaxis()->SetTitleSize(tsize*0.8);
+	MMPi0Cor->GetXaxis()->SetTitleSize(tsize);
+	TLine* l1 = new TLine(0,1.45,0,1.65);
+	TLine* l2 = new TLine(0,1.65,0.3,1.65);
+	TLine* l3 = new TLine(0.3,1.45,0.3,1.65);
+	TLine* l4 = new TLine(0,1.45,0.3,1.45);
+	l1->SetLineColor(kRed);
+	l1->SetLineStyle(kDashed);
+	l1->SetLineWidth(4);
+	l2->SetLineColor(kRed);
+	l2->SetLineStyle(kDashed);
+	l2->SetLineWidth(4);
+	l3->SetLineColor(kRed);
+	l3->SetLineStyle(kDashed);
+	l3->SetLineWidth(4);
+	l4->SetLineColor(kRed);
+	l4->SetLineStyle(kDashed);
+	l4->SetLineWidth(4);
+	
+	l1->Draw("same");
+	l2->Draw("same");
+	l3->Draw("same");
+	l4->Draw("same");
+
+	TLatex* t = new TLatex(0.,1.65,"#pi^{0}");
+	t->SetTextColor(kRed);
+	t->SetTextSize(0.2);
+//	t->Draw();
+	c6->SaveAs("MMPi0.png");
+
+	TCanvas* c7 = new TCanvas("c7","c7",900,900);
+//	MPi0->SetStats(0);
+	TLatex* stats = new TLatex(0.2,7,Form("Entries : %g", MPi0->GetEffectiveEntries()));
+	MPi0->Draw();
+//	stats->Draw();
+	MPi0->GetXaxis()->SetTitle("M_{#Lambda #pi^{-}}-X[GeV/c]");
+	TString titleY = Form(" Entries /%g MeV/c{^}",MPi0->GetXaxis()->GetBinWidth(5)*1000);
+	MPi0->SetLineWidth(3);
+	MPi0->SetLineColor(kBlack);
+	MPi0->GetYaxis()->SetTitle(titleY);
+	MPi0->GetYaxis()->SetTitleSize(tsize);
+	MPi0->GetYaxis()->SetNdivisions(5);
+	MPi0->GetXaxis()->SetNdivisions(10);
+	c7->SaveAs("MPi0.png");
+	TCanvas* c8 = new TCanvas("c8","c8",900,900);
+	MMTPC->SetStats(0);
+	TLatex* stats2 = new TLatex(0.2,100,Form("Entries : %g", MMTPC->GetEffectiveEntries()));
+	MMTPC->Draw();
+//	stats2->Draw();
+	MMTPC->GetXaxis()->SetTitle("M_{#Lambda #pi^{-}}-X[GeV/c]");
+	TString titleY2 = Form(" Entries /%g MeV/c{^}",MMTPC->GetXaxis()->GetBinWidth(5)*1000);
+	MMTPC->SetLineWidth(3);
+	MMTPC->SetLineColor(kBlack);
+	MMTPC->GetYaxis()->SetTitle(titleY2);
+	MMTPC->GetYaxis()->SetNdivisions(5);
+	MMTPC->GetXaxis()->SetNdivisions(10);
+	c8->SaveAs("MMTPC.png");
+	/*
+	TCanvas* c9 = new TCanvas("c9","c9",900,900);
+	gPad->SetMargin(0.15,0.1,0.1,0.1);
+	MMKmKpLd->Draw();
+	MMKmKpLd->SetStats(0);
+	MMKmKpLd->SetLineWidth(3);
+	MMKmKpLd->SetLineColor(kBlack);
+	MMKmKpLd->GetXaxis()->SetNdivisions(10);
+	MMKmKpLd->GetXaxis()->SetTitle("MM[X(K^{-},K^{+})#Lambda]");
+	MMKmKpLd->GetYaxis()->SetNdivisions(5);
+	MMKmKpLd->GetYaxis()->SetTitle("Entries / 10 MeV");
+	MMKmKpLd->GetYaxis()->SetTitleSize(tsize);
+	c9->SaveAs("MMKmKpLd_12C.png");
+	TCanvas* c10 = new TCanvas("c10","c10",900,900);
+	gPad->SetMargin(0.15,0.1,0.1,0.1);
+	MMKmKpLd2D->Draw("colz");
+	MMKmKpLd2D->SetStats(0);
+	MMKmKpLd2D->GetYaxis()->SetNdivisions(10);
+	MMKmKpLd2D->GetYaxis()->SetTitle("MM[X(K^{-},K^{+})#Lambda]");
+	MMKmKpLd2D->GetYaxis()->SetTitleSize(tsize);
+	MMKmKpLd2D->GetXaxis()->SetNdivisions(10);
+	MMKmKpLd2D->GetXaxis()->SetTitle("MM[p(K^{-},K^{+})X]");
+	c10->SaveAs("MMKmKpLd2D_12C.png");
+	TCanvas* c11 = new TCanvas("c11","c11",900,900);
+	gPad->SetMargin(0.15,0.1,0.1,0.1);
+	MMKmpKpLd->Draw();
+	MMKmpKpLd->SetStats(0);
+	MMKmpKpLd->SetLineWidth(3);
+	MMKmpKpLd->SetLineColor(kBlack);
+	MMKmpKpLd->GetXaxis()->SetNdivisions(10);
+	MMKmpKpLd->GetXaxis()->SetTitle("MM[p(K^{-},K^{+}#Lambda) X]");
+	MMKmpKpLd->GetYaxis()->SetNdivisions(5);
+	MMKmpKpLd->GetYaxis()->SetTitle("Entries / 10 MeV");
+	MMKmpKpLd->GetYaxis()->SetTitleSize(tsize);
+	c11->SaveAs("MMpKmKpLd_12C.png");
+	TCanvas* c12 = new TCanvas("c12","c12",900,900);
+	gPad->SetMargin(0.15,0.1,0.1,0.1);
+	MMKmpKpLd2D->Draw("colz");
+	MMKmpKpLd2D->SetStats(0);
+	MMKmpKpLd2D->GetYaxis()->SetNdivisions(10);
+	MMKmpKpLd2D->GetYaxis()->SetTitle("MM[p(K^{-},K^{+}#Lambda) X]");
+	MMKmpKpLd->GetYaxis()->SetNdivisions(5);
+	MMKmpKpLd2D->GetYaxis()->SetTitleSize(tsize);
+	MMKmpKpLd2D->GetXaxis()->SetNdivisions(10);
+	MMKmpKpLd2D->GetXaxis()->SetTitle("MM[p(K^{-},K^{+})X]");
+	c12->SaveAs("MMpKmKpLd2D_12C.png");
+*/
+	file->cd();
+	MMPi0->Write();
+	MPi0->Write();
+	MMTPC->Write();
+	file->Write();
 #if 0
 	c4->cd();
 	MMHist->Draw();
@@ -174,127 +443,12 @@ void DrawXi(){
 
 
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-double LpG(double* x,double*par){
-  double gau = par[0]*TMath::Gaus(x[0],par[1],par[2]);
-  double lad = par[3]*TMath::Landau(x[0],par[4],par[5]);
-  return gau+lad;
-}
-
-void DrawDifCr(){
-	
-
-	TGraphErrors* g1;
-	TGraphErrors* g2;
-	TH1D* hist1 = new TH1D("Xi Count vs cos(#theta_{CM})","Xi Count vs cos(#theta_{CM})",10,0.75,1);
-	hist1->GetXaxis()->SetTitle("cos(#theta_{CM})");
-	hist1->GetYaxis()->SetTitle("Entry [ / 0.025]");
-	TH1D* hist2 = new TH1D("Xi* Count vs cos(#theta_{CM})","Xi* Count vs cos(#theta_{CM})",10,0.75,1);
-	hist1->GetXaxis()->SetTitle("cos(#theta_{CM})");
-	hist1->GetYaxis()->SetTitle("Entry [ / 0.025]");
-	int ent = tr1->GetEntries();	
-	for(int i=0;i<ent;++i){
-		tr1->GetEntry(i);
-		if(abs(mm1-1.32657)<0.0145*3) hist1->Fill(cos(tcm/180*PI));
-		if(abs(mm1-1.540)<0.0135*3) hist2->Fill(cos(tcm/180*PI));
-	}
-	double xic[10],xisc[10];
-	for(int i=0;i<10;++i){
-		xic[i]=hist1->GetBinContent(i+1);
-		xisc[i]=hist2->GetBinContent(i+1);
-		cout<<Form("%d : %f",i,xic[i])<<endl; 
-	}
-	TCanvas* c1 = new TCanvas("c1","c1",1200,600);
-	c1->Divide(2,1);
-	c1->cd(1);
-	hist1->Draw();
-	c1->cd(2);
-	hist2->Draw();
-}
-void FitIM(){
-	TH1D* h = new TH1D("h","h",100,1,2);
-	int ent = tr2->GetEntries();	
-	for(int i=0;i<ent;++i){
-		tr2->GetEntry(i);
-		h->Fill(MLd);
-	}
-	  TF1* flg = new TF1("flgaus","LpG",1.07,1.6,6);
-	h->Draw();
-	flg->SetParLimits(0,100,120);
-	flg->SetParLimits(1,1.1,1.12);
-	flg->SetParLimits(2,0.01,0.03);
-	flg->SetParLimits(4,1,1.2);
-	flg->SetParLimits(5,0,1);
-	h->Fit("flgaus","R");
-	h->GetXaxis()->SetTitle("InvMass [GeV/c2]");
-	h->SetTitle("#Lambda Invariant Mass");
-
-}
-
-void DrawXi(int dum){
-	TH1D* hist1 = new TH1D("KuramaMM","KuramaMM",200,1,2);
-	hist1->GetXaxis()->SetTitle("MissMass [GeV / c2]");
-	hist1->GetYaxis()->SetTitle("Entry [ /5 MeV]");
-	TH1D* hist2 = new TH1D("KuramaMMCut","KuramaMMCut",200,1,2);
-	int ent = tr1->GetEntries();
-	for(int i=0;i<ent;++i){
-		tr1->GetEntry(i);
-		hist1->Fill(mm1);
-	}
-	ent = tr2->GetEntries();
-	for(int i=0;i<ent;++i){
-		tr2->GetEntry(i);
-		if(abs(MLd-1.12)<0.044)hist2->Fill(mm2);
-		//		if(MLd>0)	hist2->Fill(mm2);
 	}
 
-	hist2->SetLineColor(kRed);
-	TCanvas*c1 = new TCanvas("c1","c1",1200,800);
-	c1->cd();
-	hist1->Draw();
-	hist2->Draw("same");
-}
-void DrawMMAngular(){
-	double mm,theta;
-	TFile* f1 = new TFile("SelectedEvents.root");
-	TTree* tr1 = (TTree*)f1->Get("tree");
-	tr1->SetBranchAddress("XiMM",&mm);
-	tr1->SetBranchAddress("XiThetaCM",&theta);
-	TH2D* hist1 = new TH2D("MM vs cos(#theta_{CM})","MM vs cos(#theta_{CM})",50,0.5,1,50,1.2,1.7);
-	int ent = tr1->GetEntries();
-	gStyle->SetOptStat(0000);
-	hist1->GetXaxis()->SetTitle("cos(#theta_{CM})");
-	hist1->GetYaxis()->SetTitle("MissMass[GeV/c^2]");
-	for(int i=0;i<ent;++i){
-		tr1->GetEntry(i);
-		hist1->Fill(cos(theta/180 * PI),mm);
-	}
-	hist1->Draw("colz");
-}
+
+
+
+
+
+
+

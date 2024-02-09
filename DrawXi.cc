@@ -45,6 +45,7 @@ void DrawDifCr(){
 	hist2->Draw();
 }
 void DrawXi(int dum){
+	gStyle->SetOptStat(10);
 	TH1D* hist1 = new TH1D("KuramaMM","KuramaMM",200,1,2);
 	hist1->GetXaxis()->SetTitle("MissMass [GeV / c2]");
 	hist1->GetYaxis()->SetTitle("Entry [ /5 MeV]");
@@ -57,7 +58,7 @@ void DrawXi(int dum){
 	ent = tr2->GetEntries();
 	for(int i=0;i<ent;++i){
 		tr2->GetEntry(i);
-		if(abs(MLd-1.12)<0.044)hist2->Fill(mm2);
+//		if(abs(MLd-1.12)<0.044)hist2->Fill(mm2);
 		//		if(MLd>0)	hist2->Fill(mm2);
 	}
 
@@ -65,7 +66,7 @@ void DrawXi(int dum){
 	TCanvas*c1 = new TCanvas("c1","c1",1200,800);
 	c1->cd();
 	hist1->Draw();
-	hist2->Draw("same");
+//	hist2->Draw("same");
 }
 void DrawMMAngular(){
 	double mm,theta;

@@ -1,1 +1,1 @@
-scp *Drift.txt kek:~/k18-analyzer_2/param/DCDRFT/
+scp *Drift.txt kek:~/k18-analyzer/param/DCDRFT/

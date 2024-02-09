@@ -67,7 +67,7 @@ TH1D* KKManager::XiMinusFit(double* par,TH1D* hist = NULL){
 	}
 	GausWithBGf->SetRange(XiMinusMass-0.1,XiMinusMass+0.1);
 	GausWithBGf->SetParLimits(0,peak/2,peak);
-	GausWithBGf->SetParLimits(1,XiMinusMass-0.01,XiMinusMass+0.01);
+	GausWithBGf->SetParLimits(1,XiMinusMass-0.03,XiMinusMass+0.03);
 	GausWithBGf->SetParLimits(2,1e-2,1e-1);
 	GausWithBGf->SetParLimits(3,peak/10,peak/2);
 	GausWithBGf->SetParLimits(4,XiMinusMass-0.1,XiMinusMass+0.1);
@@ -94,7 +94,7 @@ TH1D* KKManager::XiStarFit(double* par,TH1D* hist = NULL){
 	}
 	GausWithBGf2->SetRange(XiStarMass-0.1,XiStarMass+0.1);
 	GausWithBGf2->SetParLimits(0,peak/3,peak);
-	GausWithBGf2->SetParLimits(1,XiStarMass-0.01,XiStarMass+0.01);
+	GausWithBGf2->SetParLimits(1,XiStarMass-0.03,XiStarMass+0.03);
 	GausWithBGf2->SetParLimits(2,1e-3,2e-2);
 	GausWithBGf2->SetParLimits(3,peak/10,peak/2);
 	GausWithBGf2->SetParLimits(4,XiStarMass-0.1,XiStarMass+0.1);

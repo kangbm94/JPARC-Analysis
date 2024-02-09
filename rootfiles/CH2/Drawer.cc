@@ -1,8 +1,13 @@
 	TChain* chain = new TChain("kurama");
+	TChain* chain2 = new TChain("kk");
 void Drawer(){
-	chain->Add("KuramaTracking05453.root");
-	chain->Add("KuramaTracking05454.root");
-	chain->Add("KuramaTracking05455.root");
+	chain2->Add("run05641_DstHSKKAna.root");
+}
+void DrawHS(){
+	TH1D* h = new TH1D("hist","P_{K^{-} Beam}",100,1.6,2);
+	chain2->Draw("pK18>>hist");
+	h->Fit("gaus");
+	
 }
 void Draw(int seg,double slope,double offset){
 	TCanvas* c1 = new TCanvas("c1","c1",600,400);

@@ -101,9 +101,15 @@ class KKTrack{
 		double MissMass_;
 		double Theta_;
 		double ThetaCM_;
+		double MissMassCalc_;
 	public:
 		KKTrack(KKBeam km,KKScat kp,bool inside,double missmass,double theta,double thetaCM){
 			KM_=km;KP_=kp;Inside_=inside;MissMass_=missmass;Theta_=theta;ThetaCM_=thetaCM;
+			auto KMLV = TLorentzVector(KM_.Px(),KM_.Py(),KM_.Pz(),sqrt(KaonMass*KaonMass/1000./1000.+KM_.P()*KM_.P()));
+			auto PLV = TLorentzVector(0,0,0,ProtonMass/1000);
+			auto KPLV = TLorentzVector(KP_.Px(),KP_.Py(),KP_.Pz(),sqrt(KaonMass*KaonMass/1000./1000.+KP_.P()*KP_.P()));
+			auto XLV = KMLV +PLV - KPLV;
+			MissMassCalc_ = XLV.Mag();
 		}
 		bool CutChiSqr(double k18cut,double kuramacut){
 			return KM_.CutChiSqr(k18cut)&&KP_.CutChiSqr(kuramacut); };
@@ -124,6 +130,9 @@ class KKTrack{
 		}
 		double GetMissMass(){
 			return MissMass_;
+		}
+		double GetMissMassCalc(){
+			return MissMassCalc_;
 		}
 		double GetTheta(){
 			return Theta_;
@@ -195,6 +204,9 @@ class KKEvent{
 		}
 		double GetMissMass(int ikk){
 			return Tracks[ikk].GetMissMass();
+		}
+		double GetMissMassCalc(int ikk){
+			return Tracks[ikk].GetMissMassCalc();
 		}
 		
 		double GetTheta(int ikk){
@@ -368,9 +380,10 @@ KKEvent::KKEvent(TChain* chain){
 
 void KKEvent::LoadEvent(int event){
 	kkChain->GetEntry(event);
+	double ukm_offset = 0.1;
 	for(int ikp=0;ikp<nKp_;++ikp){
 		for(int ikm=0;ikm<nKm_;++ikm){
-			KKBeam Beam(ukm_[nkk],vkm_[nkk],pK18_[nkk],chisqrK18_[nkk]);
+			KKBeam Beam(ukm_[nkk]+ukm_offset,vkm_[nkk],pK18_[nkk],chisqrK18_[nkk]);
 			KKScat Scat(ukp_[ikp],vkp_[ikp],pKurama_[ikp],chisqrKurama_[ikp],m2_[ikp],qKurama_[ikp]);
 			KKTrack Track(Beam,Scat,inside_[nkk],MissMass_[nkk],theta_[nkk],thetaCM_[nkk]);
 			Tracks.push_back(Track);
