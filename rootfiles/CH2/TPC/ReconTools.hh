@@ -12,7 +12,7 @@ double mk = 493.677/1000;
 double mp = 938.272/1000;
 double mL = 1115.68/1000;
 double mXi = 1321.71/1000;
-double mXiStar = 1535/1000;
+double mXiStar = 1535./1000;
 
 
 std::string s_tmp="pow([5]-([0]+([3]*cos(x))),2)+pow([6]-([1]+([3]*sin(x))),2)+pow([7]-([2]+([3]*[4]*x)),2)";

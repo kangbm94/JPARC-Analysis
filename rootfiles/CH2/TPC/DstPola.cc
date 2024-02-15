@@ -25,6 +25,7 @@ double MomxXi,MomyXi,MomzXi;
 double MomxLd,MomyLd,MomzLd;
 double MomxP,MomyP,MomzP;
 double dM,dP;
+double dM_x,dM_y,dM_z,dM_e,MM_Fermi;
 bool FlgXi;
 double InvMXi,InvMLd;
 double cTh,cPh,cPh1,cPh2,cPh3;
@@ -32,7 +33,7 @@ double MissMass,Coplanarity;
 bool TrigAPS,TrigB;
 void RealPola(int i);
 TTree* tree2;
-void GenfitPola(){
+void DstPola(){
 	HTh = new TH1D("HistTh","HistTh",22,-1.1,1.1);
 	HPh = new TH1D("HistPh","HistPh",22,-1.1,1.1);
 	HPh1 = new TH1D("HistPh1","HistPh1",22,-1.1,1.1);
@@ -42,9 +43,11 @@ void GenfitPola(){
 	
 	int rn_s = 5641;
 	int rn_e = 5666;
-//	int rn_s = 5667;
-//	int rn_e = 5697;
-	TFile* file2 = new TFile(Form("GenfitPolaAnal_%d_%d.root",rn_s,rn_e),"create");
+	rn_s = 5567;
+//	rn_e = 5639;
+//	rn_s = 5667;
+	rn_e = 5697;
+	TFile* file2 = new TFile(Form("DstPolaAnal_%d_%d.root",rn_s,rn_e),"recreate");
 	tree2 = new TTree("tree","tree");
 	tree2->Branch("TrigAPS",&TrigAPS);
 	tree2->Branch("TrigB",&TrigB);
@@ -56,7 +59,12 @@ void GenfitPola(){
 	tree2->Branch("cPh2",&cPh2);
 	tree2->Branch("cPh3",&cPh3);
 	tree2->Branch("dM",&dM);	
-	tree2->Branch("dP",&dP);	
+	tree2->Branch("dM_x",&dM_x);	
+	tree2->Branch("dM_y",&dM_y);	
+	tree2->Branch("dM_z",&dM_z);	
+	tree2->Branch("dM_e",&dM_e);	
+	tree2->Branch("MM_Fermi",&MM_Fermi);	
+	
 	tree2->Branch("InvMXi",&InvMXi);
 	tree2->Branch("InvMLd",&InvMLd);
 	
@@ -85,7 +93,7 @@ void GenfitPola(){
 	for(int i=rn_s;i<rn_e+1;++i){
 
 		cout<<"Run "<<i<<endl;
-		if(i==5676) continue;
+		if(5641 <= i and i <= 5666) continue;
 		RealPola(i);
 	}
 	TCanvas* c1 = new TCanvas("c1","c1",1200,600);
@@ -117,14 +125,16 @@ void GenfitPola(){
 	file2->Write();
 }
 void RealPola(int rn){
-//	TFile* file = new TFile(Form("genfitfiles/Prod/run0%d_GenfitXiSearch.root",rn));
-	TFile* file = new TFile(Form("genfitfiles/Ch2/run0%d_GenfitXiSearch.root",rn));
-	if(!file) return;
+	TFile* file =nullptr;
+	file = TFile::Open(Form("genfitfiles/Prod/run0%d_GenfitXiSearch.root",rn));
+//	TFile* file = new TFile(Form("genfitfiles/Ch2/run0%d_GenfitXiSearch.root",rn));
+	if(!file or file->IsZombie()) return;
 	TTree* tree = (TTree*)file->Get("tpc");
 
 	int ent = tree->GetEntries();
 	tree->SetBranchAddress("trigflag",&trigflag);
-	tree->SetBranchAddress("MissMassCorrDETPC",&MM);
+//	tree->SetBranchAddress("MissMassCorrDETPC",&MM);
+	tree->SetBranchAddress("MissMassCorrDE",&MM);
 	tree->SetBranchAddress("pK18",&PKm);
 	tree->SetBranchAddress("utgtK18",&uKm);
 	tree->SetBranchAddress("vtgtK18",&vKm);
@@ -133,18 +143,18 @@ void RealPola(int rn){
 	tree->SetBranchAddress("utgtTPCKurama",&uKp);
 	tree->SetBranchAddress("vtgtTPCKurama",&vKp);
 
-	tree->SetBranchAddress("GFXiMom_x",&MomxXi);
-	tree->SetBranchAddress("GFXiMom_y",&MomyXi);
-	tree->SetBranchAddress("GFXiMom_z",&MomzXi);
-	tree->SetBranchAddress("GFLambdaMom_x",&MomxLd);
-	tree->SetBranchAddress("GFLambdaMom_y",&MomyLd);
-	tree->SetBranchAddress("GFLambdaMom_z",&MomzLd);
-	tree->SetBranchAddress("GFDecaysMom_x",&DecayMomx);
-	tree->SetBranchAddress("GFDecaysMom_y",&DecayMomy);
-	tree->SetBranchAddress("GFDecaysMom_z",&DecayMomz);
-	tree->SetBranchAddress("GFXiflag",&FlgXi);
-	tree->SetBranchAddress("GFXiMass",&InvMXi);
-	tree->SetBranchAddress("GFLambdaMass",&InvMLd);
+	tree->SetBranchAddress("XiMom_x",&MomxXi);
+	tree->SetBranchAddress("XiMom_y",&MomyXi);
+	tree->SetBranchAddress("XiMom_z",&MomzXi);
+	tree->SetBranchAddress("LambdaMom_x",&MomxLd);
+	tree->SetBranchAddress("LambdaMom_y",&MomyLd);
+	tree->SetBranchAddress("LambdaMom_z",&MomzLd);
+	tree->SetBranchAddress("DecaysMom_x",&DecayMomx);
+	tree->SetBranchAddress("DecaysMom_y",&DecayMomy);
+	tree->SetBranchAddress("DecaysMom_z",&DecayMomz);
+	tree->SetBranchAddress("Xiflag",&FlgXi);
+	tree->SetBranchAddress("XiMass",&InvMXi);
+	tree->SetBranchAddress("LambdaMass",&InvMLd);
 
 
 	for(int i=0;i<ent;++i){
@@ -185,7 +195,15 @@ void RealPola(int rn){
 		TLorentzVector LVMM = LVKm+LVP-LVKp;
 		
 		dM = (LVMM-LVXi).Mag();
-//		dM = LVMM.Mag()-LVXi.Mag();
+		dM_x = (LVMM-LVXi).X();
+		dM_y = (LVMM-LVXi).Y();
+		dM_z = (LVMM-LVXi).Z();
+		dM_e = (LVMM-LVXi).E();
+		
+		auto LV_Fermi = LVP+LVXi - LVMM;
+		MM_Fermi = LV_Fermi.Mag();
+
+		dP = LVMM.Vect().Mag() - LVXi.Vect().Mag();
 		dP = LVMM.Vect().Mag() - LVXi.Vect().Mag();
 		auto Plane = Km.Cross(Kp);
 		Plane = Plane *(1./Plane.Mag());

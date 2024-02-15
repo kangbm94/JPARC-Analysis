@@ -348,7 +348,6 @@ void CheckMom_WS(){
 			int nvt = verts.size();
 			vector<Recon>LdCand;
 			for(auto vt: verts){
-				vt.TrustChargeInfo(true);
 				vt.SearchLdCombination();
 				auto Ldc = vt.GetBestCandidate();
 				LdCand.push_back(Ldc);

@@ -107,4 +107,27 @@ void CovThPh(double* res, double* par, double* cov){
 	cov[2] = VTVJ21;
 	cov[3] = VTVJ22;
 }
+void WeightedFill(TH1D* h,double dat, double w){
+	int bin = h->FindBin(dat);
+	h->AddBinContent(bin,w);
+}
+int GetBin(int nbin, double lb,double hb, double cont){
+	double bw = (hb - lb)/nbin;
+	double range = cont - lb;
+	int bin = floor(range / bw);
+	if (bin<0) return -1;
+	if (bin >= nbin) return nbin;
+	else return bin;
+}
+double GetBinCenter(int nbin, double lb, double hb, int bin){
+	double bw = (hb - lb)/nbin;
+	double offset = lb + bw/2; 
+	if(bin < 0) return lb - bw/2;
+	if(bin >= nbin) return hb + bw/2;
+	return offset + bw * bin;	
+}
+
+
+
+
 #endif

@@ -19,7 +19,8 @@ class PolaAnal{
 	public:
 		PolaAnal(TVector3 PKm,TVector3 PKp,TVector3 PXi,TVector3 PLd,TVector3 PP){
 			Km=PKm,Kp=PKp,Xi=PXi,Ld=PLd,P=PP;
-			PolXi= NormalCross(Km,Kp);
+			PolXi= NormalCross(Km,-Kp);
+//			PolXi= NormalCross(Km,Xi);
 			TLorentzVector LVXi(Xi,hypot(Xi.Mag(),mXi));
 			TLorentzVector LVLd(Ld,hypot(Ld.Mag(),mL));
 			TLorentzVector LVP(P,hypot(P.Mag(),mP));

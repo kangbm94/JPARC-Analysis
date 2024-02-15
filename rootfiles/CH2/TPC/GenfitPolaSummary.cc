@@ -25,7 +25,7 @@ double MomxP,MomyP,MomzP;
 bool FlgXi;
 double InvMXi,InvMLd;
 double cTh,cPh,cPh1,cPh2,cPh3;
-double MissMass,Coplanarity;
+double MissMass,Coplanarity,dM;
 bool TrigAPS,TrigB;
 void RealPola(int i);
 TTree* tree2;
@@ -34,13 +34,18 @@ void FCN(int &npar, double* gin, double &f, double * par, int iflag){
 	f=0;
 	double par1 = par[0];
 	for(auto dp:datap){
-		double delta = 0.5 - dp * par1;
+		double delta = 1.0 - dp * par1;
 		f+= delta* delta;
 	}
 //	cout<<Form("ND = %lu,chi2 = %g, par = %g",datap.size(),f,par1)<<endl;
 }
 void GenfitPolaSummary(){
+	bool UnbinnedFit = false;
+		
 	int nbin = 20;
+	double MMCut = 0.05;
+	double dMCut = 0.05;
+	double CopCut = 0.10;
 	SetStyle();
 	gStyle->SetTitleSize(0.08,"XY");
 	HTh = new TH1D("HistTh","HistTh",nbin,-1.,1.);
@@ -62,6 +67,7 @@ void GenfitPolaSummary(){
 	tree->SetBranchAddress("TrigAPS",&TrigAPS);
 	tree->SetBranchAddress("TrigB",&TrigB);
 	tree->SetBranchAddress("MissMass",&MissMass);
+	tree->SetBranchAddress("dM",&dM);
 	tree->SetBranchAddress("Coplanarity",&Coplanarity);
 	tree->SetBranchAddress("cTh",&cTh);
 	tree->SetBranchAddress("cPh",&cPh);
@@ -100,20 +106,35 @@ void GenfitPolaSummary(){
 	for(int i=0;i<ent;++i){
 		tree->GetEntry(i);
 		if(abs(InvMLd-1.115) > 0.03 or abs(InvMXi-1.321)>0.03) continue;
-		if(!isnan(cTh) and abs(Coplanarity)< 0.05	and abs(MissMass - 1.321)<0.1){
+		if(!isnan(cTh) and abs(Coplanarity)< CopCut	and abs(MissMass - 1.321)<MMCut and abs(dM)<0.1){
 			HTh->Fill(cTh);
 			HPh->Fill(cPh);
 			HPh1->Fill(cPh1);
 			HPh2->Fill(cPh2);
 			HPh3->Fill(cPh3);
 			HMMCut->Fill(MissMass);
+/*
+			if(abs(cTh+0.1)<0.1){
+			HTh->Fill(cTh);
+			HPh->Fill(cPh);
+			HPh1->Fill(cPh1);
+			HPh2->Fill(cPh2);
+			HPh3->Fill(cPh3);
+			VecTh.push_back(cTh);
+			VecPh.push_back(cPh);
+			VecPh1.push_back(cPh1);
+			VecPh2.push_back(cPh2);
+			VecPh3.push_back(cPh3);
+			
+			}
+			*/
 			VecTh.push_back(cTh);
 			VecPh.push_back(cPh);
 			VecPh1.push_back(cPh1);
 			VecPh2.push_back(cPh2);
 			VecPh3.push_back(cPh3);
 		}
-		if((MissMass - 1.321)<0.1){
+		if((MissMass - 1.321)<MMCut){
 			HMM->Fill(MissMass);
 		}
 	}
@@ -126,12 +147,8 @@ void GenfitPolaSummary(){
 	min->SetPrintLevel(-1);
 	int ierflg = 0;
 	double arglist[2]={500,0.01};
-	double par1,par1E;
-	datap = VecTh;
-	min->SetFCN(FCN);	
-	min->mnparm(0,"p1",0.,0.01,-1,1,ierflg);
-	min->mnexcm("MIGRAD",arglist,2,ierflg);
-	min->GetParameter(0,par1,par1E);
+	double par1,par0,bins,par1E,par0E;
+//	double par1,par1E;
 	TCanvas* c1 = new TCanvas("c1","c1",1200,600);
 	c1->Divide(2,2);
 	c1->cd(1);
@@ -139,47 +156,97 @@ void GenfitPolaSummary(){
 	HTh->Draw();
 	HTh->GetXaxis()->SetTitle("cos#theta");
 	HTh->GetYaxis()->SetTitle("Counts / 0.05 ");
-	//	HTh->Fit("fLin");
-	double HThDen = (HTh->GetEntries() / nbin);
-	fLin->SetParameter(0,HThDen);
-	fLin->SetParameter(1,par1*HThDen);
+	bins = HTh->GetEntries() / nbin;
+	if(UnbinnedFit){
+		datap = VecTh;
+		min->SetFCN(FCN);	
+		min->mnparm(0,"p1",0.,0.01,-1,1,ierflg);
+		min->mnexcm("MIGRAD",arglist,2,ierflg);
+		min->GetParameter(0,par1,par1E);
+		par0=1;
+		fLin->SetParameter(0,bins);
+		fLin->SetParameter(1,par1*bins);
+		auto fLin1 = (TF1*)fLin->Clone("fLin1");
+		fLin1->Draw("same");
+	}
+	else{
+		HTh->Fit("fLin");
+		par0 = fLin->GetParameter(0)/bins;
+		par1 = fLin->GetParameter(1)/bins;
+	}	
+	cout<<"N = "<<par0<<endl;
 	cout<<"P = "<<par1<<endl;
-	auto fLin1 = (TF1*)fLin->Clone("fLin1");
-	fLin1->Draw("same");
 	c1->cd(2);
 	gPad->SetMargin(0.15,0.1,0.2,0.1);
 	HPh1->Draw();
 	HPh1->GetXaxis()->SetTitle("cos#phi_{#beta}");
 	HPh1->GetYaxis()->SetTitle("Counts / 0.05 ");
-	datap = VecPh1;
-	min->mnparm(0,"p1",0.1,0.01,-1,1,ierflg);
-	min->mnexcm("MIGRAD",arglist,2,ierflg);
-	min->GetParameter(0,par1,par1E);
-	fLin->SetParameter(0,HThDen);
-	fLin->SetParameter(1,par1*HThDen);
-	cout<<"P = "<<par1<<endl;
-	auto fLin2 = (TF1*)fLin->Clone("fLin2");
-	fLin2->Draw("same");
+	if(UnbinnedFit){
+		datap = VecPh1;
+		min->mnparm(0,"p1",0.1,0.01,-1,1,ierflg);
+		min->mnexcm("MIGRAD",arglist,2,ierflg);
+		min->GetParameter(0,par1,par1E);
+		fLin->SetParameter(0,bins);
+		fLin->SetParameter(1,par1*bins);
+		cout<<"P = "<<par1<<endl;
+		auto fLin2 = (TF1*)fLin->Clone("fLin2");
+		fLin2->Draw("same");
+	}
+	else{
+		HPh1->Fit("fLin");
+		par0 = fLin->GetParameter(0)/bins;
+		par1 = fLin->GetParameter(1)/bins;
+		cout<<"N = "<<par0<<endl;
+		cout<<"P = "<<par1<<endl;
+	}
+
 	c1->cd(3);
 	gPad->SetMargin(0.15,0.1,0.2,0.1);
 	HPh2->Draw();
 	HPh2->GetXaxis()->SetTitle("cos#phi_{#gamma}");
 	HPh2->GetYaxis()->SetTitle("Counts / 0.05 ");
-	datap = VecPh2;
-	min->mnparm(0,"p1",0.1,0.01,-1,1,ierflg);
-	min->mnexcm("MIGRAD",arglist,2,ierflg);
-	min->GetParameter(0,par1,par1E);
-	fLin->SetParameter(0,HThDen);
-	fLin->SetParameter(1,par1*HThDen);
-	cout<<"P = "<<par1<<endl;
-	auto fLin3 = (TF1*)fLin->Clone("fLin3");
-	fLin3->Draw("same");
-
+	if(UnbinnedFit){
+		datap = VecPh2;
+		min->mnparm(0,"p1",0.1,0.01,-1,1,ierflg);
+		min->mnexcm("MIGRAD",arglist,2,ierflg);
+		min->GetParameter(0,par1,par1E);
+		fLin->SetParameter(0,bins);
+		fLin->SetParameter(1,par1*bins);
+		cout<<"P = "<<par1<<endl;
+		auto fLin3 = (TF1*)fLin->Clone("fLin3");
+		fLin3->Draw("same");
+	}
+	else{
+		HPh2->Fit("fLin");
+		par0 = fLin->GetParameter(0)/bins;
+		par1 = fLin->GetParameter(1)/bins;
+		cout<<"N = "<<par0<<endl;
+		cout<<"P = "<<par1<<endl;
+	}
 	c1->cd(4);
 	gPad->SetMargin(0.15,0.1,0.2,0.1);
 	HPh3->Draw();
 	HPh3->GetXaxis()->SetTitle("cos#phi_{#alpha}");
 	HPh3->GetYaxis()->SetTitle("Counts / 0.05 ");
+	if(UnbinnedFit){
+		datap = VecPh3;
+		min->mnparm(0,"p1",0.1,0.01,-1,1,ierflg);
+		min->mnexcm("MIGRAD",arglist,2,ierflg);
+		min->GetParameter(0,par1,par1E);
+		fLin->SetParameter(0,bins);
+		fLin->SetParameter(1,par1*bins);
+		cout<<"P = "<<par1<<endl;
+		auto fLin4 = (TF1*)fLin->Clone("fLin4");
+		fLin4->Draw("same");
+	}
+	else{
+		HPh3->Fit("fLin");
+		par0 = fLin->GetParameter(0)/bins;
+		par1 = fLin->GetParameter(1)/bins;
+		cout<<"N = "<<par0<<endl;
+		cout<<"P = "<<par1<<endl;
+	}
+/*
 	datap = VecPh3;
 	min->SetFCN(FCN);	
 	min->mnparm(0,"p1",0.1,0.01,-1,1,ierflg);
@@ -190,7 +257,7 @@ void GenfitPolaSummary(){
 	cout<<"P = "<<par1<<endl;
 	auto fLin4 = (TF1*)fLin->Clone("fLin4");
 	fLin4->Draw("same");
-
+*/
 	
 	TCanvas* c2 = new TCanvas("c2","c2",600,600);
 	HMM->Draw();
